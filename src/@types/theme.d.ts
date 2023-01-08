@@ -18,6 +18,15 @@ export interface ThemeTypes {
       h6: string;
       h7: string;
     },
+  },
+  media: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  },
+  shadow: {
+    main: string;
+    dark: string;
   }
 }
 

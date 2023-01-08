@@ -71,5 +71,14 @@ export const theme: ThemeTypes = {
       h6: '14px',
       h7: '12px',
     }
+  }, 
+  media: {
+    mobile: '(min-width: 320px)',
+    tablet: '(min-width: 768px)',
+    desktop: '(min-width: 1024px)'
+  },
+  shadow: {
+    main: '0px 0px 4px rgba(17, 17, 17, 0.2)',
+    dark: '0px 0px 8px rgba(17, 17, 17, 0.2)'
   }
 }

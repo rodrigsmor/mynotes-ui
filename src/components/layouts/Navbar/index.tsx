@@ -1,9 +1,12 @@
 import { ReactNode } from 'react';
-import { HiOutlineHome, HiHome } from 'react-icons/hi2';
-import { ListOptions, NavbarContainer, PagesNavWrapper, TopContent } from './styled';
+import { IconContext } from 'react-icons';
 import { useLocation } from 'react-router-dom';
+import { ListOptions, NavbarContainer, PagesNavWrapper, TopContent } from './styled';
+import { HiOutlineHome, HiHome, HiOutlineTrash, HiTrash, HiHeart, HiOutlineHeart } from 'react-icons/hi';
+import { HiOutlineDocumentText, HiDocumentText, HiRectangleGroup, HiOutlineRectangleGroup } from 'react-icons/hi2';
+import { Logo } from '../../common/Logo';
 
-type navPaths = {
+type NavPathsTypes = {
   id: number;
   path: string;
   icon: {
@@ -16,7 +19,7 @@ type navPaths = {
 export const Navbar = () => {
   const { pathname } = useLocation();
 
-  const navPaths: Array<navPaths> = [
+  const navPaths: Array<NavPathsTypes> = [
     {
       id: 0,
       path: '/home',
@@ -29,32 +32,32 @@ export const Navbar = () => {
       id: 1,
       path: '/notes',
       icon: {
-        fill: <HiHome />,
-        outline: <HiOutlineHome />,
+        fill: <HiDocumentText />,
+        outline: <HiOutlineDocumentText />,
       },
       label: 'Todas anotações',
     }, {
       id: 2,
       path: '/collections',
       icon: {
-        fill: <HiHome />,
-        outline: <HiOutlineHome />,
+        fill: <HiRectangleGroup />,
+        outline: <HiOutlineRectangleGroup />,
       },
       label: 'Coleções',
     }, {
       id: 3,
       path: '/favorites',
       icon: {
-        fill: <HiHome />,
-        outline: <HiOutlineHome />,
+        fill: <HiHeart />,
+        outline: <HiOutlineHeart />,
       },
       label: 'Favoritas',
     }, {
       id: 4,
       path: '/trash',
       icon: {
-        fill: <HiHome />,
-        outline: <HiOutlineHome />,
+        fill: <HiTrash />,
+        outline: <HiOutlineTrash />,
       },
       label: 'Lixeira',
     },
@@ -63,6 +66,7 @@ export const Navbar = () => {
   return (
     <NavbarContainer>
       <TopContent>
+        <Logo />
         <PagesNavWrapper>
           {
             navPaths.map(({ icon, id, path, label }) => (
@@ -71,8 +75,12 @@ export const Navbar = () => {
                   to={path}
                   className={`${(pathname.includes(path)) && 'current'}`}
                 >
-                  { (pathname.includes(path)) ? icon.fill  : icon.outline }
-                  <span>{label}</span>
+                  <IconContext.Provider value={{ size: '32px', }} >
+                    { (pathname.includes(path)) ? icon.fill  : icon.outline }
+                  </IconContext.Provider>
+                  <span>
+                    {label}
+                  </span>
                 </ListOptions>
               </li>
             ))
