@@ -1,10 +1,9 @@
-import { Navbar } from "../../components/layouts/Navbar";
-import { PageContainer } from "./styled";
+import { AuthLayout } from "../../components/common/AuthLayout";
 
 export const Notes = () => {
   return (
-    <PageContainer>
-      <Navbar />
-    </PageContainer>
+    <AuthLayout>
+      <div>sim</div>
+    </AuthLayout>
   );
 }

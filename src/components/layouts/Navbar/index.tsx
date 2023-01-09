@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
+import { Logo } from '../../common/Logo';
 import { IconContext } from 'react-icons';
 import { useLocation } from 'react-router-dom';
 import { ListOptions, NavbarContainer, PagesNavWrapper, TopContent } from './styled';
 import { HiOutlineHome, HiHome, HiOutlineTrash, HiTrash, HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import { HiOutlineDocumentText, HiDocumentText, HiRectangleGroup, HiOutlineRectangleGroup } from 'react-icons/hi2';
-import { Logo } from '../../common/Logo';
 
 type NavPathsTypes = {
   id: number;

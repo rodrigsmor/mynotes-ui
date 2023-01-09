@@ -1,0 +1,27 @@
+import styled from "styled-components";
+
+export const PageContainer = styled.div`
+  position: relative;
+  background: ${({ theme }) => theme.colors.background.light };
+  
+  @media ${({ theme }) => theme.media.desktop} {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    max-width: 100vw;
+    max-height: 100vh;
+    grid-template-rows: 72px 1fr;
+    grid-template-columns: 260px calc(100vw - 260px);
+    grid-template-areas: 'navbar header' 'navbar body';
+  }
+`;
+
+export const Body = styled.main`
+  grid-area: body;
+  height: 200vh;
+  background: red;
+
+  @media ${({ theme }) => theme.media.desktop} {
+    height: 100%;
+  }
+`;

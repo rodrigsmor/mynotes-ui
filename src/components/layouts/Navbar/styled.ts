@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavbarContainer = styled.aside`
-  bottom: 0;
   width: 100vw;
   height: 68px;
   position: fixed;
+  grid-area: navbar;
   border-radius: 16px 16px 0 0;
   box-shadow: ${({ theme }) => theme.shadow.dark };
   background: ${({ theme }) => theme.colors.surface.main };
@@ -18,6 +18,9 @@ export const NavbarContainer = styled.aside`
     width: 260px;
     height: 100%;
     padding: 24px 16px;
+    border-radius: 0 0 0 0;
+    box-shadow: none;
+    position: static;
 
     figure {
       display: flex;

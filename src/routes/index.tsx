@@ -1,5 +1,5 @@
-import { Notes } from '../pages/notes';
 import { Login } from '../pages/login';
+import { Notes } from '../pages/notes';
 import { createBrowserRouter } from "react-router-dom";
 
 export const routes = createBrowserRouter([
