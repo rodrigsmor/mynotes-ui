@@ -1,8 +1,10 @@
 import { AuthLayout } from "../../components/common/AuthLayout";
-import { NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
+import { InteractionsButton, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
 import { SelectButton } from '../../components/forms/SelectButton/index';
-import { HiOutlineQueueList, HiOutlineSquares2X2 } from "react-icons/hi2";
+import { HiOutlineArrowPath, HiOutlineFunnel, HiOutlineQueueList, HiOutlineSquares2X2, HiPlus } from "react-icons/hi2";
 import { useReducer } from "react";
+import { Button } from "../../components/buttons/Button";
+import { ThemeEnums } from '../../utils/enums/ThemeEnums';
 
 enum SelectActionsEnums {
   SELECT_GRID = 'SELECT_GRID',
@@ -42,6 +44,26 @@ export const Notes = () => {
               <SelectButton title='grade' label='mostrar como grade' isChecked={currentView.current === 'GRID'} Icon={<HiOutlineSquares2X2 />} onSelection={e => dispatch({ type: SelectActionsEnums.SELECT_GRID})} />
             </div>
           </VisualizationGroup>
+          <InteractionsButton>
+            <Button theme={ThemeEnums.SURFACE}>
+              <>
+                <HiOutlineFunnel />
+                <p>Filtrar por</p>
+              </>
+            </Button>
+            <Button theme={ThemeEnums.SURFACE}>
+              <>
+                <HiOutlineArrowPath />
+                <p>Ordenar por</p>
+              </>
+            </Button>
+            <Button name='add_button_desktop' theme={ThemeEnums.DEFAULT}>
+              <>
+                <HiPlus />
+                <p>Criar anotação</p>
+              </>
+            </Button>
+          </InteractionsButton>
         </SectionHeader>
       </NotesPageContent>
     </AuthLayout>

@@ -13,10 +13,14 @@ export const NotesPageContent = styled.section`
 `;
 
 export const SectionHeader = styled.header`
+  gap: 14px;
   width: 100%;
   display: flex;
   max-width: 100%;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+
 `;
 
 export const VisualizationGroup = styled.div`
@@ -43,6 +47,32 @@ export const VisualizationGroup = styled.div`
 
     > h1 {
       font-size: ${({ theme }) => theme.typography.size.h1 };
+    }
+  }
+`;
+
+export const InteractionsButton = styled.div`
+  gap: 18px;
+  width: 100%;
+  display: flex;
+  max-width: 100%;
+
+  > button {
+    width: 100%;
+
+    &.add_button_desktop {
+      display: none;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.desktop } {
+    gap: 14px;
+    width: max-content;
+
+    > button { 
+      &.add_button_desktop {
+        display: flex;
+      }
     }
   }
 `;
