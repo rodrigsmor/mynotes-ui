@@ -1,4 +1,4 @@
-import { ThemeTypes } from '../../@types/theme';
+import { ThemeTypes } from '../../utils/types/theme';
 
 export const theme: ThemeTypes = {
   theme: 'light',

@@ -18,7 +18,7 @@ export const PageContainer = styled.div`
 `;
 
 export const Body = styled.main`
-  height: 200vh;
+  height: 0px;
   grid-area: body;
 
   @media ${({ theme }) => theme.media.desktop} {
