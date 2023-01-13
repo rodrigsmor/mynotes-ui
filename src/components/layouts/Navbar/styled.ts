@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavbarContainer = styled.aside`
+  right: 0;
+  bottom: 0;
   width: 100vw;
   height: 68px;
   position: fixed;
@@ -40,7 +42,7 @@ export const TopContent = styled.nav`
     display: flex;
     flex-direction: column;
   }
-  `;
+`;
 
 export const PagesNavWrapper = styled.ul`
   gap: 12px;

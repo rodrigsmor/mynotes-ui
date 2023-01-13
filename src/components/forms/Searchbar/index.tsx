@@ -11,7 +11,7 @@ export const SearchBar = () => {
   }
 
   return (
-    <SearchbarContainer role={'search'} onSubmit={onSearch}>
+    <SearchbarContainer role={'search'} onSubmit={onSearch} className='search_bar'>
       <label htmlFor='searchbar_header'>Pesquisar anotação</label>
       <Field
         value={value}

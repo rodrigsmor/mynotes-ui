@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
+  height: max-content;
   position: relative;
   background: ${({ theme }) => theme.colors.background.light };
   
@@ -17,9 +18,8 @@ export const PageContainer = styled.div`
 `;
 
 export const Body = styled.main`
-  grid-area: body;
   height: 200vh;
-  background: red;
+  grid-area: body;
 
   @media ${({ theme }) => theme.media.desktop} {
     height: 100%;

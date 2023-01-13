@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const IconButtonContainer = styled.button`
-  width: 38px;
-  height: 38px;
+  width: 46px;
+  height: 46px;
   cursor: pointer;
   min-width: 38px;
   border-radius: 16px;
@@ -10,8 +10,23 @@ export const IconButtonContainer = styled.button`
   border: 0px solid transparent;
   color: ${({ theme }) => theme.colors.subtext.light };
   background: ${({ theme }) => theme.colors.background.light };
-
+  
   :hover {
     background: ${({ theme }) => theme.colors.background.dark };
+  }
+  
+  > svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media ${({ theme }) => theme.media.desktop } {
+    width: 38px;
+    height: 38px;
+
+    > svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
