@@ -1,10 +1,12 @@
 import { AuthLayout } from "../../components/common/AuthLayout";
-import { InteractionsButton, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
+import { InteractionsButton, NotesListingWrapper, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
 import { SelectButton } from '../../components/forms/SelectButton/index';
 import { HiOutlineArrowPath, HiOutlineFunnel, HiOutlineQueueList, HiOutlineSquares2X2, HiPlus } from "react-icons/hi2";
 import { useReducer } from "react";
 import { Button } from "../../components/buttons/Button";
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
+import { NoteCard } from "../../components/cards/NoteCard";
+import { PaginationController } from "../../components/common/PaginationController";
 
 enum SelectActionsEnums {
   SELECT_GRID = 'SELECT_GRID',
@@ -65,6 +67,19 @@ export const Notes = () => {
             </Button>
           </InteractionsButton>
         </SectionHeader>
+        <NotesListingWrapper>
+          <NoteCard />
+          <NoteCard />
+          <NoteCard />
+          <NoteCard />
+          <NoteCard />
+          <NoteCard />
+          <NoteCard />
+          <NoteCard />
+          <NoteCard />
+          <NoteCard />
+        </NotesListingWrapper>
+        <PaginationController />
       </NotesPageContent>
     </AuthLayout>
   );

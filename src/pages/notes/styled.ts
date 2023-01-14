@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
 export const NotesPageContent = styled.section`
+  gap: 32px;
   width: 100%;
-  height: 100%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
   padding: calc(68px + 28px) 16px;
 
   @media ${({ theme }) => theme.media.desktop } {
     padding: 24px 32px;
-    max-width: 100vw;
-    max-height: 100vh;
-  }
+    max-width: 100%;
+    height: fit-content;
+=  }
 `;
 
 export const SectionHeader = styled.header`
@@ -20,7 +23,6 @@ export const SectionHeader = styled.header`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-
 `;
 
 export const VisualizationGroup = styled.div`
@@ -42,11 +44,15 @@ export const VisualizationGroup = styled.div`
   }
 
   @media ${({ theme }) => theme.media.desktop } {
-    gap: 32px;
+    gap: 20px;
     width: fit-content;
 
     > h1 {
-      font-size: ${({ theme }) => theme.typography.size.h1 };
+      font-size: 36px;
+    }
+
+    > .listing-display-checkbox-wrapper {
+      gap: 8px;
     }
   }
 `;
@@ -74,5 +80,17 @@ export const InteractionsButton = styled.div`
         display: flex;
       }
     }
+  }
+`;
+
+export const NotesListingWrapper = styled.div`
+  gap: 16px;
+  width: 100%;
+  display: grid;
+  max-width: 100%;
+  height: fit-content;
+
+  @media ${({ theme }) => theme.media.desktop } {
+    grid-template-columns: repeat(2, 1fr);
   }
 `;

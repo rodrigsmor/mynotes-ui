@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export const ButtonContainer = styled.button`
   gap: 10px;
+  height: 44px;
   display: flex;
-  height: fit-content;
-  padding: 12px 24px;
+  padding: 0 24px;
   align-items: center;
   border-radius: 24px;
   justify-content: center;
   border: 0px solid transparent;
   transition: all .4s ease-in-out;
+  min-width: fit-content;
   font-size: ${({ theme }) => theme.typography.size.h5 };
   font-weight: ${({ theme }) => theme.typography.weight.medium };
 

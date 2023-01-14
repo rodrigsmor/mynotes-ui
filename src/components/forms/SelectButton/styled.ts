@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const SelectButtonWrapper = styled.button`
+  width: 42px;
+  height: 42px;
   display: grid;
-  padding: 10px;
   cursor: pointer;
   place-items: center;
   border-radius: 16px;

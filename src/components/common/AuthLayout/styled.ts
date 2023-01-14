@@ -9,6 +9,7 @@ export const PageContainer = styled.div`
     width: 100vw;
     height: 100vh;
     display: grid;
+    overflow: hidden;
     max-width: 100vw;
     max-height: 100vh;
     grid-template-rows: 72px 1fr;
@@ -23,5 +24,6 @@ export const Body = styled.main`
 
   @media ${({ theme }) => theme.media.desktop} {
     height: 100%;
+    overflow-y: scroll;
   }
 `;
