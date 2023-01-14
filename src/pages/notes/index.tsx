@@ -7,6 +7,7 @@ import { Button } from "../../components/buttons/Button";
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
 import { NoteCard } from "../../components/cards/NoteCard";
 import { PaginationController } from "../../components/common/PaginationController";
+import { noteCardsHome } from '../../utils/mock/index';
 
 enum SelectActionsEnums {
   SELECT_GRID = 'SELECT_GRID',
@@ -68,16 +69,19 @@ export const Notes = () => {
           </InteractionsButton>
         </SectionHeader>
         <NotesListingWrapper>
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
+          {
+            noteCardsHome.map(({ id, title, category, content, coverUrl, imageUrl, lastUpdate }) => (
+              <NoteCard
+                id={id}
+                title={title}
+                content={content}
+                coverUrl={coverUrl}
+                category={category}
+                imageUrl={imageUrl}
+                lastUpdate={lastUpdate}
+              />
+            ))
+          }
         </NotesListingWrapper>
         <PaginationController />
       </NotesPageContent>
