@@ -95,7 +95,7 @@ export const noteCardsHome: Array<NoteCardTypes> = [
     title: 'Moons in the Storms',
     content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     category: CategoriesEnums.PERSONAL,
-    coverUrl: 'https://media.istockphoto.com/id/1316173001/photo/drove-view-of-victoria-harbour-hong-kong.jpg',
+    coverUrl: 'https://c4.wallpaperflare.com/wallpaper/758/562/507/5c1c8b85e2348-wallpaper-preview.jpg',
     lastUpdate: new Date('2011-05-12T11:08:33Z'),
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw4plH4kRNCVSnQkqwU9n-zjEG-iW4cmuehg&usqp=CAU'
   },

@@ -1,13 +1,13 @@
-import { AuthLayout } from "../../components/common/AuthLayout";
-import { InteractionsButton, NotesListingWrapper, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
-import { SelectButton } from '../../components/forms/SelectButton/index';
-import { HiOutlineArrowPath, HiOutlineFunnel, HiOutlineQueueList, HiOutlineSquares2X2, HiPlus } from "react-icons/hi2";
 import { useReducer } from "react";
+import { noteCardsHome } from '../../utils/mock/index';
 import { Button } from "../../components/buttons/Button";
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
 import { NoteCard } from "../../components/cards/NoteCard";
+import { AuthLayout } from "../../components/common/AuthLayout";
+import { SelectButton } from '../../components/forms/SelectButton/index';
 import { PaginationController } from "../../components/common/PaginationController";
-import { noteCardsHome } from '../../utils/mock/index';
+import { HiOutlineArrowPath, HiOutlineFunnel, HiOutlineQueueList, HiOutlineSquares2X2, HiPlus } from "react-icons/hi2";
+import { InteractionsButton, NotesListingWrapper, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
 
 enum SelectActionsEnums {
   SELECT_GRID = 'SELECT_GRID',
@@ -68,17 +68,12 @@ export const Notes = () => {
             </Button>
           </InteractionsButton>
         </SectionHeader>
-        <NotesListingWrapper>
+        <NotesListingWrapper className={currentView.current}>
           {
-            noteCardsHome.map(({ id, title, category, content, coverUrl, imageUrl, lastUpdate }) => (
+            noteCardsHome.map((data) => (
               <NoteCard
-                id={id}
-                title={title}
-                content={content}
-                coverUrl={coverUrl}
-                category={category}
-                imageUrl={imageUrl}
-                lastUpdate={lastUpdate}
+                note={data}
+                view={currentView.current}
               />
             ))
           }

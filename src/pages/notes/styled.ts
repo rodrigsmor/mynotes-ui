@@ -9,8 +9,8 @@ export const NotesPageContent = styled.section`
   padding: calc(68px + 28px) 16px;
 
   @media ${({ theme }) => theme.media.desktop } {
-    padding: 24px 32px;
     max-width: 100%;
+    padding: 24px 32px;
     height: fit-content;
 =  }
 `;
@@ -89,8 +89,13 @@ export const NotesListingWrapper = styled.div`
   display: grid;
   max-width: 100%;
   height: fit-content;
+  transition: all .4s ease-out;
 
   @media ${({ theme }) => theme.media.desktop } {
     grid-template-columns: repeat(2, 1fr);
+
+    &.GRID {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 `;
