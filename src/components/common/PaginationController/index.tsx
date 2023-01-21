@@ -6,7 +6,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 export const PaginationController = () => {
   return (
     <ControllerWrapper>
-      <Button name="" theme={ThemeEnums.SURFACE}>
+      <Button name="previous_buttonController" theme={ThemeEnums.SURFACE}>
         <>
           <HiChevronLeft />
           <p>anterior</p>
@@ -15,7 +15,7 @@ export const PaginationController = () => {
       <RouteIndication>
         2 de 4
       </RouteIndication>
-      <Button name="" theme={ThemeEnums.DEFAULT}>
+      <Button name="next_buttonController" theme={ThemeEnums.DEFAULT}>
         <>
           <p>próximo</p>
           <HiChevronRight />

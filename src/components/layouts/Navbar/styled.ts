@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const NavbarContainer = styled.aside`
   right: 0;
   bottom: 0;
+  z-index: 40;
   width: 100vw;
   height: 68px;
   position: fixed;

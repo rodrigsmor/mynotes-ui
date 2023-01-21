@@ -23,10 +23,17 @@ export const NoteCardWrapper = styled.button`
 
     > .icon-button {
       top: 12px;
+      z-index: 2;
       right: 12px;
       width: 38px;
       height: 38px;
+      color: #FFFFFF;
       position: absolute;
+      background: transparent;
+
+      &:hover {
+        background: #FFFFFF26;
+      }
     }
 
     > .icon-image, p, footer {

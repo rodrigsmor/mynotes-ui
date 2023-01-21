@@ -7,7 +7,7 @@ export const NotesPageContent = styled.section`
   height: fit-content;
   flex-direction: column;
   padding: calc(68px + 28px) 16px;
-
+  
   @media ${({ theme }) => theme.media.desktop } {
     max-width: 100%;
     padding: 24px 32px;
