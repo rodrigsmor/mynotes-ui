@@ -1,13 +1,13 @@
 import { HiTag } from "react-icons/hi2";
+import { HiClock } from "react-icons/hi";
 import { CheckBox } from "../../forms/CheckBox";
-import { ModalTemplate } from "../ModalTemplate"
-import { MouseEventHandler, useState, ChangeEvent, FormEvent, FormEventHandler } from 'react';
+import { ModalTemplate } from "../ModalTemplate";
+import { DateInput } from "../../forms/DateInput";
+import { useSearchParams } from 'react-router-dom';
 import { OnSelectionTypes } from '../../forms/CheckBox/index';
 import { categoriesFilterModel } from '../../../utils/models/categoriesFilter';
+import { MouseEventHandler, useState, ChangeEvent, FormEventHandler, useEffect } from 'react';
 import { CategoriesWrapper, FilterByContent, SectionModalHeader, SectionTitleModal, FilterBySections, PeriodFields } from './styled';
-import { HiClock } from "react-icons/hi";
-import { DateInput } from "../../forms/DateInput";
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 interface FilterByProps {
   showModal: boolean;
@@ -28,8 +28,13 @@ type SearchParamsObjectTypes = {
 
 export const FilterByModal = ({ showModal, onClose, closeModal }: FilterByProps) => {
   let [SearchParams, setSearchParams] = useSearchParams();
-  const [ period, setPeriod ] = useState<PeriodType>({ endDate: '', startDate: '' });
-  const [ categoriesFilterData, setCategoriesFilterData ] = useState(categoriesFilterModel);
+  const [period, setPeriod] = useState<PeriodType>({ endDate: SearchParams.get('endDate') || '', startDate: SearchParams.get('startDate') || '' });
+  const [ categoriesFilterData, setCategoriesFilterData ] = useState(categoriesFilterModel.map((data) => {
+    if (SearchParams.get('categories')?.includes(data.name))
+      data.isSelected = true;
+
+    return data;
+  }));
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
@@ -49,8 +54,6 @@ export const FilterByModal = ({ showModal, onClose, closeModal }: FilterByProps)
 
     if(period.startDate.length > 0)
       searchParamsObject.startDate = new Date(period.startDate).toISOString().split('T')[0]
-
-    console.log(Object.values(searchParamsObject))
 
     Object.values(searchParamsObject).every(value => value !== '') 
       ? setSearchParams(searchParamsObject)
