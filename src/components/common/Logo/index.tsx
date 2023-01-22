@@ -3,7 +3,7 @@ import { BrandTypography, LogoContainer } from './styled';
 
 export const Logo = () => {
   return (
-    <LogoContainer>
+    <LogoContainer className='logo'>
       <LogoIcon />
       <BrandTypography>MyNotes</BrandTypography>
     </LogoContainer>

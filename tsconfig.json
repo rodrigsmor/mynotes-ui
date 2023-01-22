@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -16,6 +17,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "src/utils/types/custom.d.ts/custom.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }
