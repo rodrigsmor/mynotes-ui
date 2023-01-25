@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import wave from '../../../assets/images/elements/wave.svg';
+import { Form } from 'formik';
 
 export const SigninPageContainer = styled.div`
   gap: 24px;
@@ -33,6 +34,22 @@ export const SigninPageContainer = styled.div`
       background-clip: border-box;
       background-image: url(${wave});
       bottom: 0;
+    }
+
+    &.login {
+      grid-template-columns: 48.25vw 1fr;
+
+      > section {
+        grid-column: 2 / 3;
+      }
+
+      > form {
+        grid-column: 1 / 2;
+      }
+
+      &:before {
+        transform: scaleX(-1);
+      }
     }
   }
 `;
@@ -80,7 +97,7 @@ export const SideSection = styled.section`
   }
 `;
 
-export const FormCard = styled.form`
+export const FormCard = styled(Form)`
   gap: 28px;
   width: 100vw;
   display: flex;
@@ -209,4 +226,10 @@ export const FieldLabel = styled.label`
   color: ${({ theme }) => theme.colors.subtext.light };
   font-size: ${({ theme }) => theme.typography.size.h5 };
   font-weight: ${({ theme }) => theme.typography.weight.regular };
-`
+`;
+
+export const ErrorMessage = styled.p`
+  color: ${({ theme }) => theme.colors.danger.main};
+  font-size: ${({ theme }) => theme.typography.size.h6};
+  font-weight: ${({ theme }) => theme.typography.weight.medium };
+`;

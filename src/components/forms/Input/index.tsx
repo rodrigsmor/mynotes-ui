@@ -3,10 +3,10 @@ import { InputContainer, InputElement } from './styled';
 
 interface InputProps {
   name: string;
-  value: string;
   Icon?: JSX.Element;
   placeholder: string;
-  type: 'text' | 'password' | 'email'
+  value: string | undefined;
+  type: 'text' | 'password' | 'email' 
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -18,9 +18,10 @@ export const Input = ({ Icon, name, type, value, onChange, placeholder }: InputP
         id={name}
         type={type}
         value={value}
+        name={name}
         onChange={onChange}
         placeholder={placeholder}
-        autoComplete={'nope'}
+        autoComplete="off"
       />
     </InputContainer>
   );

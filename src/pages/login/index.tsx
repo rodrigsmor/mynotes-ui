@@ -1,47 +1,84 @@
-import { HiOutlineEnvelope, HiOutlineLockClosed } from "react-icons/hi2";
-import { RegistrationLayout } from "../../components/common/RegistrationLayout";
-import { FieldsGroup, FieldWrapper, FieldLabel, DescriptionAnchors } from '../../components/common/RegistrationLayout/styled';
-import { Input } from "../../components/forms/Input";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+import { Input } from "../../components/forms/Input";
+import { HiOutlineEnvelope, HiOutlineLockClosed } from "react-icons/hi2";
+import { RegistrationLayout } from "../../components/common/RegistrationLayout";
 import RegistrationIllustration from '../../assets/images/illustrations/RegistrationIllustration.svg'
+import { FieldsGroup, FieldWrapper, FieldLabel, DescriptionAnchors, ErrorMessage } from '../../components/common/RegistrationLayout/styled';
+import { FormikProps, withFormik } from 'formik';
+import { LoginFields, LoginFormProps } from '../../utils/types/registration';
+import * as Yup from 'yup';
 
-export function Login() {
-  const [ email, setEmail ] = useState<string>('');
-  const [ password, setPassword ] = useState<string>('');
+const LoginForm = withFormik<LoginFormProps, LoginFields>({
+  mapPropsToValues: (props) => ({
+    email: props.initialEmail,
+    password: props.initialPassword
+  }),
+  validationSchema: Yup.object().shape({
+    email: Yup
+      .string()
+      .email('Email invalido')
+      .required('E-mail é um campo obrigatório. Preencha-o!'),
+    password: Yup
+      .string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        'Precisa ser uma senha válida!'
+      )
+      .required('Senha é obrigatório!')
+  }),
+  handleSubmit(
+    { email, password }: LoginFields,
+  ){
+    alert('email: ' + email);
+    alert('password: ' + password)
+  }
+})(InnerLoginForm)
+
+function InnerLoginForm({ errors, touched, handleSubmit, handleChange, values }: LoginFormProps & FormikProps<LoginFields>) {
+  const initialValues: LoginFields = {
+    email: '',
+    password: ''
+  }
 
   return (
-    <RegistrationLayout type="login">
+    <RegistrationLayout 
+      type="login" 
+      onSubmit={handleSubmit}
+      initialValues={initialValues}
+    >
       <FieldsGroup>
         <img
           src={RegistrationIllustration}
           alt='illustration'
         />
         <FieldWrapper>
-          <FieldLabel htmlFor='email_signup'>E-mail</FieldLabel>
+          <FieldLabel htmlFor='email'>E-mail</FieldLabel>
           <Input
-            name='email_signup'
+            name='email'
             type='email'
-            value={email}
+            value={values.email}
             placeholder='marigol.justy@mail.com'
             Icon={<HiOutlineEnvelope size={20} />}
-            onChange={event => setEmail(event.target.value)}
+            onChange={handleChange}
           />
+          {touched.email && errors.email && <ErrorMessage>{ errors.email }</ErrorMessage>}
         </FieldWrapper>
         <FieldWrapper>
-          <FieldLabel htmlFor='password_signup'>Senha</FieldLabel>
+          <FieldLabel htmlFor='password'>Senha</FieldLabel>
           <Input
-            name='password_signup'
+            name='password'
             type='password'
-            value={password}
+            value={values.password}
             placeholder='Digite sua senha'
             Icon={<HiOutlineLockClosed size={20} />}
-            onChange={event => setPassword(event.target.value)}
+            onChange={handleChange}
           />
+          {touched.password && errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
           <DescriptionAnchors className="forget-password">
             <Link to={{
               pathname: '/account/recoverAccount',
-              search: email
+              search: values.email
             }}>
               Esqueceu a senha?
             </Link>
@@ -50,4 +87,12 @@ export function Login() {
       </FieldsGroup>
     </RegistrationLayout>
   );
+}
+
+export const Login: React.FC<{}> = () => {
+  return (
+    <>
+      <LoginForm />
+    </>
+  )
 }

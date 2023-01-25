@@ -1,3 +1,4 @@
+import { Field } from 'formik';
 import styled from 'styled-components';
 
 export const InputContainer = styled.div`
@@ -16,7 +17,7 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const InputElement = styled.input`
+export const InputElement = styled(Field)`
   width: 100%;
   outline: none;
   height: fit-content;
