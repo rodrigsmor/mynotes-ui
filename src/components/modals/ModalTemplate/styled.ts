@@ -6,11 +6,11 @@ export const ModalContainer = styled.div`
   padding: 0;
   z-index: 50;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   position: fixed;
   max-width: 100vw;
-  max-height: 100vh;
+  max-height: 100dvh;
   pointer-events: auto;
   align-items: flex-end; 
   transition: .5s linear;
@@ -57,7 +57,7 @@ export const ModalContainer = styled.div`
 export const ModalCardContainer = styled.form`
   gap: 16px;
   margin: 0;
-  height: 95vh;
+  height: 95dvh;
   width: 100vw;
   border: none;
   display: grid;

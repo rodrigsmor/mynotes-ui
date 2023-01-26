@@ -25,5 +25,19 @@ export const Body = styled.main`
   @media ${({ theme }) => theme.media.desktop} {
     height: 100%;
     overflow-y: scroll;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+      position: absolute;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      width: 8px;
+      border-radius: 16px;
+      background-clip: padding-box;
+      background: ${({ theme }) => theme.colors.subtext.light }80;
+      border: 4px solid ${({ theme }) => theme.colors.background.light };
+    }
   }
 `;

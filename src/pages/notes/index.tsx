@@ -9,7 +9,6 @@ import { SelectButton } from '../../components/forms/SelectButton/index';
 import { PaginationController } from "../../components/common/PaginationController";
 import { HiOutlineArrowPath, HiOutlineFunnel, HiOutlineQueueList, HiOutlineSquares2X2, HiPlus } from "react-icons/hi2";
 import { InteractionsButton, NotesListingWrapper, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
-import { OnSubmitProps } from '../../components/modals/ModalTemplate/index';
 
 enum SelectActionsEnums {
   SELECT_GRID = 'SELECT_GRID',

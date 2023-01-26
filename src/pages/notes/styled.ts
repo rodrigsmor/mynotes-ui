@@ -12,7 +12,7 @@ export const NotesPageContent = styled.section`
     max-width: 100%;
     padding: 24px 32px;
     height: fit-content;
-=  }
+  }
 `;
 
 export const SectionHeader = styled.header`
