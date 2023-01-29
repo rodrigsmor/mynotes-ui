@@ -28,13 +28,22 @@ type SearchParamsObjectTypes = {
 
 export const FilterByModal = ({ showModal, onClose, closeModal }: FilterByProps) => {
   let [SearchParams, setSearchParams] = useSearchParams();
-  const [period, setPeriod] = useState<PeriodType>({ endDate: SearchParams.get('endDate') || '', startDate: SearchParams.get('startDate') || '' });
-  const [ categoriesFilterData, setCategoriesFilterData ] = useState(categoriesFilterModel.map((data) => {
-    if (SearchParams.get('categories')?.includes(data.name))
-      data.isSelected = true;
+  const [period, setPeriod] = useState<PeriodType>({ endDate: '', startDate: '' });
+  const [ categoriesFilterData, setCategoriesFilterData ] = useState(categoriesFilterModel);
 
-    return data;
-  }));
+  useEffect(() => {
+    if(SearchParams) {
+      categoriesFilterModel.map((data) => {
+        if (SearchParams.get('categories')?.includes(data.name))
+          data.isSelected = true;
+
+        return data;
+      })
+
+      SearchParams.get('endDate') && setPeriod({ ...period, endDate: SearchParams.get('endDate') || '' })
+      SearchParams.get('startDate') && setPeriod({ ...period, startDate: SearchParams.get('startDate') || '' })
+    }
+  }, [ SearchParams ])
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
@@ -67,6 +76,7 @@ export const FilterByModal = ({ showModal, onClose, closeModal }: FilterByProps)
     let categoriesUpdated = categoriesFilterData.map((data) => {
       if(data.id === id) {
         data.isSelected = !data.isSelected;
+        console.log(data.isSelected)
       }
 
       return data;
