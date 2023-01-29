@@ -9,6 +9,7 @@ import { SelectButton } from '../../components/forms/SelectButton/index';
 import { PaginationController } from "../../components/common/PaginationController";
 import { HiOutlineArrowPath, HiOutlineFunnel, HiOutlineQueueList, HiOutlineSquares2X2, HiPlus } from "react-icons/hi2";
 import { InteractionsButton, NotesListingWrapper, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
+import { OrderByModal } from '../../components/modals/OrderByModal';
 
 enum SelectActionsEnums {
   SELECT_GRID = 'SELECT_GRID',
@@ -118,6 +119,7 @@ export const Notes = () => {
         </NotesListingWrapper>
         <PaginationController />
         <FilterByModal showModal={modal.showModal && modal.type === 'FILTER_BY'} onClose={handleCloseModal} closeModal={handleCloseModal} />
+        <OrderByModal showModal={modal.showModal && modal.type === 'ORDER_BY'} onClose={handleCloseModal} closeModal={handleCloseModal}/>
       </NotesPageContent>
     </AuthLayout>
   );

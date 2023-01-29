@@ -8,6 +8,7 @@ import { OnSelectionTypes } from '../../forms/CheckBox/index';
 import { categoriesFilterModel } from '../../../utils/models/categoriesFilter';
 import { MouseEventHandler, useState, ChangeEvent, FormEventHandler, useEffect } from 'react';
 import { CategoriesWrapper, FilterByContent, SectionModalHeader, SectionTitleModal, FilterBySections, PeriodFields } from './styled';
+import { SearchParamsObjectTypes } from "../../../utils/types/search-params";
 
 interface FilterByProps {
   showModal: boolean;
@@ -18,12 +19,6 @@ interface FilterByProps {
 interface PeriodType {
   endDate: string;
   startDate: string;
-}
-
-type SearchParamsObjectTypes = {
-  endDate?: string;
-  startDate?: string;
-  categories?: string;
 }
 
 export const FilterByModal = ({ showModal, onClose, closeModal }: FilterByProps) => {
@@ -63,6 +58,11 @@ export const FilterByModal = ({ showModal, onClose, closeModal }: FilterByProps)
 
     if(period.startDate.length > 0)
       searchParamsObject.startDate = new Date(period.startDate).toISOString().split('T')[0]
+
+    if(SearchParams.get('orderBy') || SearchParams.get('ordination')) {
+      searchParamsObject.orderBy = SearchParams.get('orderBy') || '';
+      searchParamsObject.ordination = 'DESC'
+    }
 
     Object.values(searchParamsObject).every(value => value !== '') 
       ? setSearchParams(searchParamsObject)

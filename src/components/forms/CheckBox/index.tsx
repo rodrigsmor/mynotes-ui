@@ -18,6 +18,7 @@ export const CheckBox = ({ id, name, value, isChecked, onSelection }: CheckBoxPr
   return (
     <CheckBoxContainer 
       role={'checkbox'} 
+      type='button'
       className={`${isChecked && 'checked'}`} 
       aria-checked={isChecked} 
       aria-labelledby={name}
