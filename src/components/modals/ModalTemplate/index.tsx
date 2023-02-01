@@ -1,5 +1,5 @@
 import { Button } from '../../buttons/Button';
-import { MouseEventHandler, FormEvent, FormEventHandler } from 'react';
+import { MouseEventHandler, FormEvent, FormEventHandler, useRef, useEffect } from 'react';
 import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
 import { ModalContainer, ModalHeader, ModalFooter, ModalCardContainer } from './styled';
 
@@ -18,9 +18,15 @@ interface ModalTemplateProps {
 }
 
 export const ModalTemplate = ({ show, children, title, name, labelButton, onClose, onSubmit }: ModalTemplateProps) => {
+  const modalRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    show && modalRef.current?.focus();
+  }, [ show ])
+
   return (
-    <ModalContainer className={`${!show && 'hide-modal'}`}>
-      <ModalCardContainer role={'dialog'} aria-labelledby={name} onSubmit={onSubmit}>
+    <ModalContainer className={`${!show && 'hide-modal'}`} id={name}>
+      <ModalCardContainer role={'dialog'} aria-labelledby={name} onSubmit={onSubmit} aria-hidden={show} ref={modalRef} tabIndex={-1}>
         <ModalHeader>
           <h2 id={name}>{ title }</h2>
         </ModalHeader>

@@ -9,6 +9,7 @@ import { SelectButton } from '../../components/forms/SelectButton/index';
 import { PaginationController } from "../../components/common/PaginationController";
 import { HiOutlineArrowPath, HiOutlineFunnel, HiOutlineQueueList, HiOutlineSquares2X2, HiPlus } from "react-icons/hi2";
 import { InteractionsButton, NotesListingWrapper, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
+import { OrderByModal } from '../../components/modals/OrderByModal';
 
 enum SelectActionsEnums {
   SELECT_GRID = 'SELECT_GRID',
@@ -85,13 +86,13 @@ export const Notes = () => {
             </div>
           </VisualizationGroup>
           <InteractionsButton>
-            <Button theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_FILTER_BY_MODAL })} controlId={'filterBy_modal'}>
+            <Button theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_FILTER_BY_MODAL })} controlId={'filterBy_modal'} hasPopup>
               <>
                 <HiOutlineFunnel />
                 <p>Filtrar por</p>
               </>
             </Button>
-            <Button theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ORDER_BY_MODAL })} >
+            <Button theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ORDER_BY_MODAL })} controlId={'orderBy_Modal'} hasPopup>
               <>
                 <HiOutlineArrowPath />
                 <p>Ordenar por</p>
@@ -118,6 +119,7 @@ export const Notes = () => {
         </NotesListingWrapper>
         <PaginationController />
         <FilterByModal showModal={modal.showModal && modal.type === 'FILTER_BY'} onClose={handleCloseModal} closeModal={handleCloseModal} />
+        <OrderByModal showModal={modal.showModal && modal.type === 'ORDER_BY'} onClose={handleCloseModal} closeModal={handleCloseModal} />
       </NotesPageContent>
     </AuthLayout>
   );
