@@ -22,7 +22,6 @@ export const ModalTemplate = ({ show, children, title, name, labelButton, onClos
 
   useEffect(() => {
     show && modalRef.current?.focus();
-    console.log(modalRef.current)
   }, [ show ])
 
   return (

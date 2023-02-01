@@ -8,10 +8,9 @@ export const OrdinationSection = styled.div`
   flex-direction: column;
   justify-content: stretch;
 
-  > div {
+  > button {
     flex-grow:1;
-    height: 20px;
-    background: red;
+    width: 100%;
   }
 
   @media ${({ theme }) => theme.media.desktop } {
