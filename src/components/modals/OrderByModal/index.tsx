@@ -3,7 +3,7 @@ import { CheckBox } from '../../forms/CheckBox';
 import { ModalTemplate } from "../ModalTemplate";
 import { RadionButton } from '../../forms/RadionButton'
 import { HiArrowsUpDown, HiOutlineArrowPath } from 'react-icons/hi2';
-import { MouseEventHandler, FormEventHandler, useState, useEffect } from 'react';
+import { MouseEventHandler, FormEventHandler, useState, useEffect, MouseEvent } from 'react';
 import { CategoriesWrapper, FilterByContent, FilterBySections, SectionModalHeader, SectionTitleModal } from "../FilterByModal/styled";
 import { useSearchParams } from 'react-router-dom';
 import { SearchParamsObjectTypes } from '../../../utils/types/search-params';
@@ -15,7 +15,7 @@ interface OrderByProps {
 }
 
 interface onSelectProps {
-  event: MouseEventHandler | any;
+  event: MouseEvent;
   value: 'changeDate' | 'creationDate' | 'title' | '';
 }
 
