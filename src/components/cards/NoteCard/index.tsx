@@ -1,8 +1,10 @@
 import { IconButton } from "../../buttons/IconButton";
-import { HiOutlineEllipsisVertical } from "react-icons/hi2";
+import { HiDocumentDuplicate, HiHeart, HiLink, HiOutlineEllipsisVertical, HiPencilSquare, HiRectangleStack, HiTrash } from "react-icons/hi2";
 import { NoteCardTypes } from "../../../utils/types/note-card";
-import { formatDate } from '../../../utils/functions/formatDate';
+import { formatFullDateTime, formatDate, formatTime } from '../../../utils/functions/formatDate';
 import { NoteCardWrapper, MainInfos, NoteDetails, CoverImage, IconImage, CardTitle, CardContent, Category } from './styled';
+import { Menu, OptionsProps } from "../../modals/Menu";
+import { MouseEvent, MouseEventHandler } from 'react';
 
 interface NoteCardComponentTypes {
   view: string;
@@ -11,6 +13,46 @@ interface NoteCardComponentTypes {
 
 export const NoteCard = ({ view, note }: NoteCardComponentTypes) => {
   let { id, title, category, content, coverUrl, imageUrl, lastUpdate } = note;
+
+  const MenuOptions: Array<OptionsProps> = [
+    {
+      id: 0,
+      Icon: <HiPencilSquare />,
+      label: 'Editar anotação',
+      command: '',
+      onClick: (event: MouseEvent) => { event.preventDefault(); }
+    }, {
+      id: 1,
+      Icon: <HiHeart />,
+      label: 'Adicionar aos favoritos',
+      command: 'CTRL + F',
+      onClick: (event: MouseEvent) => { event.preventDefault(); }
+    }, {
+      id: 2,
+      Icon: <HiRectangleStack />,
+      label: 'Adicionar a coleção',
+      command: 'CTRL + SHIFT + P',
+      onClick: (event: MouseEvent) => { event.preventDefault(); }
+    }, {
+      id: 3,
+      Icon: <HiDocumentDuplicate />,
+      label: 'Duplicar anotação',
+      command: 'CTRL + D',
+      onClick: (event: MouseEvent) => { event.preventDefault(); }
+    }, {
+      id: 4,
+      Icon: <HiLink />,
+      label: 'Copiar link',
+      command: 'CTRL + SHIFT + C',
+      onClick: (event: MouseEvent) => { event.preventDefault(); }
+    }, {
+      id: 5,
+      Icon: <HiTrash />,
+      label: 'Apagar anotação',
+      command: 'delete ou backspace',
+      onClick: (event: MouseEvent) => { event.preventDefault(); }
+    },
+  ]
 
   const GridCardView = () => (
     <>
@@ -25,14 +67,16 @@ export const NoteCard = ({ view, note }: NoteCardComponentTypes) => {
       />
       <CardTitle>{title}</CardTitle>
       <CardContent>{content}</CardContent>
-      <IconButton
-        Icon={<HiOutlineEllipsisVertical />}
-        onClick={e => alert('clique')}
+      <Menu
+        options={MenuOptions}
+        name={`NoteCard-menu-${id}`}
+        date={formatDate(lastUpdate)}
+        time={`${formatTime(lastUpdate)}h`}
       />
       <Category>{category}</Category>
       <NoteDetails>
         <time dateTime={lastUpdate.toDateString()}>
-          {formatDate(lastUpdate)}
+          {formatFullDateTime(lastUpdate)}
         </time>
       </NoteDetails>
     </>
@@ -47,14 +91,16 @@ export const NoteCard = ({ view, note }: NoteCardComponentTypes) => {
         />
         <CardTitle>{title}</CardTitle>
         <CardContent>{content}</CardContent>
-        <IconButton
-          Icon={<HiOutlineEllipsisVertical />}
-          onClick={e => alert('clique')}
+        <Menu
+          options={MenuOptions}
+          name={`NoteCard-menu-${id}`}
+          date={formatDate(lastUpdate)}
+          time={`${formatTime(lastUpdate)}h`}
         />
       </MainInfos>
       <NoteDetails>
         <time dateTime={lastUpdate.toDateString()}>
-          {formatDate(lastUpdate)}
+          {formatFullDateTime(lastUpdate)}
         </time>
         <Category>{category}</Category>
       </NoteDetails>
@@ -62,13 +108,13 @@ export const NoteCard = ({ view, note }: NoteCardComponentTypes) => {
   );
 
   return (
-    <NoteCardWrapper className={view}>
+    <NoteCardWrapper className={view} to={`/notes/${id}`}>
       {
         view === 'GRID' ? (
           <GridCardView />
         ) : (
           <ListCardView />
-        ) 
+        )
       }
     </NoteCardWrapper>
   );

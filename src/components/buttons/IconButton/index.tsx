@@ -4,14 +4,16 @@ import { IconButtonContainer } from "./styled";
 type IconButtonProps = {
   Icon: JSX.Element,
   className?: string,
+  attributes?: React.ButtonHTMLAttributes<HTMLButtonElement>;
   onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export const IconButton = ({ Icon, onClick, className }: IconButtonProps) => {
+export const IconButton = ({ Icon, onClick, className, attributes }: IconButtonProps) => {  
   return (
     <IconButtonContainer
       onClick={onClick}
       className={`icon-button ${className}`}
+      {...attributes}
     >
       <IconContext.Provider value={{ size: '24px' }}>
         { Icon }

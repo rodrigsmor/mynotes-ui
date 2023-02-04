@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const NoteCardWrapper = styled.button`
+export const NoteCardWrapper = styled(Link)`
   gap: 10px;
   width: 100%;
   display: flex;
   padding: 14px;
   max-width: 100%;
-  overflow: hidden;
   border-radius: 16px;
+  text-decoration: none;
   flex-direction: column;
   border: 0px solid transparent;
   box-shadow: ${({ theme }) => theme.shadow.main };
@@ -21,19 +22,29 @@ export const NoteCardWrapper = styled.button`
     grid-template-columns: 1fr max-content;
     grid-template-rows: repeat(4, fit-content);
 
-    > .icon-button {
+    > .menu {
       top: 12px;
       z-index: 2;
       right: 12px;
       width: 38px;
       height: 38px;
-      color: #FFFFFF;
+      overflow: visible;
       position: absolute;
       background: transparent;
+      
+      > button {
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        place-items: center;
+        background: transparent;
+        color: ${({ theme }) => theme.colors.background.light };
 
-      &:hover {
-        background: #FFFFFF26;
+        &:hover {
+          background: ${({ theme }) => theme.colors.background.light }26;
+        }
       }
+
     }
 
     > .icon-image, p, footer {
@@ -71,18 +82,24 @@ export const MainInfos = styled.header`
   width: 100%;
   display: grid;
   max-width: 100%;
-  overflow: hidden;
   align-items: center;
   grid-template-rows: 20px 15px;
   grid-template-columns: 42px minmax(0, 1fr) 38px;
 
-  > .icon-button {
+  > .menu {
     width: 38px;
     height: 38px;
     padding: 0;
     grid-row: 1 / 3;
     place-items: center;
     grid-column: 3 / 4;
+
+    > button {
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      place-items: center;
+    }
   }
 `;
 
@@ -107,6 +124,7 @@ export const CoverImage = styled.img`
   height: 56px;
   object-fit: cover;
   position: absolute;
+  border-radius: 16px 16px 0 0;
 `;
 
 export const IconImage = styled.img`

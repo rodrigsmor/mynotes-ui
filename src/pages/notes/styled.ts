@@ -4,6 +4,7 @@ export const NotesPageContent = styled.section`
   gap: 32px;
   width: 100%;
   display: flex;
+  overflow: hidden;
   height: fit-content;
   flex-direction: column;
   padding: calc(68px + 28px) 16px;
