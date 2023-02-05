@@ -1,7 +1,8 @@
 import { HiXMark } from "react-icons/hi2";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from 'react';
 import { IconButton } from "../../buttons/IconButton";
-import { AnnotationCoverPreview, AnnotationThumbnailPreview, CreateNoteContainer, HeaderModal, ModalBackground, NoteDetailsForm, TopSection } from './styled';
+import { ImageUpload } from "../../forms/ImageUpload";
+import { AnnotationThumbnailPreview, CreateNoteContainer, HeaderModal, ModalBackground, NoteDetailsForm, TopSection } from './styled';
 
 type CreateNoteModalProps = {
   show: boolean;
@@ -9,10 +10,13 @@ type CreateNoteModalProps = {
 }
 
 export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose }) => {
+  const [ noteCover, setNoteCover ] = useState<File>();
+  
   return (
     <ModalBackground className={`${!show && 'hide-modal'}`}>
       <CreateNoteContainer
         role='dialog'
+        tabIndex={1}
         id='createAnnotation_Modal'
         aria-labelledby='createAnnotation_TitleHeading'
       >
@@ -30,9 +34,11 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
         </HeaderModal>
         <NoteDetailsForm>
           <TopSection>
-            <AnnotationCoverPreview
-              alt='cover da imagem'
-              src='https://images.unsplash.com/photo-1595864968156-b643d9028611?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE3fHx8ZW58MHx8fHw%3D&w=1000&q=80' 
+            <ImageUpload
+              type='cover'
+              name='image_inputCover'
+              setImage={setNoteCover}
+              label='Selecionar uma capa para sua anotação'
             />
             <AnnotationThumbnailPreview
               alt='miniatura da imagem'

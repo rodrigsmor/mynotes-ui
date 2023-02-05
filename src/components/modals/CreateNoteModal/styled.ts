@@ -153,25 +153,24 @@ export const TopSection = styled.fieldset`
   justify-content: end;
   flex-direction: column;
   border: 0px solid transparent;
+
+  > .upload-image-image_inputCover {
+    top: 0;
+    z-index: 50;
+    width: 100vw;
+    position: absolute;
+    align-self: center;
+    height: calc(100% - 34px);
+  }
   
   @media ${({ theme }) => theme.media.desktop } {
     padding: 0 24px;
     grid-column: 1 / 3;
-  }
-`;
 
-export const AnnotationCoverPreview = styled.img`
-  top: 0;
-  z-index: 50;
-  width: 100vw;
-  object-fit: cover;
-  position: absolute;
-  align-self: center;
-  height: calc(100% - 34px);
-  
-  @media ${({ theme }) => theme.media.desktop } {
-    width: 71.4vw;
-    min-width: 71.4vw;
+    > .upload-image-image_inputCover {
+      width: 71.4vw;
+      min-width: 71.4vw;
+    }
   }
 `;
 
