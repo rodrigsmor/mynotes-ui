@@ -35,7 +35,13 @@ export const UploadInput = styled.input`
   height: 100%;
   cursor: pointer;
   position: absolute;
-  visibility: hidden;
+  opacity: 0;
+
+  &:focus {
+    ~ label {
+      opacity: 1;
+    }
+  }
 `;
 
 export const PreviewBackground = styled.img`

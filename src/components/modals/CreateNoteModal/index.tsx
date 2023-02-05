@@ -1,8 +1,8 @@
 import { HiXMark } from "react-icons/hi2";
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler, useState, useEffect, useRef } from 'react';
 import { IconButton } from "../../buttons/IconButton";
 import { ImageUpload } from "../../forms/ImageUpload";
-import { AnnotationThumbnailPreview, CreateNoteContainer, HeaderModal, ModalBackground, NoteDetailsForm, TopSection } from './styled';
+import { CreateNoteContainer, HeaderModal, ModalBackground, NoteDetailsForm, TopSection } from './styled';
 
 type CreateNoteModalProps = {
   show: boolean;
@@ -10,13 +10,22 @@ type CreateNoteModalProps = {
 }
 
 export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose }) => {
-  const [ noteCover, setNoteCover ] = useState<File>();
+  const modalRef = useRef<HTMLFormElement>(null);
+  const [ noteCover, setNoteCover ] = useState<File | undefined>();
+  const [ noteThumbnail, setNoteThumbnail ] = useState<File | undefined>();
+
+  useEffect(() => {
+    show && modalRef.current?.focus();
+  }, [ show ])
   
   return (
     <ModalBackground className={`${!show && 'hide-modal'}`}>
       <CreateNoteContainer
         role='dialog'
-        tabIndex={1}
+        tabIndex={-1}
+        ref={modalRef}
+        aria-modal={true}
+        aria-hidden={show}
         id='createAnnotation_Modal'
         aria-labelledby='createAnnotation_TitleHeading'
       >
@@ -40,9 +49,11 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
               setImage={setNoteCover}
               label='Selecionar uma capa para sua anotação'
             />
-            <AnnotationThumbnailPreview
-              alt='miniatura da imagem'
-              src='https://sextouviajou.com.br/wp-content/uploads/2022/01/Sao-Paulo.jpg'
+            <ImageUpload
+              type='thumbnail'
+              name='image_inputThumbnail'
+              setImage={setNoteThumbnail}
+              label='Selecionar miniatura da anotação'
             />
           </TopSection>
           <section></section>

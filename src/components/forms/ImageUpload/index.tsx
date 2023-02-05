@@ -36,16 +36,16 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ label, name, type, ima
 
   return (
     <ImageUploadContainer className={`upload-image-${name} ${type}`}>
-      <UploadInputLabel htmlFor={name} aria-label={label}>
-        <HiOutlinePhoto size={30} /> 
-        <span>{label}</span>
-      </UploadInputLabel>
       <UploadInput
         id={name}
         type='file'
         accept="image/*"
         onChange={selectImage}
       />
+      <UploadInputLabel htmlFor={name} aria-label={label}>
+        <HiOutlinePhoto size={30} /> 
+        <span>{label}</span>
+      </UploadInputLabel>
       <PreviewBackground
         className='image-upload-preview'
         src={preview || defaultImage[type]}

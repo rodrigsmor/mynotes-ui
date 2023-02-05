@@ -162,6 +162,23 @@ export const TopSection = styled.fieldset`
     align-self: center;
     height: calc(100% - 34px);
   }
+
+  > .upload-image-image_inputThumbnail {
+    z-index: 51;
+    width: 68px;
+    height: 68px;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: ${({ theme }) => theme.shadow.main};
+
+    > label {
+      border-radius: 24px;
+
+      > span {
+        display: none;
+      }
+    }
+  }
   
   @media ${({ theme }) => theme.media.desktop } {
     padding: 0 24px;
@@ -172,12 +189,4 @@ export const TopSection = styled.fieldset`
       min-width: 71.4vw;
     }
   }
-`;
-
-export const AnnotationThumbnailPreview = styled.img`
-  width: 68px;
-  height: 68px;
-  z-index: 51;
-  border-radius: 24px;
-  object-fit: cover;
 `;
