@@ -41,7 +41,13 @@ export const Menu: React.FC<MenuProps> = ({ name, className, options, date = '',
           "id": `Menu-Button_${name}`
         }}
       />
-      <MenuCardWrapper aria-labelledby={`Menu-Button_${name}`} role={'menu'} id={`Menu_${name}`} className={`menu-card ${showMenu ? 'opened' : 'closed'}`}>
+      <MenuCardWrapper 
+        role={'menu'}
+        id={`Menu_${name}`}
+        aria-labelledby={`Menu-Button_${name}`}
+        className={`menu-card ${showMenu ? 'opened' : 'closed'}`}
+        onBlurCapture={e => setShowMenu(false)}
+      >
         <OptionsListingWrapper>
           {
             options.map(({ Icon, id, label, command, onClick }) => (

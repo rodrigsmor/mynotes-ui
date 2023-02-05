@@ -38,7 +38,7 @@ export const NoteCard = ({ view, note }: NoteCardComponentTypes) => {
       Icon: <HiDocumentDuplicate />,
       label: 'Duplicar anotação',
       command: 'CTRL + D',
-      onClick: (event: MouseEvent) => { event.preventDefault(); }
+      onClick: (event: MouseEvent) => { event.preventDefault(); alert('duplicar') }
     }, {
       id: 4,
       Icon: <HiLink />,

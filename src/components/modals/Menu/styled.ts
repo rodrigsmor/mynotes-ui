@@ -10,8 +10,8 @@ export const MenuContainer = styled.div`
   justify-content: center;
   overflow: visible;
 
-  &:not(focus),
-  &:not(focus-within) {
+  &:not(:focus),
+  &:not(:focus-within) {
     > .menu-card {
       display: none;
     }
@@ -45,7 +45,7 @@ export const MenuCardWrapper = styled.div`
   }
 
   &.opened, &:focus-within, &:focus {
-    display: flex;
+    display: flex !important;
   }
 `; 
 
