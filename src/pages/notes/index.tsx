@@ -1,15 +1,17 @@
-import { useReducer, FormEvent } from 'react';
+import { useReducer } from 'react';
 import { noteCardsHome } from '../../utils/mock/index';
 import { Button } from "../../components/buttons/Button";
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
 import { NoteCard } from "../../components/cards/NoteCard";
 import { AuthLayout } from "../../components/common/AuthLayout";
+import { OrderByModal } from '../../components/modals/OrderByModal';
 import { FilterByModal } from "../../components/modals/FilterByModal";
 import { SelectButton } from '../../components/forms/SelectButton/index';
 import { PaginationController } from "../../components/common/PaginationController";
 import { HiOutlineArrowPath, HiOutlineFunnel, HiOutlineQueueList, HiOutlineSquares2X2, HiPlus } from "react-icons/hi2";
 import { InteractionsButton, NotesListingWrapper, NotesPageContent, SectionHeader, VisualizationGroup } from "./styled";
-import { OrderByModal } from '../../components/modals/OrderByModal';
+import { CreateNoteContainer } from '../../components/modals/CreateNoteModal/styled';
+import { CreateNoteModal } from '../../components/modals/CreateNoteModal';
 
 enum SelectActionsEnums {
   SELECT_GRID = 'SELECT_GRID',
@@ -98,7 +100,7 @@ export const Notes = () => {
                 <p>Ordenar por</p>
               </>
             </Button>
-            <Button name='add_button_desktop' theme={ThemeEnums.DEFAULT} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ADD_NOTE_MODAL })}>
+            <Button name='add_button_desktop' theme={ThemeEnums.DEFAULT} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ADD_NOTE_MODAL })} controlId='createAnnotation_Modal' hasPopup>
               <>
                 <HiPlus />
                 <p>Criar anotação</p>
@@ -120,6 +122,7 @@ export const Notes = () => {
         <PaginationController />
         <FilterByModal showModal={modal.showModal && modal.type === 'FILTER_BY'} onClose={handleCloseModal} closeModal={handleCloseModal} />
         <OrderByModal showModal={modal.showModal && modal.type === 'ORDER_BY'} onClose={handleCloseModal} closeModal={handleCloseModal} />
+        <CreateNoteModal show={modal.showModal && modal.type === 'ADD_NOTE'} onClose={handleCloseModal} />
       </NotesPageContent>
     </AuthLayout>
   );

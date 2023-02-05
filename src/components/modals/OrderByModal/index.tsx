@@ -1,12 +1,12 @@
 import { OrdinationSection } from './styled';
 import { CheckBox } from '../../forms/CheckBox';
 import { ModalTemplate } from "../ModalTemplate";
+import { useSearchParams } from 'react-router-dom';
 import { RadionButton } from '../../forms/RadionButton'
 import { HiArrowsUpDown, HiOutlineArrowPath } from 'react-icons/hi2';
+import { SearchParamsObjectTypes } from '../../../utils/types/search-params';
 import { MouseEventHandler, FormEventHandler, useState, useEffect, MouseEvent } from 'react';
 import { CategoriesWrapper, FilterByContent, FilterBySections, SectionModalHeader, SectionTitleModal } from "../FilterByModal/styled";
-import { useSearchParams } from 'react-router-dom';
-import { SearchParamsObjectTypes } from '../../../utils/types/search-params';
 
 interface OrderByProps {
   showModal: boolean;

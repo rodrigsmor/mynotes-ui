@@ -47,7 +47,8 @@ export const ModalContainer = styled.div`
     
     &.hide-modal {
       opacity: 0;
-      *[role^="dialog"] {
+
+      > *[role^="dialog"] {
         top: -95vh;
       }
     }
