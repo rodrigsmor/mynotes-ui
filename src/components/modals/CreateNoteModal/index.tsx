@@ -1,8 +1,11 @@
-import { HiXMark } from "react-icons/hi2";
-import { MouseEventHandler, useState, useEffect, useRef } from 'react';
+import { CardInput } from "../../forms/CardInput";
 import { IconButton } from "../../buttons/IconButton";
 import { ImageUpload } from "../../forms/ImageUpload";
-import { CreateNoteContainer, HeaderModal, ModalBackground, NoteDetailsForm, TopSection } from './styled';
+import { HiBars3BottomLeft, HiOutlineInformationCircle, HiXMark } from "react-icons/hi2";
+import { MouseEventHandler, useState, useEffect, useRef } from 'react';
+import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, TopSection } from './styled';
+import { Select } from "../../forms/Select";
+import { categoriesFilterModel } from '../../../utils/models/categoriesFilter';
 
 type CreateNoteModalProps = {
   show: boolean;
@@ -11,6 +14,7 @@ type CreateNoteModalProps = {
 
 export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose }) => {
   const modalRef = useRef<HTMLFormElement>(null);
+  const [ noteTitle, setNoteTitle ] = useState<string>('');
   const [ noteCover, setNoteCover ] = useState<File | undefined>();
   const [ noteThumbnail, setNoteThumbnail ] = useState<File | undefined>();
 
@@ -56,8 +60,33 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
               label='Selecionar miniatura da anotação'
             />
           </TopSection>
+          <MainFormSection>
+            <FieldGroup>
+              <FieldLabel htmlFor='cardNote-title' title='título da anotação' aria-label='título da anotação'>
+                <HiOutlineInformationCircle />
+              </FieldLabel>
+              <CardInput type='text' placeholder="Dê um título para sua anotação" value={noteTitle} setValue={setNoteTitle} name='cardNote-title' label="" />
+              <CategoryFieldGroup>
+                <FieldLabel
+                  htmlFor="select_form-Category"
+                  className='category-label'
+                >
+                  categoria:
+                </FieldLabel>
+                <Select
+                  name='Category'
+                  options={categoriesFilterModel}
+                />
+              </CategoryFieldGroup>
+            </FieldGroup>
+            <FieldGroup>
+              <FieldLabel htmlFor='cardNote-content' title='Conteúdo da anotação' aria-label='Conteúdo da anotação'>
+                <HiBars3BottomLeft />
+              </FieldLabel>
+              
+            </FieldGroup>
+          </MainFormSection>
           <section></section>
-          <span></span>
         </NoteDetailsForm>
       </CreateNoteContainer>
     </ModalBackground>

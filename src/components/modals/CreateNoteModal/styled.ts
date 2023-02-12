@@ -113,12 +113,6 @@ export const NoteDetailsForm = styled.div`
   grid-template-columns: 100%;
   
   > section {
-    grid-row: 2 / 3;
-    grid-column: 1 / 2;
-    background: green;
-  }
-  
-  > span {
     grid-row: 3 / 4;
     grid-column: 1 / 2;
     background: blue;
@@ -130,12 +124,6 @@ export const NoteDetailsForm = styled.div`
     grid-template-columns: 1fr 270px;
 
     > section {
-      grid-row: 2 / 3;
-      grid-column: 1 / 2;
-      background: green;
-    }
-    
-    > span {
       grid-row: 2 / 3;
       grid-column: 2 / 3;
       background: blue;
@@ -187,6 +175,56 @@ export const TopSection = styled.fieldset`
     > .upload-image-image_inputCover {
       width: 71.4vw;
       min-width: 71.4vw;
+    }
+  }
+`;
+
+export const MainFormSection = styled.fieldset`
+  gap: 20px;
+  display: flex;
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+  flex-direction: column;
+  border: 0px solid transparent;
+
+  @media ${({ theme }) => theme.media.desktop } {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+`;
+
+export const FieldGroup = styled.div`
+  gap: 4px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+export const FieldLabel = styled.label`
+  display: flex;
+  color: ${({ theme }) => theme.colors.subtext.light };
+  font-size: ${({ theme }) => theme.typography.size.h3 };
+
+  &.category-label {
+    font-size: ${({ theme }) => theme.typography.size.h6 };
+    font-weight: ${({ theme }) => theme.typography.weight.regular };
+  }
+`;
+
+export const CategoryFieldGroup = styled.div`
+  gap: 8px;
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  padding: 0 0 0 34px;
+
+  > div {
+    > .select_form-Button {
+      z-index: 52;
+    }
+  
+    > .select_form-OptionsList {
+      z-index: 51;
     }
   }
 `;
