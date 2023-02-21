@@ -64,9 +64,13 @@ export const CreateNoteContainer = styled.form`
   background: ${({ theme }) => theme.colors.background.light };
   
   @media ${({ theme }) => theme.media.desktop } {
-    width: 71.4vw;
+    width: 71.4%;
     height: 89.5vh;
+    max-width: 71.4%;
+    max-height: 89.5vh;
     border-radius: 24px;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -108,19 +112,33 @@ export const NoteDetailsForm = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  padding: 0px 18px;
-  grid-template-rows: 20% 1fr 1fr;
+  padding: 0px 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
   grid-template-columns: 100%;
+  grid-template-rows: 20% 1fr 1fr;
   
   > section {
     grid-row: 3 / 4;
     grid-column: 1 / 2;
     background: blue;
   }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: ${({ theme }) => theme.colors.subtext.light }66;
+    border: 2px solid ${({ theme }) => theme.colors.background.light}
+  }
   
   @media ${({ theme }) => theme.media.desktop } {
-    padding: 0px 24px;
-    grid-template-rows: 30% 1fr;
+    padding: 0px 24px 16px 24px;
+    grid-template-rows: 23.43vh 1fr 44px;
     grid-template-columns: 1fr 270px;
 
     > section {
@@ -198,16 +216,32 @@ export const FieldGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  > .textArea {
+    margin: 0 0 0 34px;
+  }
 `;
 
 export const FieldLabel = styled.label`
   display: flex;
+  align-items: center;
   color: ${({ theme }) => theme.colors.subtext.light };
   font-size: ${({ theme }) => theme.typography.size.h3 };
 
   &.category-label {
     font-size: ${({ theme }) => theme.typography.size.h6 };
     font-weight: ${({ theme }) => theme.typography.weight.regular };
+  }
+
+  &.label_CardContent {
+    gap: 10px;
+    width: 100%;
+
+    > span {
+      color: ${({ theme }) => theme.colors.typography.main };
+      font-size: ${({ theme }) => theme.typography.size.h4 };
+      font-weight: ${({ theme }) => theme.typography.weight.semibold };
+    }
   }
 `;
 
@@ -225,6 +259,38 @@ export const CategoryFieldGroup = styled.div`
   
     > .select_form-OptionsList {
       z-index: 51;
+    }
+  }
+`;
+
+export const SubmitButtonsGroup = styled.footer`
+  left: 0;
+  bottom: 0;
+  gap: 14px;
+  width: 100%;
+  padding: 18px;
+  display: flex;
+  position: absolute;
+  border-radius: 16px 16px 0 0;
+  box-shadow: ${({ theme }) => theme.shadow.main };
+  background: ${({ theme }) => theme.colors.background.light};
+
+  > button {
+    flex-grow: 1;
+  }
+  
+  @media ${({ theme }) => theme.media.desktop } {
+    padding: 0;
+    grid-row: 3 / 4;
+    position: static;
+    box-shadow: none;
+    grid-column: 1 / 3;
+    border-radius: 0px;
+    justify-content: flex-end;
+
+    > button {
+      flex-grow: 0;
+      width: 169px;
     }
   }
 `;

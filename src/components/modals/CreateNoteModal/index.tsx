@@ -3,9 +3,12 @@ import { IconButton } from "../../buttons/IconButton";
 import { ImageUpload } from "../../forms/ImageUpload";
 import { HiBars3BottomLeft, HiOutlineInformationCircle, HiXMark } from "react-icons/hi2";
 import { MouseEventHandler, useState, useEffect, useRef } from 'react';
-import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, TopSection } from './styled';
+import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, SubmitButtonsGroup, TopSection } from './styled';
 import { Select } from "../../forms/Select";
 import { categoriesFilterModel } from '../../../utils/models/categoriesFilter';
+import { TextArea } from "../../forms/TextArea";
+import { Button } from "../../buttons/Button";
+import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
 
 type CreateNoteModalProps = {
   show: boolean;
@@ -80,13 +83,34 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
               </CategoryFieldGroup>
             </FieldGroup>
             <FieldGroup>
-              <FieldLabel htmlFor='cardNote-content' title='Conteúdo da anotação' aria-label='Conteúdo da anotação'>
+              <FieldLabel className='label_CardContent' htmlFor='cardNote-content' title='Conteúdo da anotação' aria-label='Conteúdo da anotação'>
                 <HiBars3BottomLeft />
+                <span>Descrição</span>
               </FieldLabel>
-              
+              <TextArea />
             </FieldGroup>
           </MainFormSection>
           <section></section>
+          <SubmitButtonsGroup>
+            <Button
+              type="reset"
+              hasPopup={false}
+              theme={ThemeEnums.SURFACE}
+              controlId="createAnnotation_Modal"
+              onClick={e => console.log(e)}
+            >
+              <>cancelar</>
+            </Button>
+            <Button
+              type="submit"
+              hasPopup={false}
+              theme={ThemeEnums.DEFAULT}
+              controlId="createAnnotation_Modal"
+              onClick={e => console.log(e)}
+            >
+              <>salvar anotação</>
+            </Button>
+          </SubmitButtonsGroup>
         </NoteDetailsForm>
       </CreateNoteContainer>
     </ModalBackground>
