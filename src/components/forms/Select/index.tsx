@@ -38,8 +38,8 @@ export const Select: React.FC<SelectProps> = ({ className, options, name, attrib
       </SelectInput>
       <SelectOptionsWrapper className={`select_form-OptionsList ${showOptions && 'opened'}`} role='listbox' aria-expanded={showOptions}>
         {
-          options.map(({ name, value }) => (
-            <SelectOption role='option' tabIndex={0} onClick={e => onSelect(e, value)} className={`${selected === value && 'selected'}`}>
+          options.map(({ name, value }, id) => (
+            <SelectOption key={id} role='option' tabIndex={0} onClick={e => onSelect(e, value)} className={`${selected === value && 'selected'}`}>
               { value }
             </SelectOption>
           ))

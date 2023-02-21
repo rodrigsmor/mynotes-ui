@@ -61,6 +61,7 @@ export const CreateNoteContainer = styled.form`
   overflow: hidden;
   position: relative;
   border-radius: 0px;
+  min-height: 100dvh;
   background: ${({ theme }) => theme.colors.background.light };
   
   @media ${({ theme }) => theme.media.desktop } {
@@ -133,7 +134,7 @@ export const NoteDetailsForm = styled.div`
   &::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background: ${({ theme }) => theme.colors.subtext.light }66;
-    border: 2px solid ${({ theme }) => theme.colors.background.light}
+    border: 2px solid ${({ theme }) => theme.colors.background.light};
   }
   
   @media ${({ theme }) => theme.media.desktop } {

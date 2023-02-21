@@ -2,7 +2,7 @@ import { CardInput } from "../../forms/CardInput";
 import { IconButton } from "../../buttons/IconButton";
 import { ImageUpload } from "../../forms/ImageUpload";
 import { HiBars3BottomLeft, HiOutlineInformationCircle, HiXMark } from "react-icons/hi2";
-import { MouseEventHandler, useState, useEffect, useRef } from 'react';
+import { MouseEventHandler, useState, useEffect, useRef, FormEvent } from 'react';
 import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, SubmitButtonsGroup, TopSection } from './styled';
 import { Select } from "../../forms/Select";
 import { categoriesFilterModel } from '../../../utils/models/categoriesFilter';
@@ -18,12 +18,19 @@ type CreateNoteModalProps = {
 export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose }) => {
   const modalRef = useRef<HTMLFormElement>(null);
   const [ noteTitle, setNoteTitle ] = useState<string>('');
+  const [ noteDescription, setNoteDescription ] = useState<string>('');
   const [ noteCover, setNoteCover ] = useState<File | undefined>();
   const [ noteThumbnail, setNoteThumbnail ] = useState<File | undefined>();
 
   useEffect(() => {
     show && modalRef.current?.focus();
   }, [ show ])
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    console.log(noteDescription)
+  }
   
   return (
     <ModalBackground className={`${!show && 'hide-modal'}`}>
@@ -33,6 +40,7 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
         ref={modalRef}
         aria-modal={true}
         aria-hidden={show}
+        onSubmit={onSubmit}
         id='createAnnotation_Modal'
         aria-labelledby='createAnnotation_TitleHeading'
       >
@@ -87,7 +95,7 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
                 <HiBars3BottomLeft />
                 <span>Descrição</span>
               </FieldLabel>
-              <TextArea />
+              <TextArea name="cardNote-content" placeholder="Descreva a sua anotação..." value={noteDescription} onChange={e => setNoteDescription(e.target.value)}/>
             </FieldGroup>
           </MainFormSection>
           <section></section>
@@ -106,7 +114,6 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
               hasPopup={false}
               theme={ThemeEnums.DEFAULT}
               controlId="createAnnotation_Modal"
-              onClick={e => console.log(e)}
             >
               <>salvar anotação</>
             </Button>
