@@ -339,9 +339,7 @@ export const AsideAnnotationForm = styled.section`
     transition-delay: .3s;
 
     > .aside-content {
-      width: 0;
-      padding: 0;
-      margin: 0 -100% 0 0;
+      width: 0px;
       transition: .5s ease;
     }
     
@@ -353,7 +351,6 @@ export const AsideAnnotationForm = styled.section`
       > .aside-content {
         margin: 0;
         width: 89%;
-        padding: 16px;
         transition-delay: .3s;
       }
     }
@@ -389,6 +386,34 @@ export const AsideAnnotationFormContent = styled.div`
 
     > header {
       display: none;
+    }
+  }
+`;
+
+export const AsideNotesSectionsWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+`;
+
+export const AsideNotesSections = styled.section`
+  gap: 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  > header {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+    color: ${({ theme }) => theme.colors.subtext.light };
+    
+    > h3 {
+      color: ${({ theme }) => theme.colors.typography.main};
+      font-size: ${({ theme }) => theme.typography.size.h5};
+      font-weight: ${({ theme }) => theme.typography.weight.semibold };
     }
   }
 `;
