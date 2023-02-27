@@ -1,9 +1,9 @@
 import { CardInput } from "../../forms/CardInput";
 import { IconButton } from "../../buttons/IconButton";
 import { ImageUpload } from "../../forms/ImageUpload";
-import { HiBars3BottomLeft, HiOutlineInformationCircle, HiXMark } from "react-icons/hi2";
+import { HiBars3BottomLeft, HiChevronDoubleLeft, HiChevronDoubleRight, HiOutlineInformationCircle, HiXMark, } from 'react-icons/hi2';
 import { MouseEventHandler, useState, useEffect, useRef, FormEvent } from 'react';
-import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, SubmitButtonsGroup, TopSection } from './styled';
+import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, SubmitButtonsGroup, TopSection, AsideAnnotationForm, AsideAnnotationFormContent } from './styled';
 import { Select } from "../../forms/Select";
 import { categoriesFilterModel } from '../../../utils/models/categoriesFilter';
 import { TextArea } from "../../forms/TextArea";
@@ -17,10 +17,12 @@ type CreateNoteModalProps = {
 
 export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose }) => {
   const modalRef = useRef<HTMLFormElement>(null);
+  const mobileSidebarRef = useRef<HTMLDivElement>(null);
   const [ noteTitle, setNoteTitle ] = useState<string>('');
-  const [ noteDescription, setNoteDescription ] = useState<string>('');
   const [ noteCover, setNoteCover ] = useState<File | undefined>();
+  const [ noteDescription, setNoteDescription ] = useState<string>('');
   const [ noteThumbnail, setNoteThumbnail ] = useState<File | undefined>();
+  const [ isToShowMobileSidebar, setIsToShowMobileSidebar ] = useState<boolean>(false);
 
   useEffect(() => {
     show && modalRef.current?.focus();
@@ -46,15 +48,31 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
       >
         <HeaderModal>
           <h2 id='createAnnotation_TitleHeading'>Criar nova anotação</h2>
-          <IconButton
-            onClick={onClose}
-            Icon={<HiXMark />}
-            attributes={{
-              "title": 'Fechar modal',
-              "aria-label": 'Fechar modal',
-              "type": 'button'
-            }}
-          />
+          <div className="FORM_button-group">
+            <IconButton
+              onClick={() => {
+                setIsToShowMobileSidebar(!isToShowMobileSidebar)
+                mobileSidebarRef.current?.focus();
+              }}
+              Icon={<HiChevronDoubleLeft/>}
+              attributes={{
+                "title": 'Abrir informações adicionais',
+                'aria-label': 'Abrir informações adicionais',
+                'aria-controls': 'Adittional_Info-FORM',
+                'aria-haspopup': true,
+                'id': 'mobile-icon'
+              }}
+            />
+            <IconButton
+              onClick={onClose}
+              Icon={<HiXMark />}
+              attributes={{
+                "title": 'Fechar modal',
+                "aria-label": 'Fechar modal',
+                "type": 'button'
+              }}
+            />
+          </div>
         </HeaderModal>
         <NoteDetailsForm>
           <TopSection>
@@ -98,7 +116,22 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
               <TextArea name="cardNote-content" placeholder="Descreva a sua anotação..." value={noteDescription} onChange={e => setNoteDescription(e.target.value)}/>
             </FieldGroup>
           </MainFormSection>
-          <section></section>
+          <AsideAnnotationForm tabIndex={0} ref={mobileSidebarRef} aria-label='Informações adicionais' onClick={() => setIsToShowMobileSidebar(false)} className={`${isToShowMobileSidebar && 'opened'}`} aria-expanded={isToShowMobileSidebar} id='Adittional_Info-FORM'>
+            <AsideAnnotationFormContent className="aside-content">
+              <header>
+                <IconButton
+                  onClick={() => setIsToShowMobileSidebar(false)}
+                  Icon={<HiChevronDoubleRight />}
+                  attributes={{
+                    "title": 'Fechar informações adicionais',
+                    'aria-label': 'Fechar informações adicionais',
+                    'aria-controls': 'Adittional_Info-FORM',
+                  }}
+                />
+              </header>
+              <button onFocus={e => alert('ssk')}></button>
+            </AsideAnnotationFormContent>
+          </AsideAnnotationForm>
           <SubmitButtonsGroup>
             <Button
               type="reset"
