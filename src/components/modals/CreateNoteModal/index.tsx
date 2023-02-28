@@ -3,16 +3,28 @@ import { IconButton } from "../../buttons/IconButton";
 import { ImageUpload } from "../../forms/ImageUpload";
 import { HiBars3BottomLeft, HiCheckCircle, HiChevronDoubleLeft, HiChevronDoubleRight, HiOutlineCheckCircle, HiOutlineInformationCircle, HiXMark, } from 'react-icons/hi2';
 import { MouseEventHandler, useState, useEffect, useRef, FormEvent } from 'react';
-import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, SubmitButtonsGroup, TopSection, AsideAnnotationForm, AsideAnnotationFormContent, AsideNotesSections, AsideNotesSectionsWrapper } from './styled';
+import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, SubmitButtonsGroup, TopSection, AsideAnnotationForm, AsideAnnotationFormContent, AsideNotesSections, AsideNotesSectionsWrapper, CheckListContainer } from './styled';
 import { Select } from "../../forms/Select";
 import { categoriesFilterModel } from '../../../utils/models/categoriesFilter';
 import { TextArea } from "../../forms/TextArea";
 import { Button } from "../../buttons/Button";
 import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
+import { CheckInputItem } from "../../forms/CheckInputItem";
 
 type CreateNoteModalProps = {
   show: boolean;
   onClose: MouseEventHandler;
+}
+
+type CheckListItemType = {
+  value: string;
+  isChecked: boolean;
+}
+
+interface UpdateItemProps {
+  type: string;
+  index: number;
+  value: string | number;
 }
 
 export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose }) => {
@@ -22,6 +34,7 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
   const [ noteCover, setNoteCover ] = useState<File | undefined>();
   const [ noteDescription, setNoteDescription ] = useState<string>('');
   const [ noteThumbnail, setNoteThumbnail ] = useState<File | undefined>();
+  const [ checkListItems, setCheckListItems ] = useState<Array<CheckListItemType>>([]);
   const [ isToShowMobileSidebar, setIsToShowMobileSidebar ] = useState<boolean>(false);
 
   useEffect(() => {
@@ -116,7 +129,14 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
               <TextArea name="cardNote-content" placeholder="Descreva a sua anotação..." value={noteDescription} onChange={e => setNoteDescription(e.target.value)}/>
             </FieldGroup>
           </MainFormSection>
-          <AsideAnnotationForm tabIndex={0} ref={mobileSidebarRef} aria-label='Informações adicionais' onClick={() => setIsToShowMobileSidebar(false)} className={`${isToShowMobileSidebar && 'opened'}`} aria-expanded={isToShowMobileSidebar} id='Adittional_Info-FORM'>
+          <AsideAnnotationForm 
+            tabIndex={0}
+            ref={mobileSidebarRef}
+            id='Adittional_Info-FORM'
+            aria-label='Informações adicionais'
+            aria-expanded={isToShowMobileSidebar}
+            className={`${isToShowMobileSidebar && 'opened'}`}
+          >
             <div className="aside-content">
               <AsideAnnotationFormContent>
                 <header>
@@ -136,9 +156,44 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
                       <HiOutlineCheckCircle />
                       <h3>Checklist</h3>
                     </header>
-                    <div>
-                      
-                    </div>
+                    <CheckListContainer id='CheckList-Wrapper_ID'>
+                      {
+                        checkListItems?.map(({ isChecked, value }, index) => {
+                          return (
+                            <li key={index}>
+                              <CheckInputItem
+                                id={index}
+                                value={value}
+                                isChecked={isChecked}
+                                setValue={(data) => {
+                                  let newState = [...checkListItems];
+                                  newState[index].value = data;
+                                  setCheckListItems(newState)
+                                }}
+                                setIsChecked={(data) => {
+                                  setCheckListItems(
+                                    checkListItems.map((item, id) => {
+                                      if(id === index)
+                                        item.isChecked = data;
+                                      return item;
+                                    })
+                                  )
+                                }}
+                                deleteItem={() => setCheckListItems(checkListItems.filter((data, id) => id !== index))}
+                              />
+                            </li>
+                          )
+                        })
+                      }
+                    </CheckListContainer>
+                    <Button
+                      theme={ThemeEnums.SURFACE}
+                      controlId="CheckList-Wrapper_ID"
+                      name="CheckList-Button_ID"
+                      onClick={() => setCheckListItems([...checkListItems, { isChecked: false, value: '' }]) }
+                    >
+                      <>adicionar novo item</>
+                    </Button>
                   </AsideNotesSections>
                 </AsideNotesSectionsWrapper>
               </AsideAnnotationFormContent>

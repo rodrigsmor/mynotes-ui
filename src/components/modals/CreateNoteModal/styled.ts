@@ -330,6 +330,10 @@ export const AsideAnnotationForm = styled.section`
     position: static;
     grid-column: 2 / 3;
     background: transparent;
+
+    > .aside-content {
+      width: 100%;
+    }
   }
 
   @media (max-width: 1023px) {
@@ -416,4 +420,11 @@ export const AsideNotesSections = styled.section`
       font-weight: ${({ theme }) => theme.typography.weight.semibold };
     }
   }
+`;
+
+export const CheckListContainer = styled.ul`
+  gap: 8px;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
 `;
