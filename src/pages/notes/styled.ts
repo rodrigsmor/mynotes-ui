@@ -4,6 +4,7 @@ export const NotesPageContent = styled.section`
   gap: 32px;
   width: 100%;
   display: flex;
+  overflow: hidden;
   height: fit-content;
   flex-direction: column;
   padding: calc(68px + 28px) 16px;
@@ -65,9 +66,26 @@ export const InteractionsButton = styled.div`
 
   > button {
     width: 100%;
+  }
 
-    &.add_button_desktop {
-      display: none;
+  @media (max-width: 1023px) {
+    > button {
+
+      &.add_button_desktop {
+        z-index: 6;
+        padding: 0;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+        bottom: 80px;
+        display: flex;
+        position: fixed;
+        box-shadow: ${({ theme }) => theme.shadow.dark };
+
+        > p {
+          display: none;
+        }
+      }
     }
   }
 

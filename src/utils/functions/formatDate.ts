@@ -1,8 +1,16 @@
-export function formatDate(date: Date) {
+export function formatFullDateTime(date: Date) {
   let currentYear = new Date(Date.now()).getFullYear();
   let time = `${addZeroToTime(date.getHours())}:${addZeroToTime(date.getMinutes())}h`;
 
   return `${date.getDate()} de ${months[date.getMonth() + 1]}${currentYear !== date.getFullYear() ? ` de ${date.getFullYear()},` : ','} ${time}`;
+}
+
+export function formatDate(date: Date) {
+  return `${addZeroToTime(date.getDate())}/${addZeroToTime(date.getMonth())}/${date.getFullYear()}`;
+}
+
+export function formatTime(date: Date) {
+  return `${addZeroToTime(date.getHours())}:${addZeroToTime(date.getMinutes())}`;
 }
 
 function addZeroToTime(time: number) {

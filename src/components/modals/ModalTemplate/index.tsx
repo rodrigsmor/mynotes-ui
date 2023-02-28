@@ -26,7 +26,7 @@ export const ModalTemplate = ({ show, children, title, name, labelButton, onClos
 
   return (
     <ModalContainer className={`${!show && 'hide-modal'}`} id={name}>
-      <ModalCardContainer role={'dialog'} aria-labelledby={name} onSubmit={onSubmit} aria-hidden={show} ref={modalRef} tabIndex={-1}>
+      <ModalCardContainer aria-modal={true} role={'dialog'} aria-labelledby={name} onSubmit={onSubmit} aria-hidden={show} ref={modalRef} tabIndex={-1}>
         <ModalHeader>
           <h2 id={name}>{ title }</h2>
         </ModalHeader>

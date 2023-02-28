@@ -49,9 +49,9 @@ export const theme: ThemeTypes = {
       dark: '#4A78AD'
     },
     disabled: {
-      light: '#C7C8D9',
-      main: '#ABABBA',
-      dark: '#8F8F9C'
+      light: '#EBEBFF',
+      main: '#D8D8EB',
+      dark: '#CACADB'
     },
   }, 
   typography: {
