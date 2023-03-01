@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@types/react-icons": "^3.0.0",
-    "@types/yup": "^0.32.0",
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
