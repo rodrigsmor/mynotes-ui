@@ -13,5 +13,8 @@ export const routes = createBrowserRouter([
   }, {
     path: '/notes',
     element: <Notes />,
+  }, {
+    path: '*',
+    element: <Notes />,
   }
 ])
