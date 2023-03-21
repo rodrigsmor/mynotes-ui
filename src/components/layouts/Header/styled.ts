@@ -15,6 +15,12 @@ export const HeaderContainer = styled.header`
   > .search_bar {
     display: none;
   }
+
+  &.landing-page_Header {
+    > .logo {
+      display: none;
+    }
+  }
   
   @media ${({ theme }) => theme.media.desktop } {
     height: 72px;
@@ -30,6 +36,15 @@ export const HeaderContainer = styled.header`
     > .search_bar {
       display: flex;
     }
+
+    &.landing-page_Header {
+      box-shadow: ${({ theme }) => theme.shadow.main };
+
+      > .logo {
+        display: flex;
+        width: fit-content;
+      }
+    }
   }
 `;
 
@@ -42,6 +57,20 @@ export const ButtonWrappers = styled.div`
   > .logged_account_card {
     display: none;
   }
+
+  .landing-page_Header > & {
+    gap: 14px;
+    
+    > .logged-button-options {
+      display: none;
+    }
+
+    > .styled-button {
+      width: 108px;
+      max-width: 108px;
+      min-width: 108px;
+    }
+  }
   
   @media ${({ theme }) => theme.media.desktop } {
     gap: 24px;
@@ -50,5 +79,25 @@ export const ButtonWrappers = styled.div`
       display: flex;
     }
 
+    .landing-page_Header > & {
+      > .logged-button-options {
+        display: none;
+      }
+
+      > .styled-button {
+        width: 132px;
+      }
+    }
+  }
+`;
+
+export const LandingPageNavigationContainer = styled.nav`
+  display: none;
+
+  @media ${({ theme }) => theme.media.desktop } {
+    width: 100px;
+    height: 24px;
+    background: red;
+    display: flex;
   }
 `;

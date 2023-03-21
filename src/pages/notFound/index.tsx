@@ -2,10 +2,12 @@ import { Button } from '../../components/buttons/Button';
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
 import { DetailedNotFoundMessage, GlitchTextEffect, NotFoundIllustration, NotFoundMessage, NotFoundPageContainer } from './styled';
 import LookingForNotFoundPage_Illustration from '../../assets/images/illustrations/LookingForNotFoundPage_Illustration.svg';
+import { Header } from '../../components/layouts/Header';
 
 export const NotFound = () => {
   return (
     <NotFoundPageContainer>
+      <Header isLandingPage isLogged={false} />
       <GlitchTextEffect data-text='404'>404</GlitchTextEffect>
       <NotFoundMessage>Página não encontrada</NotFoundMessage>
       <DetailedNotFoundMessage>

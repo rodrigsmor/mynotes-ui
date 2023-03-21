@@ -16,6 +16,15 @@ export const NotFoundPageContainer = styled.main`
     width: 76.45vw;
   }
 
+  > .landing-page_Header {
+    top: 0;
+    position: fixed;
+
+    > .header_navigation-LandingPage {
+      display: none;
+    }
+  }
+
   > * {
     z-index: 6;
   }
