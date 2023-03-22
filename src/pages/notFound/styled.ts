@@ -44,13 +44,24 @@ export const NotFoundPageContainer = styled.main`
       }
     }
   }
+
+  @media ${({ theme }) => theme.media.desktop } {
+    > .styled-button {
+      width: 23.07%;
+    }
+  }
 `;
 
 export const NotFoundMessage = styled.h2`
   order: 1;
+  text-align: center;
   color: ${({ theme }) => theme.colors.typography.main };
   font-size: ${({ theme }) => theme.typography.size.h4 };
   font-weight: ${({ theme }) => theme.typography.weight.semibold };
+
+  @media ${({ theme }) => theme.media.desktop } {
+    margin-bottom: 16px;
+  }
 `;
 
 export const DetailedNotFoundMessage = styled.p`
@@ -61,6 +72,10 @@ export const DetailedNotFoundMessage = styled.p`
   color: ${({ theme }) => theme.colors.subtext.light };
   font-size: ${({ theme }) => theme.typography.size.h5 };
   font-weight: ${({ theme }) => theme.typography.weight.medium };
+
+  @media ${({ theme }) => theme.media.desktop } {
+    width: 48.72%;
+  }
 `;
 
 export const NotFoundIllustration = styled.img`
@@ -68,6 +83,12 @@ export const NotFoundIllustration = styled.img`
   bottom: 42px;
   height: 16vh;
   position: absolute;
+
+  @media ${({ theme }) => theme.media.desktop } {
+    right: 48px;
+    bottom: 48px;
+    height: 45vh;
+  }
 `;
 
 export const GlitchTextEffect = styled.h1`
@@ -107,6 +128,12 @@ export const GlitchTextEffect = styled.h1`
     margin: 0 0 0 -8px;
     text-shadow: -2px 0 blue;
     animation: glitch-2 2s linear infinite reverse;
+  }
+
+  @media ${({ theme }) => theme.media.desktop } {
+    font-size: 86px;
+    margin: 20px 0 0 0;
+    line-height: 112px;
   }
 
   @keyframes glitch-1{
