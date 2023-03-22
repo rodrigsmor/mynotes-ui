@@ -20,9 +20,9 @@ export const NotFoundPageContainer = styled.main`
     top: 0;
     position: fixed;
 
-    > .header_navigation-LandingPage {
+    /* > .header_navigation-LandingPage {
       display: none;
-    }
+    } */
   }
 
   > * {

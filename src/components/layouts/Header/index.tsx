@@ -1,12 +1,14 @@
-import { ButtonWrappers, HeaderContainer, LandingPageNavigationContainer } from './styled';
+import { ButtonWrappers, HeaderContainer, LandingPageNavigationContainer, LandingPageSectionsListing } from './styled';
 import { SearchBar } from "../../forms/Searchbar";
 import { LoggedAccountCard } from '../../cards/LoggedAccountCard';
 import { IconButton } from '../../buttons/IconButton';
 import { HiOutlineBell, HiOutlineCog6Tooth, HiMagnifyingGlass } from 'react-icons/hi2';
-import { HiOutlineMenu } from 'react-icons/hi';
+import { HiOutlineMenu, HiX } from 'react-icons/hi';
 import { Logo } from '../../common/Logo';
 import { Button } from '../../buttons/Button';
 import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   isLogged?: boolean;
@@ -14,6 +16,8 @@ interface HeaderProps {
 }
 
 export const Header = ({ isLandingPage = false, isLogged = true }: HeaderProps) => {
+  const [ showMobileElement, setShowMobileElement ] = useState<boolean>(false);
+
   const LandingPageButtons = () => (
     <>
       <Button type={'button'} theme={ThemeEnums.SURFACE} to={'/auth/login'}>
@@ -31,11 +35,17 @@ export const Header = ({ isLandingPage = false, isLogged = true }: HeaderProps) 
         onClick={e => alert('notificações')}
         Icon={<HiOutlineBell />}
         className='logged-button-options'
+        attributes={{
+          "aria-label": 'Abrir notificações'
+        }}
       />
       <IconButton
         onClick={e => alert('configurações')}
         Icon={<HiOutlineCog6Tooth />}
         className='logged-button-options'
+        attributes={{
+          "aria-label": 'Abrir configurações'
+        }}
       />
     </>
   )
@@ -44,12 +54,12 @@ export const Header = ({ isLandingPage = false, isLogged = true }: HeaderProps) 
     <HeaderContainer className={`${isLandingPage && 'landing-page_Header'}`}>
       {isLandingPage && <Logo />}
       <IconButton
-        onClick={e => alert('searchbar')}
+        onClick={event => setShowMobileElement(!showMobileElement)}
         Icon={isLandingPage ? <HiOutlineMenu /> : <HiMagnifyingGlass />}
         className='search-button-mobile-header'
       />
       { !isLandingPage && <SearchBar />}
-      { isLandingPage && <LandingPageNavigation /> }
+      { isLandingPage && <LandingPageNavigation mobileMenuIsOpen={showMobileElement} closeMobileMenu={() => setShowMobileElement(false)} /> }
       <ButtonWrappers>
         {isLogged && <LoggedInButtons />}
         {isLandingPage && <LandingPageButtons />}
@@ -59,10 +69,55 @@ export const Header = ({ isLandingPage = false, isLogged = true }: HeaderProps) 
   );
 }
 
-const LandingPageNavigation = () => {
-  return (
-    <LandingPageNavigationContainer className='header_navigation-LandingPage'>
+interface LandingPageNavigationProps {
+  mobileMenuIsOpen: boolean;
+  closeMobileMenu: () => void;
+}
 
+const LandingPageNavigation = ({ mobileMenuIsOpen, closeMobileMenu }: LandingPageNavigationProps) => {
+  const options = [
+    {
+      id: 0,
+      label: 'Início',
+      path: '/#home'
+    }, {
+      id: 1,
+      label: 'O que é?',
+      path: '/#about-project',
+    }, {
+      id: 2,
+      label: 'Recursos',
+      path: '/#features'
+    }, {
+      id: 3,
+      label: 'Contatos',
+      path: '/#contact'
+    }, 
+  ]
+  
+  return (
+    <LandingPageNavigationContainer className={`header_navigation-LandingPage ${mobileMenuIsOpen && 'open'}`}>
+      <nav>
+        <IconButton
+          onClick={e => closeMobileMenu()}
+          Icon={<HiX />}
+          className='close-button'
+          attributes={{
+            "aria-label": 'Fechar menu de navegação'
+          }}
+        />
+        <LandingPageSectionsListing>
+          {
+            options.map(({ id, label, path }) => (
+              <li key={id}>
+                <Link to={path}>
+                  { label }
+                </Link>
+              </li>
+            ))
+          }
+        </LandingPageSectionsListing>
+      </nav>
     </LandingPageNavigationContainer>
   )
 }
