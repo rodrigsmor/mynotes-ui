@@ -56,7 +56,7 @@ export const Header = ({ isLandingPage = false, isLogged = true }: HeaderProps) 
       <IconButton
         onClick={event => setShowMobileElement(!showMobileElement)}
         Icon={isLandingPage ? <HiOutlineMenu /> : <HiMagnifyingGlass />}
-        className='search-button-mobile-header'
+        className={`${isLandingPage ? 'menu-navigation_Header' : 'search-button-mobile-header'}`}
       />
       { !isLandingPage && <SearchBar />}
       { isLandingPage && <LandingPageNavigation mobileMenuIsOpen={showMobileElement} closeMobileMenu={() => setShowMobileElement(false)} /> }

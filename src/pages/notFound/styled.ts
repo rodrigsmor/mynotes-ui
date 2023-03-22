@@ -20,13 +20,29 @@ export const NotFoundPageContainer = styled.main`
     top: 0;
     position: fixed;
 
-    /* > .header_navigation-LandingPage {
+    > .logo {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    > .header_navigation-LandingPage,
+    > .menu-navigation_Header {
       display: none;
-    } */
+    }
   }
 
   > * {
     z-index: 6;
+  }
+
+  @media (max-width: 1023px) {
+    > .landing-page_Header {
+      > .logo {
+        > figcaption {
+          display: none;
+        }
+      }
+    }
   }
 `;
 
