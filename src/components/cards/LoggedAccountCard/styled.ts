@@ -29,6 +29,7 @@ export const ProfilePicture = styled.img`
   min-width: 36px;
   object-fit: cover;
   border-radius: 16px;
+  image-rendering: pixelated;
 `;
 
 export const UserName = styled.p`

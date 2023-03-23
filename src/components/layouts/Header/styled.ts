@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
+  top: 0;
   z-index: 40;
   width: 100%;
   height: 68px;
@@ -29,7 +30,8 @@ export const HeaderContainer = styled.header`
     grid-area: header;
     box-shadow: none;
 
-    > .search-button-mobile-header {
+    > .search-button-mobile-header,
+    > .menu-navigation_Header {
       display: none;
     }
 
@@ -38,12 +40,21 @@ export const HeaderContainer = styled.header`
     }
 
     &.landing-page_Header {
+      position: fixed;
+      transition: ease all .5s;
       box-shadow: ${({ theme }) => theme.shadow.main };
 
       > .logo {
         display: flex;
         width: 230px;
         justify-content: flex-start;
+      }
+
+      &.Header_home_section {
+        padding: 0 6%;
+        height: 86px;
+        box-shadow: none;
+        background: transparent;
       }
     }
   }

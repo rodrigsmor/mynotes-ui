@@ -12,10 +12,11 @@ import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   isLogged?: boolean;
+  isScrolled?: boolean;
   isLandingPage?: boolean;
 }
 
-export const Header = ({ isLandingPage = false, isLogged = true }: HeaderProps) => {
+export const Header = ({ isLandingPage = false, isLogged = true, isScrolled = true }: HeaderProps) => {
   const [ showMobileElement, setShowMobileElement ] = useState<boolean>(false);
 
   const LandingPageButtons = () => (
@@ -51,7 +52,7 @@ export const Header = ({ isLandingPage = false, isLogged = true }: HeaderProps) 
   )
   
   return (
-    <HeaderContainer className={`${isLandingPage && 'landing-page_Header'}`}>
+    <HeaderContainer className={`${isLandingPage && 'landing-page_Header'} ${(isLandingPage && !isScrolled) && 'Header_home_section'}`}>
       {isLandingPage && <Logo />}
       <IconButton
         onClick={event => setShowMobileElement(!showMobileElement)}
