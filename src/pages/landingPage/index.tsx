@@ -2,14 +2,47 @@ import { useRef, useState } from 'react';
 import { Button } from '../../components/buttons/Button';
 import { Header } from '../../components/layouts/Header';
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
-import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
+import { HiOutlineChevronDoubleDown, HiOutlinePencil, HiOutlinePresentationChartLine } from 'react-icons/hi2';
 import BenefitsSectionImage from '../../assets/images/images/BenefitsSectionImage.png'
 import Divider_LandingPageIllustration from '../../assets/images/illustrations/Divider_LandingPageIllustration.svg'
-import { LandingPageContainer, HomeSectionLP, HomeArrowAnchor, SectionTitleLP, LandingPageSections, AboutProjectSectionContent, IconDivider, AboutFeaturesListing } from './styled';
+import { LandingPageContainer, HomeSectionLP, HomeArrowAnchor, SectionTitleLP, LandingPageSections, AboutProjectSectionContent, IconDivider, AboutFeaturesListing, FeaturesSectionContent, FeaturesCardLP } from './styled';
+import { HiOutlinePuzzle, HiOutlineTemplate } from 'react-icons/hi';
+import { IconContext } from 'react-icons';
+
+interface FeaturesCardItemsTypes {
+  title: string;
+  Icon: JSX.Element;
+  description: string;
+  color: 'danger' | 'info' | 'success' | 'warning';
+}
 
 export const LandingPage = () => {
   const ref = useRef<HTMLDivElement>();
   const [ hasUserScrolled, setHasUserScrolled ] = useState<boolean>(false);
+
+  const featuresCardItems: Array<FeaturesCardItemsTypes> = [
+    {
+      Icon: <HiOutlinePresentationChartLine />,
+      title: 'Produtividade',
+      color: 'info',
+      description: 'Tortor vitae purus faucibus ornare suspendisse sed nisi. Egestas pretium aenean pharetra placerat.',
+    }, {
+      Icon: <HiOutlinePuzzle />,
+      title: 'Praticidade',
+      color: 'danger',
+      description: 'Auctor neque vitae tempus quam pellentesque nec. Sed nisi lacus sed viverra tellus in hac.',
+    }, {
+      Icon: <HiOutlineTemplate />,
+      title: 'Organização',
+      color: 'success',
+      description: 'Enim lobortis scelerisque fermentum dui. Tristique senectus et netus et in hac.',
+    }, {
+      Icon: <HiOutlinePencil />,
+      title: 'Customização',
+      color: 'warning',
+      description: 'Eros donec ac odio tempor orci dapibus ultrices. Donec enim diam vulputate ut.',
+    }, 
+  ]
 
   return (
     <LandingPageContainer
@@ -40,12 +73,11 @@ export const LandingPage = () => {
           <h3>Um pouco mais sobre a aplicação</h3>
         </SectionTitleLP>
         <AboutProjectSectionContent>
-          <p className='section-description'>MyNotes é uma aplicação web de gerenciamento de anotações que irá tornar a sua vida muito mais fácil e organizada. Através de customizações e possibilidades de organização, a aplicação facilitará o seu processo de registro e busca de anotações. Anote tudo o que precisar e encontre quando precisar!</p>
+          <p className='section-description text-centered'>MyNotes é uma aplicação web de gerenciamento de anotações que irá tornar a sua vida muito mais fácil e organizada. Através de customizações e possibilidades de organização, a aplicação facilitará o seu processo de registro e busca de anotações. Anote tudo o que precisar e encontre quando precisar!</p>
           <IconDivider alt='' src={Divider_LandingPageIllustration} />
           <AboutFeaturesListing>
             <figure>
               <img src={BenefitsSectionImage} alt='' />
-              <figcaption></figcaption>
             </figure>
             <ol className='benefits-listing'>
               <li li-number='1'>
@@ -60,6 +92,31 @@ export const LandingPage = () => {
             </ol>
           </AboutFeaturesListing>
         </AboutProjectSectionContent>
+      </LandingPageSections>
+      <LandingPageSections id='features'>
+        <SectionTitleLP>
+          <h2 section-title='Recursos'>Recursos</h2>
+          <h3>O que temos a te oferecer?</h3>
+        </SectionTitleLP>
+        <FeaturesSectionContent>
+          <p className='section-description'>Neque sodales ut etiam sit amet nisl purus in mollis. Hendrerit dolor magna eget est. Diam sit amet nisl suscipit adipiscing bibendum est ultricies integer. Lacinia quis vel eros donec ac odio. Commodo odio aenean sed adipiscing diam donec.</p>
+          <ul className='features-listing'>
+            {
+              featuresCardItems.map(({ Icon, title, color, description }, index) => (
+                <li key={index}>
+                  <FeaturesCardLP iconColor={color} aria-labelledby={`Feature-CardBox-title_${index}`}>
+                    <div>
+                      <IconContext.Provider value={{ size: '24px' }}>{ Icon }</IconContext.Provider>
+                    </div>
+                    <strong id={`Feature-CardBox-title_${index}`}>{ title }</strong>
+                    <p className='Feature-CardBox-description'>{ description }</p>
+                  </FeaturesCardLP>
+                </li>
+              ))
+            }
+            <li></li>
+          </ul>
+        </FeaturesSectionContent>
       </LandingPageSections>
     </LandingPageContainer>
   );

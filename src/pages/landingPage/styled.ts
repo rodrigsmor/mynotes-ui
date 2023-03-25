@@ -217,7 +217,7 @@ export const LandingPageSections = styled.section`
   @media ${({ theme }) => theme.media.desktop } {
     padding: 84px 9.4vw;
 
-    > article > .section-description {
+    > article > .section-description.text-centered {
       text-align: center;
     }
   }
@@ -299,5 +299,82 @@ export const AboutFeaturesListing = styled.div`
         }
       }
     }
+  }
+`;
+
+export const FeaturesSectionContent = styled.article`
+  gap: 48px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  > ul.features-listing {
+    gap: 30px;
+    width: 100%;
+    display: flex;
+    min-width: 100%;
+    list-style: none;
+    flex-direction: column;
+
+    > li {
+      flex-grow: 1;
+      display: flex;
+      flex-shrink: 0;
+      padding: 22px 0 0;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.desktop } {
+    width: 100%;
+    min-width: 100%;
+    
+    > ul.features-listing {
+      gap: 24px;
+      display: grid;
+      flex-direction: row;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+`;
+
+interface FeaturesCardProps {
+  iconColor: 'danger' | 'info' | 'success' | 'warning';
+}
+
+export const FeaturesCardLP = styled.div<FeaturesCardProps>`
+  gap: 4px;
+  width: 100%;
+  display: flex;
+  min-width: 100%;
+  position: relative;
+  border-radius: 16px;
+  flex-direction: column;
+  padding: 28px 12px 12px;
+  box-shadow: ${({ theme }) => theme.shadow.main};
+  background: ${({ theme }) => theme.colors.background.main };
+
+  > div {
+    top: -22px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    position: absolute;
+    place-items: center;
+    border-radius: 16px;
+    color: ${({ theme }) => theme.colors.background.light};
+    border: ${({ theme }) => theme.colors.primary.light } 2px solid;
+    background: ${({ iconColor, theme }) => theme.colors[iconColor].main};
+  }
+
+  > strong {
+    color: ${({ theme }) => theme.colors.subtext.main };
+    font-size: ${({ theme }) => theme.typography.size.h5 };
+    font-weight: ${({ theme }) => theme.typography.weight.semibold };
+  }
+
+  > .Feature-CardBox-description {
+    color: ${({ theme }) => theme.colors.subtext.light };
+    font-size: ${({ theme }) => theme.typography.size.h6 };
+    font-weight: ${({ theme }) => theme.typography.weight.regular };
   }
 `;
