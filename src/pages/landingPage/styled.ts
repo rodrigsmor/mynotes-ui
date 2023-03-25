@@ -119,7 +119,7 @@ export const HomeArrowAnchor = styled(Link)`
 `;
 
 export const SectionTitleLP = styled.hgroup`
-  gap: 36px;
+  gap: 12px;
   display: flex;
   flex-direction: column;
 
@@ -141,7 +141,8 @@ export const SectionTitleLP = styled.hgroup`
       position: absolute;
       min-width: max-content;
       content: attr(section-title);
-      color: ${({ theme }) => theme.colors.primary.light };
+      opacity: .3;
+      color: ${({ theme }) => theme.colors.primary.main };
     }
   }
 
@@ -158,6 +159,38 @@ export const SectionTitleLP = styled.hgroup`
       display: block;
       margin: 14px 0 0 0;
       background: ${({ theme }) => theme.colors.primary.main };
+    }
+  }
+
+  > .section-icon {
+    width: 44px;
+    height: 44px;
+    margin: auto;
+    display: grid;
+    font-size: 24px;
+    place-items: center;
+    border-radius: 16px;
+    margin: 0 auto 16px;
+    color: ${({ theme }) => theme.colors.primary.main };
+    background: ${({ theme }) => theme.colors.disabled.light};
+    border: 2px solid ${({ theme }) => theme.colors.primary.light };
+  }
+
+  &.background {
+    > h2 {
+      color: ${({ theme }) => theme.colors.surface.dark };
+
+      &:before {
+        color: ${({ theme }) => theme.colors.primary.dark };
+      }
+    }
+
+    > h3 {
+      color: ${({ theme }) => theme.colors.primary.dark };
+
+      &:after {
+        background: ${({ theme }) => theme.colors.primary.dark };
+      }
     }
   }
 
@@ -213,17 +246,23 @@ export const LandingPageSections = styled.section`
   padding: 48px 16px;
   flex-direction: column;
 
-  > article > .section-description {
+  > article > .section-description, 
+  > div > form > .section-description {
     text-align: justify;
     color: ${({ theme }) => theme.colors.subtext.light };
     font-size: ${({ theme }) => theme.typography.size.h5};
     font-weight: ${({ theme }) => theme.typography.weight.regular };
+
+    &.background {
+      color: ${({ theme }) => theme.colors.surface.light };
+    }
   }
 
   @media ${({ theme }) => theme.media.desktop } {
     padding: 84px 9.4vw;
 
-    > article > .section-description.text-centered {
+    > article > .section-description.text-centered,
+    > div > form > .section-description { {
       text-align: center;
     }
   }
@@ -383,6 +422,57 @@ export const FeaturesCardLP = styled.div<FeaturesCardProps>`
     color: ${({ theme }) => theme.colors.subtext.light };
     font-size: ${({ theme }) => theme.typography.size.h6 };
     font-weight: ${({ theme }) => theme.typography.weight.regular };
+  }
+`;
+
+export const ContactsSectionContent = styled.div`
+  gap: 28px;
+  display: flex;
+  padding: 28px 20px;
+  border-radius: 24px;
+  flex-direction: column;
+  background: ${({ theme }) => theme.colors.primary.main };
+
+  > .contacts-Form_Container {
+    display: flex;
+    flex-direction: column;
+
+    > textarea {
+      width: 100%;
+      height: 284px;
+      padding: 18px;
+      margin: 48px 0 24px;
+      border-radius: 16px;
+      color: ${({ theme }) => theme.colors.typography.light };
+      font-size: ${({ theme }) => theme.typography.size.h6 };
+      background: ${({ theme }) => theme.colors.surface.light };
+      font-weigth: ${({ theme }) => theme.typography.weight.medium };
+      border: 2px solid ${({ theme }) => theme.colors.primary.light };
+
+      &::placeholder {
+        color: ${({ theme }) => theme.colors.subtext.light};
+        font-size: ${({ theme }) => theme.typography.size.h5 };
+        font-weigth: ${({ theme }) => theme.typography.weight.light };
+      }
+    }
+  }
+  
+  @media ${({ theme }) => theme.media.desktop } {
+    gap: 42px;
+    padding: 36px;
+    border-radius: 36px;
+
+    > .contacts-Form_Container {
+      align-items: center;
+
+      > textarea {
+        max-width: 75.83%;
+      }
+
+      > button {
+        width: 41.7%;
+      }
+    }
   }
 `;
 

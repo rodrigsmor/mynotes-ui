@@ -6,9 +6,9 @@ import { ThemeEnums } from '../../utils/enums/ThemeEnums';
 import { HiOutlinePuzzle, HiOutlineTemplate } from 'react-icons/hi';
 import { BsTwitter, BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
 import BenefitsSectionImage from '../../assets/images/images/BenefitsSectionImage.png'
-import { HiOutlineChevronDoubleDown, HiOutlinePencil, HiOutlinePresentationChartLine } from 'react-icons/hi2';
+import { HiOutlineChevronDoubleDown, HiOutlinePencil, HiOutlinePresentationChartLine, HiPhone } from 'react-icons/hi2';
 import Divider_LandingPageIllustration from '../../assets/images/illustrations/Divider_LandingPageIllustration.svg'
-import { LandingPageContainer, HomeSectionLP, HomeArrowAnchor, SectionTitleLP, LandingPageSections, AboutProjectSectionContent, IconDivider, AboutFeaturesListing, FeaturesSectionContent, FeaturesCardLP, LandingPageFooter } from './styled';
+import { LandingPageContainer, HomeSectionLP, HomeArrowAnchor, SectionTitleLP, LandingPageSections, AboutProjectSectionContent, IconDivider, AboutFeaturesListing, FeaturesSectionContent, FeaturesCardLP, LandingPageFooter, ContactsSectionContent } from './styled';
 import { Logo } from '../../components/common/Logo';
 
 interface FeaturesCardItemsTypes {
@@ -129,7 +129,22 @@ export const LandingPage = () => {
         <IconDivider alt='' src={Divider_LandingPageIllustration} />
       </div>
       <LandingPageSections id='Contacts'>
-        
+        <ContactsSectionContent>
+          <SectionTitleLP className='background'>
+            <figure className='section-icon'>
+              <HiPhone />
+            </figure>
+            <h2 section-title='Contato'>Contato</h2>
+            <h3>Fale direto conosco</h3>
+          </SectionTitleLP>
+          <form className='contacts-Form_Container'>
+            <legend className='section-description background'>Use esse espaço para tirar suas dúvidas, dar sugestões, fazer explanações, reclamações e até mesmo críticas construtivas! Estamos abertos a te escutar e a encontrar os melhores meios de solucionar seus problemas e garantir a melhor experiência para você.</legend>
+            <textarea placeholder='Conte-nos sobre sua experiência...'/>
+            <Button theme={ThemeEnums.SURFACE}>
+              <>Enviar texto</>
+            </Button>
+          </form>
+        </ContactsSectionContent>
       </LandingPageSections>
       <LandingPageFooter>
         <p className='copyrights'>
