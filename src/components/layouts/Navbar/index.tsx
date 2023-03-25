@@ -22,7 +22,7 @@ export const Navbar = () => {
   const navPaths: Array<NavPathsTypes> = [
     {
       id: 0,
-      path: '/home',
+      path: '/app/home',
       icon: {
         fill: <HiHome />,
         outline: <HiOutlineHome />,
@@ -30,7 +30,7 @@ export const Navbar = () => {
       label: 'Visão geral',
     }, {
       id: 1,
-      path: '/notes',
+      path: '/app/notes',
       icon: {
         fill: <HiDocumentText />,
         outline: <HiOutlineDocumentText />,
@@ -38,7 +38,7 @@ export const Navbar = () => {
       label: 'Todas anotações',
     }, {
       id: 2,
-      path: '/collections',
+      path: '/app/collections',
       icon: {
         fill: <HiRectangleGroup />,
         outline: <HiOutlineRectangleGroup />,
@@ -46,7 +46,7 @@ export const Navbar = () => {
       label: 'Coleções',
     }, {
       id: 3,
-      path: '/favorites',
+      path: '/app/favorites',
       icon: {
         fill: <HiHeart />,
         outline: <HiOutlineHeart />,
@@ -54,7 +54,7 @@ export const Navbar = () => {
       label: 'Favoritas',
     }, {
       id: 4,
-      path: '/trash',
+      path: '/app/trash',
       icon: {
         fill: <HiTrash />,
         outline: <HiOutlineTrash />,

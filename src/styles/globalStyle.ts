@@ -7,4 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Readex Pro', sans-serif;
   }
+
+  html {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
 `;

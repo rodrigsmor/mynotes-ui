@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const ButtonContainer = styled.button`
+const baseStyle = css`
   gap: 10px;
   height: 44px;
   display: flex;
@@ -12,8 +13,9 @@ export const ButtonContainer = styled.button`
   border: 0px solid transparent;
   transition: all .4s ease-in-out;
   min-width: fit-content;
-  font-size: ${({ theme }) => theme.typography.size.h5 };
-  font-weight: ${({ theme }) => theme.typography.weight.medium };
+  text-decoration: none;
+  font-size: ${({ theme }) => theme.typography.size.h5};
+  font-weight: ${({ theme }) => theme.typography.weight.medium};
 
   > svg {
     width: 24px;
@@ -21,11 +23,11 @@ export const ButtonContainer = styled.button`
   }
 
   &.default {
-    color: ${({ theme }) => theme.colors.background.light };
-    background: ${({ theme }) => theme.colors.primary.main };
+    color: ${({ theme }) => theme.colors.background.light};
+    background: ${({ theme }) => theme.colors.primary.main};
 
     &:hover {
-      background: ${({ theme }) => theme.colors.primary.dark };
+      background: ${({ theme }) => theme.colors.primary.dark};
     }
   }
 
@@ -34,7 +36,15 @@ export const ButtonContainer = styled.button`
     background: ${({ theme }) => theme.colors.surface.main};
 
     &:hover {
-      background: ${({ theme }) => theme.colors.surface.dark };
+      background: ${({ theme }) => theme.colors.surface.dark};
     }
   }
 `;
+
+export const ButtonContainer = styled.button`
+  ${baseStyle}
+`;
+
+export const LinkButtonContainer = styled(Link)`
+  ${baseStyle}
+`

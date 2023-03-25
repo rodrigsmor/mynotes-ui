@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import { ButtonContainer } from "./styled";
+import { ButtonContainer, LinkButtonContainer } from "./styled";
 import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
 
 type ButtonProps = {
@@ -10,12 +10,15 @@ type ButtonProps = {
   children: JSX.Element;
   onClick?: MouseEventHandler;
   hasPopup?: boolean;
+  to?: string;
 }
 
-export const Button = ({ type = 'button', children, theme, name, onClick, controlId, hasPopup = false }: ButtonProps) => {
+export const Button = ({ to, type = 'button', children, theme, name, onClick, controlId, hasPopup = false }: ButtonProps) => {
+  const Element: any = to ? LinkButtonContainer : ButtonContainer;
+  
   return (
-    <ButtonContainer type={type} className={`${theme} ${name}`} onClick={onClick} aria-owns={controlId} aria-haspopup={hasPopup}>
+    <Element to={to} type={type} className={`${theme} ${name} styled-button`} onClick={onClick} aria-owns={controlId} aria-haspopup={hasPopup}>
       { children }
-    </ButtonContainer>
+    </Element>
   );
 }

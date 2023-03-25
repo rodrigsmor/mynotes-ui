@@ -108,7 +108,7 @@ export const NoteCard = ({ view, note }: NoteCardComponentTypes) => {
   );
 
   return (
-    <NoteCardWrapper className={view} to={`/notes/${id}`}>
+    <NoteCardWrapper className={view} to={`/app/notes/${id}`}>
       {
         view === 'GRID' ? (
           <GridCardView />
