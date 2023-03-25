@@ -1,13 +1,15 @@
 import { useRef, useState } from 'react';
+import { IconContext } from 'react-icons';
 import { Button } from '../../components/buttons/Button';
 import { Header } from '../../components/layouts/Header';
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
-import { HiOutlineChevronDoubleDown, HiOutlinePencil, HiOutlinePresentationChartLine } from 'react-icons/hi2';
-import BenefitsSectionImage from '../../assets/images/images/BenefitsSectionImage.png'
-import Divider_LandingPageIllustration from '../../assets/images/illustrations/Divider_LandingPageIllustration.svg'
-import { LandingPageContainer, HomeSectionLP, HomeArrowAnchor, SectionTitleLP, LandingPageSections, AboutProjectSectionContent, IconDivider, AboutFeaturesListing, FeaturesSectionContent, FeaturesCardLP } from './styled';
 import { HiOutlinePuzzle, HiOutlineTemplate } from 'react-icons/hi';
-import { IconContext } from 'react-icons';
+import { BsTwitter, BsGithub, BsGlobe2, BsLinkedin } from 'react-icons/bs';
+import BenefitsSectionImage from '../../assets/images/images/BenefitsSectionImage.png'
+import { HiOutlineChevronDoubleDown, HiOutlinePencil, HiOutlinePresentationChartLine } from 'react-icons/hi2';
+import Divider_LandingPageIllustration from '../../assets/images/illustrations/Divider_LandingPageIllustration.svg'
+import { LandingPageContainer, HomeSectionLP, HomeArrowAnchor, SectionTitleLP, LandingPageSections, AboutProjectSectionContent, IconDivider, AboutFeaturesListing, FeaturesSectionContent, FeaturesCardLP, LandingPageFooter } from './styled';
+import { Logo } from '../../components/common/Logo';
 
 interface FeaturesCardItemsTypes {
   title: string;
@@ -43,6 +45,11 @@ export const LandingPage = () => {
       description: 'Eros donec ac odio tempor orci dapibus ultrices. Donec enim diam vulputate ut.',
     }, 
   ]
+
+  function getCurrentYear() {
+    let currentYear = new Date().getFullYear();
+    return currentYear > 2023 ? `2023 - ${currentYear}` : '2023'
+  }
 
   return (
     <LandingPageContainer
@@ -118,6 +125,28 @@ export const LandingPage = () => {
           </ul>
         </FeaturesSectionContent>
       </LandingPageSections>
+      <div className='section-divider'>
+        <IconDivider alt='' src={Divider_LandingPageIllustration} />
+      </div>
+      <LandingPageSections id='Contacts'>
+        
+      </LandingPageSections>
+      <LandingPageFooter>
+        <p className='copyrights'>
+          Copyrights © { getCurrentYear() }
+        </p>
+        <Logo />
+        <div className='social-media'>
+          <IconContext.Provider value={{
+            size: '28px'
+          }}>
+            <BsTwitter />
+            <BsGithub />
+            <BsGlobe2 />
+            <BsLinkedin />
+          </IconContext.Provider>
+        </div>
+      </LandingPageFooter>
     </LandingPageContainer>
   );
 }

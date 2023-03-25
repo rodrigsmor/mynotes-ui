@@ -7,6 +7,12 @@ export const LandingPageContainer = styled.div`
   overflow-x: hidden;
   height: 100vh;
   background: ${({ theme }) => theme.colors.background.light };
+
+  > .section-divider {
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
 `;
 
 export const HomeSectionLP = styled.main`
@@ -234,6 +240,7 @@ export const AboutProjectSectionContent = styled.article`
 export const IconDivider = styled.img`
   width: auto;
   height: 42px;
+  margin: auto;
 `;
 
 export const AboutFeaturesListing = styled.div`
@@ -376,5 +383,44 @@ export const FeaturesCardLP = styled.div<FeaturesCardProps>`
     color: ${({ theme }) => theme.colors.subtext.light };
     font-size: ${({ theme }) => theme.typography.size.h6 };
     font-weight: ${({ theme }) => theme.typography.weight.regular };
+  }
+`;
+
+export const LandingPageFooter = styled.footer`
+  gap: 18px;
+  display: flex;
+  padding: 28px 16px;
+  align-items: center;
+  flex-direction: column;
+  color: ${({ theme }) => theme.colors.subtext.light };
+  background: ${({ theme }) => theme.colors.primary.light };
+
+  > .social-media {
+    gap: 32px;
+    display: flex;
+    align-items: center;
+    color: ${({ theme }) => theme.colors.subtext.light };
+  }
+
+  > .copyrights {
+    text-align: center;
+    font-size: ${({ theme }) => theme.typography.size.h6 };
+    font-weight: ${({ theme }) => theme.typography.weight.medium };
+  }
+
+  > .logo > figcaption {
+    display: none;
+  }
+
+  @media ${({ theme }) => theme.media.desktop } {
+    height: 84px;
+    padding: 0 9.4vw;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    > .copyrights {
+      min-width: 208px;
+      text-align: left;
+    }
   }
 `;
