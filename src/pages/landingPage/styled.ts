@@ -133,6 +133,7 @@ export const SectionTitleLP = styled.hgroup`
       z-index: -1;
       font-size: 48px;
       position: absolute;
+      min-width: max-content;
       content: attr(section-title);
       color: ${({ theme }) => theme.colors.primary.light };
     }
@@ -155,35 +156,148 @@ export const SectionTitleLP = styled.hgroup`
   }
 
   @media ${({ theme }) => theme.media.desktop } {
+    gap: 12px;
+    align-items: center;
+
+    > h3 {
+      gap: 14px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+
+      &:after {
+        width: 47vw;
+        margin: 14px auto 0;
+      }
+    }
+
     &.aside {
+      width: 100%;
       display: flex;
       align-items: center;
       flex-direction: row;
       justify-content: space-between;
       
-      > h2 {
+      > h3 {
         text-align: left;
+        align-items: flex-start;
         justify-content: flex-start;
       }
 
+      > h2 {
+        width: fit-content;
+        min-width: fit-content;
+      }
+
       > h3 {
+        width: fit-content;
         &:after {
-          width: 47vw;
+          margin: 14px 0 0 0;
         }
       }
     }
   }
 `;
 
-export const AboutProjectSectionLP = styled.section`
-  gap: 10px;
+export const LandingPageSections = styled.section`
+  gap: 42px;
   width: 100vw;
   display: flex;
   max-width: 100vw;
   padding: 48px 16px;
   flex-direction: column;
 
+  > article > .section-description {
+    text-align: justify;
+    color: ${({ theme }) => theme.colors.subtext.light };
+    font-size: ${({ theme }) => theme.typography.size.h5};
+    font-weight: ${({ theme }) => theme.typography.weight.regular };
+  }
+
   @media ${({ theme }) => theme.media.desktop } {
     padding: 84px 9.4vw;
+
+    > article > .section-description {
+      text-align: center;
+    }
+  }
+`;
+
+export const AboutProjectSectionContent = styled.article`
+  gap: 48px;
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+`;
+
+export const IconDivider = styled.img`
+  width: auto;
+  height: 42px;
+`;
+
+export const AboutFeaturesListing = styled.div`
+  gap: 58px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  > figure {
+    > img {
+      width: 243px;
+      height: 142px;
+      border-radius: 48px;
+    }
+  }
+
+  > ol.benefits-listing {
+    gap: 42px;
+    width: 100%;
+    items: center;
+    display: flex;
+    list-style: none;
+    height: max-content;
+    flex-direction: column;
+    justify-content: center;
+
+    > li {
+      gap: 32px;
+      display: flex;
+      text-align: left;
+      align-items: center;
+      color: ${({ theme }) => theme.colors.subtext.light};
+      font-size: ${({ theme }) => theme.typography.size.h5};
+      font-weight: ${({ theme }) => theme.typography.weight.regular };
+
+      &:before {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        min-width: 32px;
+        align-items: center;
+        border-radius: 100%;
+        justify-content: center;
+        content: attr(li-number);
+        color: ${({ theme }) => theme.colors.background.light};
+        font-size: ${({ theme }) => theme.typography.size.h4};
+        background: ${({ theme }) => theme.colors.primary.main};
+        font-weight: ${({ theme }) => theme.typography.weight.bold };
+      }
+    }
+  }
+
+  @media ${({ theme }) => theme.media.desktop } {
+    padding: 0 120px;
+    flex-direction: row;
+
+    > ol.benefits-listing {
+      > li {
+        &:nth-of-type(2) {
+          margin-left: 24px;
+        }
+      }
+    }
   }
 `;
