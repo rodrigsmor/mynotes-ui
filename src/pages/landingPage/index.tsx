@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { Button } from '../../components/buttons/Button';
 import { Header } from '../../components/layouts/Header';
@@ -10,6 +10,7 @@ import { HiOutlineChevronDoubleDown, HiOutlinePencil, HiOutlinePresentationChart
 import Divider_LandingPageIllustration from '../../assets/images/illustrations/Divider_LandingPageIllustration.svg'
 import { LandingPageContainer, HomeSectionLP, HomeArrowAnchor, SectionTitleLP, LandingPageSections, AboutProjectSectionContent, IconDivider, AboutFeaturesListing, FeaturesSectionContent, FeaturesCardLP, LandingPageFooter, ContactsSectionContent } from './styled';
 import { Logo } from '../../components/common/Logo';
+import { useLocation } from 'react-router-dom';
 
 interface FeaturesCardItemsTypes {
   title: string;
@@ -19,7 +20,17 @@ interface FeaturesCardItemsTypes {
 }
 
 export const LandingPage = () => {
-  const ref = useRef<HTMLDivElement>();
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    landingPageRef.current?.childNodes.forEach((element) => {
+      let el = element as HTMLElement;
+      if(el?.id !== '' && hash.includes(el?.id))
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    })
+  }, [ hash ])
+
+  const landingPageRef = useRef<HTMLDivElement>(null);
   const [ hasUserScrolled, setHasUserScrolled ] = useState<boolean>(false);
 
   const featuresCardItems: Array<FeaturesCardItemsTypes> = [
@@ -56,6 +67,7 @@ export const LandingPage = () => {
       onScroll={e => {
         setHasUserScrolled((e.currentTarget.scrollTop > 60))
       }}
+      ref={landingPageRef}
     >
       <Header isLandingPage isLogged={false} isScrolled={hasUserScrolled} />
       <HomeSectionLP id='home'>
@@ -128,7 +140,7 @@ export const LandingPage = () => {
       <div className='section-divider'>
         <IconDivider alt='' src={Divider_LandingPageIllustration} />
       </div>
-      <LandingPageSections id='Contacts'>
+      <LandingPageSections id='contact'>
         <ContactsSectionContent>
           <SectionTitleLP className='background'>
             <figure className='section-icon'>

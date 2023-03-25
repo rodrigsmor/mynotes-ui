@@ -8,7 +8,7 @@ import { Logo } from '../../common/Logo';
 import { Button } from '../../buttons/Button';
 import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface HeaderProps {
   isLogged?: boolean;
@@ -76,23 +76,25 @@ interface LandingPageNavigationProps {
 }
 
 const LandingPageNavigation = ({ mobileMenuIsOpen, closeMobileMenu }: LandingPageNavigationProps) => {
+  const { hash } = useLocation();
+
   const options = [
     {
       id: 0,
       label: 'Início',
-      path: '/#home'
+      path: '#home'
     }, {
       id: 1,
       label: 'O que é?',
-      path: '/#about-project',
+      path: '#about-project',
     }, {
       id: 2,
       label: 'Recursos',
-      path: '/#features'
+      path: '#features'
     }, {
       id: 3,
       label: 'Contatos',
-      path: '/#contact'
+      path: '#contact'
     }, 
   ]
   
@@ -111,7 +113,11 @@ const LandingPageNavigation = ({ mobileMenuIsOpen, closeMobileMenu }: LandingPag
           {
             options.map(({ id, label, path }) => (
               <li key={id}>
-                <Link to={path}>
+                <Link 
+                  to={path}
+                  aria-current={(hash.includes(path))}
+                  className={`${hash.includes(path) && 'selected'}`}
+                >
                   { label }
                 </Link>
               </li>

@@ -141,7 +141,6 @@ export const LandingPageNavigationContainer = styled.div`
     left: 0;
   }
 
-
   @media ${({ theme }) => theme.media.desktop } {
     top: 0;
     left: 0;
