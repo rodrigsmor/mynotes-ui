@@ -1,7 +1,11 @@
-import { CollectionsSection, GreetingsSection, OverviewContainer, RecentNotesSection, SectionPending } from "./styled";
+import { CollectionsSection, GreetingsSection, OverviewContainer, RecentNotesSection, SectionHeader, SectionPending } from "./styled";
 import { AuthLayout } from "../../components/common/AuthLayout";
 import { SummaryCard, SummaryCardProps } from "../../components/cards/SummaryCard";
 import { HiOutlineDocumentText, HiOutlineCalendar, HiOutlineTrash } from 'react-icons/hi2';
+import { Link } from "react-router-dom";
+import { SeeMore } from "../../components/buttons/seeMore";
+import { noteCardsHome } from "../../utils/mock";
+import { NoteCard } from "../../components/cards/NoteCard";
 
 export const Overview = () => {
   const summaryCards: Array<SummaryCardProps> = [
@@ -37,14 +41,24 @@ export const Overview = () => {
           </ul>
         </GreetingsSection>
         <RecentNotesSection>
-
+          <SectionHeader>
+            <h3>Suas anotações recentes</h3>
+            <SeeMore isLink path="/app/notes" />
+          </SectionHeader>
+          <ul>
+            {
+              noteCardsHome.slice(0, 3).map((note) => (<li key={note.id}> <NoteCard note={note} view="ROW" /></li>))
+            }
+          </ul>
         </RecentNotesSection>
-        <CollectionsSection>
+        <div className="other-sections">
+          <CollectionsSection>
 
-        </CollectionsSection>
-        <SectionPending>
+          </CollectionsSection>
+          <SectionPending>
 
-        </SectionPending>
+          </SectionPending>
+        </div>
       </OverviewContainer>
     </AuthLayout>
   );

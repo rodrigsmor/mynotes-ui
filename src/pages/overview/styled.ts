@@ -1,19 +1,25 @@
 import styled from "styled-components";
 
 export const OverviewContainer = styled.div`
+  gap: 28px;
   width: 100%;
-  height: 100%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
   padding: calc(68px + 28px) 16px;
   
   @media ${({ theme }) => theme.media.desktop}  {
-    gap: 28px;
     width: 100%;
     display: grid;
     max-width: 100%;
     padding: 24px 32px;
-    overflow-x: hidden;
-    grid-template-rows: repeat(1, fit-content);
+    grid-template-rows: max-content 2fr;
     grid-template-columns: minmax(auto, 2fr) minmax(308px, 1fr);
+
+    > .other-sections {
+      grid-row: 1 / 3;
+      grid-column: 2 / 3;
+    }
   }
 `;
 
@@ -69,6 +75,20 @@ export const GreetingsSection = styled.section`
   }
 `;
 
+export const SectionHeader = styled.header`
+  width: 100%;
+  display: flex;
+  max-height: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  > h3 {
+    color: ${({ theme }) => theme.colors.subtext.main};
+    font-size: ${({ theme }) => theme.typography.size.h4};
+    font-weight: ${({ theme }) => theme.typography.weight.semibold};
+  }
+`;
+
 export const CollectionsSection = styled.section`
   height: 250px;
 
@@ -80,9 +100,37 @@ export const CollectionsSection = styled.section`
 `;
 
 export const SectionPending = styled.section`
-
+  
 `;
 
 export const RecentNotesSection = styled.section`
+  gap: 28px;
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
 
+  > ul {
+    gap: 14px;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+
+    > li {
+      width: 100%;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.desktop} {
+    height: 100%;
+    grid-row: 2 / 3;
+    min-height: 100%;
+    grid-column: 1 / 2;
+
+    > ul {
+      gap: 18px;
+      min-height: 100%;
+      height: fit-content;
+    }
+  }
 `;
