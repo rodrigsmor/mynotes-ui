@@ -7,11 +7,20 @@ export const OverviewContainer = styled.div`
   height: fit-content;
   flex-direction: column;
   padding: calc(68px + 28px) 16px;
+
+  > .other-sections {
+    gap: 28px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
   
   @media ${({ theme }) => theme.media.desktop}  {
     width: 100%;
     display: grid;
     max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
     padding: 24px 32px;
     grid-template-rows: max-content 2fr;
     grid-template-columns: minmax(auto, 2fr) minmax(308px, 1fr);
@@ -83,19 +92,35 @@ export const SectionHeader = styled.header`
   justify-content: space-between;
 
   > h3 {
-    color: ${({ theme }) => theme.colors.subtext.main};
+    color: ${({ theme }) => theme.colors.subtext.dark};
     font-size: ${({ theme }) => theme.typography.size.h4};
     font-weight: ${({ theme }) => theme.typography.weight.semibold};
   }
 `;
 
 export const CollectionsSection = styled.section`
-  height: 250px;
+  gap: 14px;
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  transition: all .5s ease;
+
+  > ul {
+    gap: 8px;
+    width: 100%;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+
+    > li {
+      width: 100%;
+    }
+  }
 
   @media ${({ theme }) => theme.media.desktop} {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-    background: red;
   }
 `;
 

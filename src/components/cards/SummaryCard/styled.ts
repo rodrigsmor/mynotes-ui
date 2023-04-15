@@ -19,6 +19,8 @@ export const SummaryCardContainer = styled.article<SummaryProps>`
     width: 42px;
     height: 42px;
     display: grid;
+    min-width: 42px;
+    min-height: 42px;
     place-items: center;
     border-radius: 14px;
     color: ${({ theme, colors }) => theme.colors[colors].main};
@@ -46,15 +48,17 @@ export const SummaryCardContainer = styled.article<SummaryProps>`
     }
   }
 
-  @media ${({ theme }) => theme.media.desktop } {
+  @media (min-width: 1173px) {
     gap: 18px;
     flex-direction: row;
     
     > .icon {
+      flex: 1;
       height: 100%;
       height: 50px;
-      flex: 1;
+      flex-shrink: 0;
       max-width: 42px;
+      min-width: 42px;
       min-height: 100%;
     }
 

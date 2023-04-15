@@ -4,8 +4,9 @@ import { SummaryCard, SummaryCardProps } from "../../components/cards/SummaryCar
 import { HiOutlineDocumentText, HiOutlineCalendar, HiOutlineTrash } from 'react-icons/hi2';
 import { Link } from "react-router-dom";
 import { SeeMore } from "../../components/buttons/seeMore";
-import { noteCardsHome } from "../../utils/mock";
+import { collectionsSummary, noteCardsHome } from "../../utils/mock";
 import { NoteCard } from "../../components/cards/NoteCard";
+import { CollectionSummary } from "../../components/buttons/CollectionSummary";
 
 export const Overview = () => {
   const summaryCards: Array<SummaryCardProps> = [
@@ -40,22 +41,35 @@ export const Overview = () => {
             {summaryCards.map(({ amount, colors, id, Icon, title }) => <li key={id}><SummaryCard id={id} amount={amount} Icon={Icon} colors={colors} title={title} /></li>) }
           </ul>
         </GreetingsSection>
-        <RecentNotesSection>
+        <RecentNotesSection aria-labelledby="section_recentNotes-title">
           <SectionHeader>
-            <h3>Suas anotações recentes</h3>
+            <h3 id='section_recentNotes-title'>Suas anotações recentes</h3>
             <SeeMore isLink path="/app/notes" />
           </SectionHeader>
           <ul>
-            {
-              noteCardsHome.slice(0, 3).map((note) => (<li key={note.id}> <NoteCard note={note} view="ROW" /></li>))
-            }
+            { noteCardsHome.slice(0, 6).map((note) => (<li key={note.id}> <NoteCard note={note} view="ROW" /></li>)) }
           </ul>
         </RecentNotesSection>
         <div className="other-sections">
-          <CollectionsSection>
-
+          <CollectionsSection aria-labelledby='section_collections-title'>
+            <SectionHeader>
+              <h3 id='section_collections-title'>Coleções</h3>
+              <SeeMore isLink path="/app/collections" />
+            </SectionHeader>
+            <ul>
+              {
+                collectionsSummary.map((collection) => (
+                  <li key={collection.id}>
+                    <CollectionSummary props={collection} />
+                  </li>
+                ))
+              }
+            </ul>
           </CollectionsSection>
           <SectionPending>
+            <SectionHeader>
+              <h3 id='section_collections-title'>Suas pendências</h3>
+            </SectionHeader>
 
           </SectionPending>
         </div>
