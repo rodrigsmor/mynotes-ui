@@ -19,14 +19,29 @@ export const OverviewContainer = styled.div`
     width: 100%;
     display: grid;
     max-width: 100%;
+    overflow: hidden;
     max-height: 100%;
-    padding: 24px 32px;
+    padding: 24px 32px 0px 0;
     grid-template-rows: max-content 2fr;
     grid-template-columns: minmax(auto, 2fr) minmax(308px, 1fr);
 
     > .other-sections {
       grid-row: 1 / 3;
       grid-column: 2 / 3;
+      max-height: 100%;
+      overflow-y: auto;
+      padding: 0 0 24px;
+
+      &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: ${({ theme }) => theme.colors.subtext.light}66;
+        border: 2px solid ${({ theme }) => theme.colors.primary.light};
+      }
     }
   }
 `;
@@ -71,6 +86,7 @@ export const GreetingsSection = styled.section`
     max-width: 100%;
     grid-row: 1 / 2;
     grid-column: 1 / 2;
+    padding: 0 0 0 32px;
 
     > .greetings-message {
       font-size: ${({ theme }) => theme.typography.size.h3 };
@@ -158,16 +174,34 @@ export const RecentNotesSection = styled.section`
   }
 
   @media ${({ theme }) => theme.media.desktop} {
+    gap: 20;
     height: 100%;
     grid-row: 2 / 3;
+    max-height: 100%;
+    min-height: 100%;
     grid-column: 1 / 2;
-    max-height: fit-content;
-    min-height: fit-content;
+
+    > header {
+      padding: 0 0 0 32px;
+    }
 
     > ul {
       gap: 18px;
-      min-height: 100%;
-      height: fit-content;
+      height: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+      padding: 4px 8px 24px 32px;
+
+      &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: ${({ theme }) => theme.colors.subtext.light}66;
+        border: 2px solid ${({ theme }) => theme.colors.primary.light};
+      }
     }
   }
 `;

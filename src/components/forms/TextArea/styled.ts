@@ -18,15 +18,4 @@ export const TextAreaWrapper = styled.textarea`
     font-size: ${({ theme }) => theme.typography.size.h6 };
     font-weight: ${({ theme }) => theme.typography.weight.light };
   }
-
-  &::-webkit-scrollbar {
-    width: 6px;
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background: ${({ theme }) => theme.colors.subtext.light}66;
-    border: 2px solid ${({ theme }) => theme.colors.primary.light};
-  }
 `;

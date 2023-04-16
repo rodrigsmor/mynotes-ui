@@ -47,7 +47,7 @@ export const Overview = () => {
             <h3 id='section_recentNotes-title'>Suas anotações recentes</h3>
             <SeeMore isLink path="/app/notes" />
           </SectionHeader>
-          <ul>
+          <ul className='custom-scroll'>
             { noteCardsHome.slice(0, 6).map((note) => (<li key={note.id}> <NoteCard note={note} view="ROW" /></li>)) }
           </ul>
         </RecentNotesSection>
