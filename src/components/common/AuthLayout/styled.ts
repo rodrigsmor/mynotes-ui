@@ -24,7 +24,7 @@ export const Body = styled.main`
 
   @media ${({ theme }) => theme.media.desktop} {
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     position: relative;
 
     &::-webkit-scrollbar {

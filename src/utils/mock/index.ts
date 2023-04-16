@@ -1,4 +1,5 @@
 import { CategoriesEnums } from "../enums/CategoriesEnums";
+import { collectionSummaryType } from "../types/collection";
 import { NoteCardTypes } from "../types/note-card";
 
 export const noteCardsHome: Array<NoteCardTypes> = [
@@ -99,4 +100,49 @@ export const noteCardsHome: Array<NoteCardTypes> = [
     lastUpdate: new Date('2011-05-12T11:08:33Z'),
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw4plH4kRNCVSnQkqwU9n-zjEG-iW4cmuehg&usqp=CAU'
   },
+]
+
+type NotePendingType = {
+  id: number;
+  title: string;
+  deadline: Date;
+  category: CategoriesEnums;
+}
+
+export const notePending: Array<NotePendingType> = [
+  {
+    id: 12,
+    category: CategoriesEnums.PURCHASES,
+    deadline: new Date('2028-12-02T08:32:28Z'),
+    title: 'Pagar o boleto do aluguel'
+  }, {
+    id: 28,
+    category: CategoriesEnums.STUDIES,
+    deadline: new Date('2023-02-28T13:12:58Z'),
+    title: 'Passear com o cachorro'
+  }, {
+    id: 234,
+    category: CategoriesEnums.HOME,
+    deadline: new Date('2025-06-27T09:38:16Z'),
+    title: 'Falar com o gestor sobre a entrega do trabalho'
+  },
+]
+
+export const collectionsSummary: Array<collectionSummaryType> = [
+  {
+    id: 0,
+    notesAmount: 12,
+    name: 'Metas de 2023',
+    category: CategoriesEnums.GOALS,
+  }, {
+    id: 1,
+    notesAmount: 32,
+    name: 'Coisas para fazer no meu final de semana',
+    category: CategoriesEnums.PERSONAL,
+  }, {
+    id: 2,
+    notesAmount: 8,
+    name: 'Conteúdos de apoio para a faculdade',
+    category: CategoriesEnums.SCHOOL,
+  }
 ]

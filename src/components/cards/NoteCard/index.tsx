@@ -1,10 +1,10 @@
-import { IconButton } from "../../buttons/IconButton";
-import { HiDocumentDuplicate, HiHeart, HiLink, HiOutlineEllipsisVertical, HiPencilSquare, HiRectangleStack, HiTrash } from "react-icons/hi2";
+import { HiDocumentDuplicate, HiHeart, HiLink, HiPencilSquare, HiRectangleStack, HiTrash } from "react-icons/hi2";
 import { NoteCardTypes } from "../../../utils/types/note-card";
 import { formatFullDateTime, formatDate, formatTime } from '../../../utils/functions/formatDate';
 import { NoteCardWrapper, MainInfos, NoteDetails, CoverImage, IconImage, CardTitle, CardContent, Category } from './styled';
 import { Menu, OptionsProps } from "../../modals/Menu";
-import { MouseEvent, MouseEventHandler } from 'react';
+import { MouseEvent } from 'react';
+import { CategoriesStyle } from "../../../utils/models/categoryStyle";
 
 interface NoteCardComponentTypes {
   view: string;
@@ -73,7 +73,7 @@ export const NoteCard = ({ view, note }: NoteCardComponentTypes) => {
         date={formatDate(lastUpdate)}
         time={`${formatTime(lastUpdate)}h`}
       />
-      <Category>{category}</Category>
+      <Category color={CategoriesStyle[category].color}>{category}</Category>
       <NoteDetails>
         <time dateTime={lastUpdate.toDateString()}>
           {formatFullDateTime(lastUpdate)}
@@ -102,7 +102,7 @@ export const NoteCard = ({ view, note }: NoteCardComponentTypes) => {
         <time dateTime={lastUpdate.toDateString()}>
           {formatFullDateTime(lastUpdate)}
         </time>
-        <Category>{category}</Category>
+        <Category color={CategoriesStyle[category].color}>{category}</Category>
       </NoteDetails>
     </>
   );
