@@ -38,7 +38,6 @@ cd mynotes-ui
 # this command will install all application dependencies
 yarn install
 
-# esse comando irá executar (rodar) a aplicação em sua máquina local (o --host é opcional, somente o use caso queira que o servidor seja acessado por outros aparelhos conectados a sua rede)
 # this command will run the app on your local device 
 # the --host flag it's optional, you only need to use it when you want to access the server on other devices connected to your network
 yarn run dev --host
@@ -55,7 +54,10 @@ By running these commands, the application can be used by you. To see MyNotes ru
     <img src="https://i.ibb.co/N9Yrtyt/mynotes-login.png" alt="MyNotes login page" width="100%"  height="auto"/>
     <div>📓 • 📓 • 📓</div>
     <h4>Overview page</h4>
-    <img src="https://i.ibb.co/zRbNk3c/mynotes-home.png" alt="MyNotes overview page" width="100%"  height="auto"/>
+    <img src="https://i.ibb.co/C8sC1Xh/overview-preview.png" alt="MyNotes overview page" width="100%"  height="auto"/>
+    <div>📓 • 📓 • 📓</div>
+    <h4>All notes page</h4>
+    <img src="https://i.ibb.co/zRbNk3c/mynotes-home.png" alt="MyNotes all notes page" width="100%"  height="auto"/>
 </div>
 
 ### 🌎 Support links and tutorials
