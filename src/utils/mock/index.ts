@@ -102,6 +102,32 @@ export const noteCardsHome: Array<NoteCardTypes> = [
   },
 ]
 
+type NotePendingType = {
+  id: number;
+  title: string;
+  deadline: Date;
+  category: CategoriesEnums;
+}
+
+export const notePending: Array<NotePendingType> = [
+  {
+    id: 12,
+    category: CategoriesEnums.PURCHASES,
+    deadline: new Date('2028-12-02T08:32:28Z'),
+    title: 'Pagar o boleto do aluguel'
+  }, {
+    id: 28,
+    category: CategoriesEnums.STUDIES,
+    deadline: new Date('2023-02-28T13:12:58Z'),
+    title: 'Passear com o cachorro'
+  }, {
+    id: 234,
+    category: CategoriesEnums.HOME,
+    deadline: new Date('2025-06-27T09:38:16Z'),
+    title: 'Falar com o gestor sobre a entrega do trabalho'
+  },
+]
+
 export const collectionsSummary: Array<collectionSummaryType> = [
   {
     id: 0,

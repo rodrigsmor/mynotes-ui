@@ -164,11 +164,18 @@ export const CardContent = styled.p`
   font-weight: ${({ theme }) => theme.typography.weight.regular };
 `;
 
-export const Category = styled.span`
+interface CategoryProps {
+  color: string;
+}
+
+export const Category = styled.span<CategoryProps>`
+  display: flex;
   padding: 2px 8px;
   border-radius: 8px;
-  color: ${({ theme }) => theme.colors.primary.main};
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme, color }) => theme.colors[color].main};
   font-size: ${({ theme }) => theme.typography.size.h7};
-  background: ${({ theme }) => theme.colors.primary.light};
+  background: ${({ theme, color }) => theme.colors[color].light};
   font-weight: ${({ theme }) => theme.typography.weight.medium };
 `;

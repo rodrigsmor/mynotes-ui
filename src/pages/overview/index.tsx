@@ -4,9 +4,10 @@ import { SummaryCard, SummaryCardProps } from "../../components/cards/SummaryCar
 import { HiOutlineDocumentText, HiOutlineCalendar, HiOutlineTrash } from 'react-icons/hi2';
 import { Link } from "react-router-dom";
 import { SeeMore } from "../../components/buttons/seeMore";
-import { collectionsSummary, noteCardsHome } from "../../utils/mock";
+import { collectionsSummary, noteCardsHome, notePending } from "../../utils/mock";
 import { NoteCard } from "../../components/cards/NoteCard";
 import { CollectionSummary } from "../../components/buttons/CollectionSummary";
+import { PendingNoteCard } from "../../components/cards/PendingNoteCard";
 
 export const Overview = () => {
   const summaryCards: Array<SummaryCardProps> = [
@@ -70,7 +71,9 @@ export const Overview = () => {
             <SectionHeader>
               <h3 id='section_collections-title'>Suas pendências</h3>
             </SectionHeader>
-
+            <ul>
+              { notePending.map(({ id, category, deadline, title }) => <li key={id}><PendingNoteCard id={id} category={category} date={deadline} name={title} /></li>) }
+            </ul>
           </SectionPending>
         </div>
       </OverviewContainer>

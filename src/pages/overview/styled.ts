@@ -50,7 +50,6 @@ export const GreetingsSection = styled.section`
   }
 
   > .greetings-text {
-    text-align: justify;
     color: ${({ theme }) => theme.colors.subtext.main};
     font-size: ${({ theme }) => theme.typography.size.h5};
     font-weight: ${({ theme }) => theme.typography.weight.regular};
@@ -125,7 +124,20 @@ export const CollectionsSection = styled.section`
 `;
 
 export const SectionPending = styled.section`
-  
+  gap: 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  > ul {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+    > li {
+      list-style: none;
+    }
+  }
 `;
 
 export const RecentNotesSection = styled.section`
