@@ -28,7 +28,7 @@ export const SigninPageContainer = styled.div`
     &::before {
       content: '';
       width: 100vw;
-      height: 192px;
+      height: 35vh;
       position: absolute;
       background-size: cover;
       background-clip: border-box;
@@ -117,7 +117,8 @@ export const FormCard = styled(Form)`
 
   @media ${({ theme }) => theme.media.desktop } {
     width: 48.25vw;
-    height: 90.25vh;
+    height: 593px;
+    min-height: fit-content;
     border-radius: 24px;
     z-index: 5;
 
@@ -219,6 +220,7 @@ export const FieldWrapper = styled.div`
   gap: 8px;
   width: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
 `;
 export const FieldLabel = styled.label`
@@ -229,7 +231,19 @@ export const FieldLabel = styled.label`
 `;
 
 export const ErrorMessage = styled.p`
+  z-index: 10;
+  top: 68px;
+  width: 100%;
+  padding: 4px 14px;
+  position: absolute;
+  border-radius: 8px;
   color: ${({ theme }) => theme.colors.danger.main};
   font-size: ${({ theme }) => theme.typography.size.h6};
+  background: linear-gradient(0deg,  ${({ theme }) => theme.colors.danger.light},  ${({ theme }) => theme.colors.danger.light}),  ${({ theme }) => theme.colors.background.light};
+  border: 2px solid ${({ theme }) => theme.colors.danger.light };
   font-weight: ${({ theme }) => theme.typography.weight.medium };
+
+  &:empty {
+    display: none;
+  }
 `;

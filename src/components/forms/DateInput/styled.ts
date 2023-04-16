@@ -36,6 +36,8 @@ export const InputGroup = styled.div`
 export const InputElement = styled.input`
   width: 100%;
   outline: none;
+  min-height: 20px;
+  overflow: visible;
   height: fit-content;
   background: transparent;
   border: 0px solid transparent;
@@ -55,7 +57,7 @@ export const InputElement = styled.input`
     -webkit-appearance: none;
   }
 
-  &:focus, ::-webkit-inner-spin-button, {
+  &:focus, ::-webkit-inner-spin-button {
     color: ${({ theme }) => theme.colors.subtext.light};
   }
 `;
