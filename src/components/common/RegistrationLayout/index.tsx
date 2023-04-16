@@ -3,7 +3,6 @@ import { ReactNode, FormEvent, FormEventHandler } from 'react';
 import { Link } from "react-router-dom";
 import { Button } from "../../buttons/Button";
 import { ThemeEnums } from "../../../utils/enums/ThemeEnums";
-import { SignupFields, LoginFields, LoginFormProps } from '../../../utils/types/registration';
 import RegistrationIllustration from '../../../assets/images/illustrations/RegistrationIllustration.svg';
 import { DescriptionAnchors, FormCard, FormFieldsContainer, FormFooter, SideSection, SigninPageContainer } from "./styled";
 import { Formik } from "formik";

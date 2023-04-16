@@ -27,12 +27,13 @@ const SignupForm = withFormik<SignupFormProps, SignupFields>({
       .string()
       .min(8, 'Deve ter no minímino 8 caracteres')
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
         'Precisa conter: um caractere especial, letras maiusculas e minusculas e no mínimo 8 caracteres.'
       )
       .required('Senha é obrigatório!'),
     confirmPassword: Yup
       .string()
+      .required('Esse campo não pode estar vázio!')
       .oneOf([Yup.ref('password'), null], 'As senhas precisam ser iguais!')
   }),
   handleSubmit({ fullName, confirmPassword, email, password }) {

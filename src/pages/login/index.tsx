@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Input } from "../../components/forms/Input";
 import { HiOutlineEnvelope, HiOutlineLockClosed } from "react-icons/hi2";
@@ -22,7 +21,7 @@ const LoginForm = withFormik<LoginFormProps, LoginFields>({
     password: Yup
       .string()
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
         'Precisa ser uma senha válida!'
       )
       .required('Senha é obrigatório!')
