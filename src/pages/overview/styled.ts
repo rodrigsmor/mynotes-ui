@@ -19,7 +19,6 @@ export const OverviewContainer = styled.div`
     width: 100%;
     display: grid;
     max-width: 100%;
-    overflow: hidden;
     max-height: 100%;
     padding: 24px 32px;
     grid-template-rows: max-content 2fr;
@@ -161,8 +160,9 @@ export const RecentNotesSection = styled.section`
   @media ${({ theme }) => theme.media.desktop} {
     height: 100%;
     grid-row: 2 / 3;
-    min-height: 100%;
     grid-column: 1 / 2;
+    max-height: fit-content;
+    min-height: fit-content;
 
     > ul {
       gap: 18px;

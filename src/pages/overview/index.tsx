@@ -74,6 +74,9 @@ export const Overview = () => {
             <ul>
               { notePending.map(({ id, category, deadline, title }) => <li key={id}><PendingNoteCard id={id} category={category} date={deadline} name={title} /></li>) }
             </ul>
+            <SeeMore isLink={false} buttonProps={{
+              
+            }}/>
           </SectionPending>
         </div>
       </OverviewContainer>
