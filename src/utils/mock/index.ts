@@ -134,12 +134,12 @@ export const notePending: Array<NotePendingType> = [
     id: 194,
     category: CategoriesEnums.TASKS,
     deadline: new Date('2025-06-27T09:38:16Z'),
-    title: 'Falar com o gestor sobre a entrega do trabalho'
+    title: 'Fazer uma receita nova para o casamento'
   }, {
     id: 314,
     category: CategoriesEnums.WORK,
-    deadline: new Date('2025-06-27T09:38:16Z'),
-    title: 'Falar com o gestor sobre a entrega do trabalho'
+    deadline: new Date('2020-12-02T13:23:16Z'),
+    title: 'Trocar a areia do gato'
   },
 ]
 
