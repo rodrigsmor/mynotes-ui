@@ -1,7 +1,7 @@
 import { CardInput } from "../../forms/CardInput";
 import { IconButton } from "../../buttons/IconButton";
 import { ImageUpload } from "../../forms/ImageUpload";
-import { HiBars3BottomLeft, HiCheckCircle, HiChevronDoubleLeft, HiChevronDoubleRight, HiOutlineCheckCircle, HiOutlineInformationCircle, HiXMark, } from 'react-icons/hi2';
+import { HiBars3BottomLeft, HiChevronDoubleLeft, HiChevronDoubleRight, HiOutlineCheckCircle, HiOutlineInformationCircle, HiXMark, } from 'react-icons/hi2';
 import { MouseEventHandler, useState, useEffect, useRef, FormEvent } from 'react';
 import { CategoryFieldGroup, CreateNoteContainer, FieldGroup, FieldLabel, HeaderModal, MainFormSection, ModalBackground, NoteDetailsForm, SubmitButtonsGroup, TopSection, AsideAnnotationForm, AsideAnnotationFormContent, AsideNotesSections, AsideNotesSectionsWrapper, CheckListContainer } from './styled';
 import { Select } from "../../forms/Select";
@@ -205,7 +205,7 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
               hasPopup={false}
               theme={ThemeEnums.SURFACE}
               controlId="createAnnotation_Modal"
-              onClick={e => console.log(e)}
+              onClick={onClose}
             >
               <>cancelar</>
             </Button>
