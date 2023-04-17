@@ -71,6 +71,7 @@ export const CreateNoteContainer = styled.form`
     height: 89.5vh;
     max-width: 71.4%;
     max-height: 89.5vh;
+    min-height: 89.5vh;
     border-radius: 24px;
   }
 `;
