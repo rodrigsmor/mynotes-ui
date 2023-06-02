@@ -5,6 +5,7 @@ export const LoggedAccountCardContainer = styled.div`
   width: 249px;
   padding: 8px;
   display: flex;
+  position: relative;
   align-items: center;
   border-radius: 16px;
   transition: .5s all ease-out;
@@ -49,4 +50,34 @@ export const UserEmail = styled.address`
   color: ${({ theme }) => theme.colors.subtext.light};
   font-size: ${({ theme }) => theme.typography.size.h7};
   font-weight: ${({ theme }) => theme.typography.weight.light};
+`;
+
+export const DropdownNav = styled.ul`
+  right: 0;
+  top: 115%;
+  opacity: 1;
+  width: 80vw;
+  height: 340px;
+  padding: 14px;
+  display: flex;
+  list-style: none;
+  position: absolute;
+  border-radius: 16px;
+  flex-direction: column;
+  transition: all .3s ease-in-out;
+  box-shadow: ${({ theme }) => theme.shadow.main};
+  background: ${({ theme }) => theme.colors.background.main };
+
+  &[aria-hidden="true"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 360px;
+  }
+`;
+
+export const DropdownOption = styled.li`
+  width: 100%;
 `;
