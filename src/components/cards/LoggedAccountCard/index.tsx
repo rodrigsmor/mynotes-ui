@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { Button } from '../../buttons/Button';
 import { IconButton } from '../../buttons/IconButton';
+import { connectedAccounts } from '../../../utils/mock';
+import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
 import { HiArrowLeftOnRectangle, HiOutlineEllipsisVertical, HiOutlineUser, HiOutlineUserPlus } from 'react-icons/hi2';
 import { LoggedAccountCardContainer, ProfilePicture, UserName, UserEmail, DropdownNav, DropdownOption, AccountsSection, AccountCardSummary } from './styled';
-import { connectedAccounts } from '../../../utils/mock';
-import { Button } from '../../buttons/Button';
-import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
+
 export const LoggedAccountCard = () => {
   const [ isDropdownOpen, setIsDropdownOpen ] = useState<boolean>(false);
 

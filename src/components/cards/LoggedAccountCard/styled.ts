@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const LoggedAccountCardContainer = styled.div`
-  gap: 0 12px;
-  width: 249px;
-  padding: 8px;
+  height: 48px;
+  padding: 6px;
   display: flex;
   position: relative;
   align-items: center;
@@ -14,6 +13,8 @@ export const LoggedAccountCardContainer = styled.div`
 
   .account_card_details {
     width: 100%;
+    flex-grow: 1;
+    display: none;
   }
 
   :hover {
@@ -21,6 +22,20 @@ export const LoggedAccountCardContainer = styled.div`
 
     .icon-button {
       background: ${({ theme }) => theme.colors.background.dark };
+    }
+  }
+
+  @media ${({ theme }) => theme.media.tablet } {
+    gap: 0 12px;
+    width: 249px;
+    padding: 8px;
+    height: fit-content;
+
+    .account_card_details {
+      display: flex;
+      max-width: 100%;
+      overflow: hidden;
+      flex-direction: column;
     }
   }
 `;
@@ -32,6 +47,10 @@ export const ProfilePicture = styled.img`
   object-fit: cover;
   border-radius: 16px;
   image-rendering: pixelated;
+
+  @media ${({ theme }) => theme.media.tablet } {
+    display: block;
+  }
 `;
 
 export const UserName = styled.p`
