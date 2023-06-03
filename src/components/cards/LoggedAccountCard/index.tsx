@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { IconButton } from '../../buttons/IconButton';
-import { HiOutlineEllipsisVertical, HiOutlineUser } from 'react-icons/hi2';
+import { HiArrowLeftOnRectangle, HiOutlineEllipsisVertical, HiOutlineUser, HiOutlineUserPlus } from 'react-icons/hi2';
 import { LoggedAccountCardContainer, ProfilePicture, UserName, UserEmail, DropdownNav, DropdownOption, AccountsSection, AccountCardSummary } from './styled';
 import { connectedAccounts } from '../../../utils/mock';
-
+import { Button } from '../../buttons/Button';
+import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
 export const LoggedAccountCard = () => {
   const [ isDropdownOpen, setIsDropdownOpen ] = useState<boolean>(false);
 
@@ -39,7 +40,15 @@ export const LoggedAccountCard = () => {
                 </li>
               ))
             }
+            <li>
+              <Button theme={ThemeEnums.SURFACE} onClick={() => {}} name='add-account_button'>
+                <><HiOutlineUserPlus size={12} /> adicionar novas</>
+              </Button>
+            </li>
           </ul>
+          <Button theme={ThemeEnums.SURFACE} onClick={() => { }} name='add-account_button'>
+            <><HiArrowLeftOnRectangle size={12} /> desconectar</>
+          </Button>
         </AccountsSection>
       </DropdownNav>
     </LoggedAccountCardContainer>

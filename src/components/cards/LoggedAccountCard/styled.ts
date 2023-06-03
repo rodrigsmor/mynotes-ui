@@ -127,11 +127,40 @@ export const AccountsSection = styled.section`
     width: 100%;
     display: flex;
     list-style: none;
+    align-items: center;
     flex-direction: column;
 
     > li {
       width: 100%;
       max-width: 100%;
+
+      > .styled-button {
+        padding: 0;
+        width: 100%;
+        height: 36px;
+        border-radius: 12px;
+        font-size: ${({ theme }) => theme.typography.size.h6 };
+        background: transparent;
+      }
+    }
+
+    &::after {
+      width: 80%;
+      content: '';
+      height: 1px;
+      display: block;
+      margin: 6px 0;
+      background: ${({ theme }) => theme.colors.typography.light }1A;
+    }
+  }
+
+  > .styled-button {
+    font-size: ${({ theme }) => theme.typography.size.h6 };
+    color: ${({ theme }) => theme.colors.danger.main};
+    background: ${({ theme }) => theme.colors.danger.main}0d;
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.danger.light};
     }
   }
 `;
