@@ -1,7 +1,8 @@
-import { HiOutlineEllipsisVertical } from 'react-icons/hi2';
-import { IconButton } from '../../buttons/IconButton';
-import { LoggedAccountCardContainer, ProfilePicture, UserName, UserEmail, DropdownNav, DropdownOption } from './styled';
 import { useState } from 'react';
+import { IconButton } from '../../buttons/IconButton';
+import { HiOutlineEllipsisVertical, HiOutlineUser } from 'react-icons/hi2';
+import { LoggedAccountCardContainer, ProfilePicture, UserName, UserEmail, DropdownNav, DropdownOption, AccountsSection, AccountCardSummary } from './styled';
+import { connectedAccounts } from '../../../utils/mock';
 
 export const LoggedAccountCard = () => {
   const [ isDropdownOpen, setIsDropdownOpen ] = useState<boolean>(false);
@@ -16,12 +17,30 @@ export const LoggedAccountCard = () => {
       <IconButton 
         Icon={<HiOutlineEllipsisVertical />}
         onClick={(e) => setIsDropdownOpen(!isDropdownOpen)} 
-        attributes={{ id: 'user-dropdown_button', "aria-haspopup": true, "aria-expanded": isDropdownOpen, "aria-controls": 'user-dropdown' }}
+        attributes={{ id: 'user-dropdown_button', "aria-label": 'See user settings', "aria-haspopup": true, "aria-expanded": isDropdownOpen, "aria-controls": 'user-dropdown' }}
       />
       <DropdownNav id='user-dropdown' aria-hidden={!isDropdownOpen} aria-labelledby='user-dropdown_button'>
-        <DropdownOption>
-          
+        <DropdownOption to='/app/profile' tabIndex={isDropdownOpen ? 0 : -1}>
+          <HiOutlineUser size={18} /> Seu perfil
         </DropdownOption>
+        <AccountsSection aria-labelledby='accounts-section-nav_title'>
+          <h3 id='accounts-section-nav_title'>Outras contas</h3>
+          <ul>
+            {
+              connectedAccounts.map((account, index) => (
+                <li key={index}>
+                  <AccountCardSummary tabIndex={isDropdownOpen ? 0 : -1}>
+                    <img src={account.profilePicture} alt={`${account.name} portrait`} />
+                    <div>
+                      <p>{ account.name }</p>
+                      <address>{ account.email }</address>
+                    </div>
+                  </AccountCardSummary>
+                </li>
+              ))
+            }
+          </ul>
+        </AccountsSection>
       </DropdownNav>
     </LoggedAccountCardContainer>
   );
