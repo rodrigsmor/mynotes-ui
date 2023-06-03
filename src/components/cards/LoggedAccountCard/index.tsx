@@ -26,11 +26,11 @@ export const LoggedAccountCard = () => {
         </DropdownOption>
         <AccountsSection aria-labelledby='accounts-section-nav_title'>
           <h3 id='accounts-section-nav_title'>Outras contas</h3>
-          <ul>
+          <ul role='tablist'>
             {
               connectedAccounts.map((account, index) => (
-                <li key={index}>
-                  <AccountCardSummary tabIndex={isDropdownOpen ? 0 : -1}>
+                <li key={index} role='presentation'>
+                  <AccountCardSummary role='tab' aria-selected={false} to={`/auth/login?token=${account.id}`} tabIndex={isDropdownOpen ? 0 : -1}>
                     <img src={account.profilePicture} alt={`${account.name} portrait`} />
                     <div>
                       <p>{ account.name }</p>
@@ -42,12 +42,12 @@ export const LoggedAccountCard = () => {
             }
             <li>
               <Button theme={ThemeEnums.SURFACE} onClick={() => { }} name='add-account_button' props={{ tabIndex: isDropdownOpen ? 0 : -1 }}>
-                <><HiOutlineUserPlus size={12} /> adicionar novas</>
+                <><span><HiOutlineUserPlus size={18} /></span> adicionar novas</>
               </Button>
             </li>
           </ul>
           <Button theme={ThemeEnums.SURFACE} onClick={() => { }} name='add-account_button' props={{ tabIndex: isDropdownOpen ? 0 : -1 }}>
-            <><HiArrowLeftOnRectangle size={12} /> desconectar</>
+            <><span><HiArrowLeftOnRectangle size={18} /> </span> desconectar</>
           </Button>
         </AccountsSection>
       </DropdownNav>

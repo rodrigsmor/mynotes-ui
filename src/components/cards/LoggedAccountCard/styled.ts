@@ -166,7 +166,7 @@ export const AccountsSection = styled.section`
   }
 `;
 
-export const AccountCardSummary = styled.button`
+export const AccountCardSummary = styled(Link)`
   width: 100%;
   padding: 8px;
   display: flex;
@@ -176,10 +176,11 @@ export const AccountCardSummary = styled.button`
   flex-wrap: wrap;
   border-radius: 14px;
   align-items: center;
+  text-decoration: none;
   transition: all .5s ease-out;
   border: 0px solid transparent;
   background: ${({ theme }) => theme.colors.background.light};
-
+  
   > img {
     width: 28px;
     height: 28px;
@@ -189,17 +190,18 @@ export const AccountCardSummary = styled.button`
     aspect-ratio: 4 / 4;
     image-rendering: pixelated;
   }
-
+  
   > div {
     flex-grow: 1;
     display: flex;
     max-width: 100%;
     overflow: hidden;
     flex-direction: column;
-
+    
     p, address {
       flex-grow: 1;
       text-align: start;
+      text-decoration: none;
     }
 
     p {
