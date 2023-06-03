@@ -41,12 +41,12 @@ export const LoggedAccountCard = () => {
               ))
             }
             <li>
-              <Button theme={ThemeEnums.SURFACE} onClick={() => {}} name='add-account_button'>
+              <Button theme={ThemeEnums.SURFACE} onClick={() => { }} name='add-account_button' props={{ tabIndex: isDropdownOpen ? 0 : -1 }}>
                 <><HiOutlineUserPlus size={12} /> adicionar novas</>
               </Button>
             </li>
           </ul>
-          <Button theme={ThemeEnums.SURFACE} onClick={() => { }} name='add-account_button'>
+          <Button theme={ThemeEnums.SURFACE} onClick={() => { }} name='add-account_button' props={{ tabIndex: isDropdownOpen ? 0 : -1 }}>
             <><HiArrowLeftOnRectangle size={12} /> desconectar</>
           </Button>
         </AccountsSection>

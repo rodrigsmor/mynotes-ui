@@ -155,6 +155,7 @@ export const AccountsSection = styled.section`
   }
 
   > .styled-button {
+    height: 38px;
     font-size: ${({ theme }) => theme.typography.size.h6 };
     color: ${({ theme }) => theme.colors.danger.main};
     background: ${({ theme }) => theme.colors.danger.main}0d;
