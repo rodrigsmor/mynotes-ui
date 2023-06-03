@@ -9,11 +9,11 @@ const baseStyle = css`
   cursor: pointer;
   align-items: center;
   border-radius: 24px;
+  text-decoration: none;
+  min-width: fit-content;
   justify-content: center;
   border: 0px solid transparent;
   transition: all .4s ease-in-out;
-  min-width: fit-content;
-  text-decoration: none;
   font-size: ${({ theme }) => theme.typography.size.h5};
   font-weight: ${({ theme }) => theme.typography.weight.medium};
 

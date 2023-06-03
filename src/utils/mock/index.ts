@@ -1,4 +1,5 @@
 import { CategoriesEnums } from "../enums/CategoriesEnums";
+import { AccountsTypes } from "../types/accounts";
 import { collectionSummaryType } from "../types/collection";
 import { NoteCardTypes } from "../types/note-card";
 
@@ -159,5 +160,26 @@ export const collectionsSummary: Array<collectionSummaryType> = [
     notesAmount: 8,
     name: 'Conteúdos de apoio para a faculdade',
     category: CategoriesEnums.SCHOOL,
+  }
+]
+
+export const connectedAccounts: Array<AccountsTypes> = [
+  {
+    id: 0,
+    email: 'fernanda@example.com',
+    name: 'Fernanda Silva',
+    profilePicture: 'https://images.unsplash.com/photo-1502767882403-636aee14f873'
+  },
+  {
+    id: 1,
+    email: 'rodrigo@example.com',
+    name: 'Rodrigo Santos',
+    profilePicture: 'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f'
+  },
+  {
+    id: 2,
+    email: 'carolina@example.com',
+    name: 'Carolina Oliveira',
+    profilePicture: 'https://images.unsplash.com/photo-1619634498269-03d54fa97f99'
   }
 ]

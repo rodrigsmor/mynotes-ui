@@ -62,14 +62,10 @@ export const HeaderContainer = styled.header`
 `;
 
 export const ButtonWrappers = styled.div`
-  gap: 16px;
+  gap: 8px;
   display: flex;
   align-items: center;
-  flex-directions: row;
-  
-  > .logged_account_card {
-    display: none;
-  }
+  flex-direction: row;
 
   .landing-page_Header > & {
     gap: 14px;
