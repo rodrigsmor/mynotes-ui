@@ -11,14 +11,16 @@ export const PanelDropdownWrapper = styled.div`
 
 export const PanelDropdownContent = styled.nav`
   top: 54px;
+  gap: 12px;
   width: 265px;
   padding: 14px;
   display: flex;
+  max-height: 86vh;
+  overflow: hidden;
   position: absolute;
   border-radius: 14px;
   flex-direction: column;
   transition: all .3s ease-in;
-  gap: 12px;
   box-shadow: ${({ theme }) => theme.shadow.main };
   background: ${({ theme }) => theme.colors.background.light };
 
@@ -121,10 +123,12 @@ export const HeaderTabContainers = styled.div`
 `;
 
 export const NotificationsListing = styled.ul`
-  gap: 4px;
+  gap: 8px;
   width: 100%;
   display: flex;
   list-style: none;
+  max-height: 100%;
+  overflow-y: auto;
   flex-direction: column;
 
   > li {

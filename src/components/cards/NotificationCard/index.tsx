@@ -1,16 +1,33 @@
+import { ReactNode } from "react";
 import { NotificationType } from "../../../utils/types/notification";
 import { NotificationCardContainer, NotificationLink } from "./styled";
+import { formatFullDateTime } from "../../../utils/functions/formatDate";
+import { HiCalendar } from "react-icons/hi2";
 
 interface NotificationCardType {
   notification: NotificationType,
 }
 
 export const NotificationCard = ({ notification }: NotificationCardType) => {
+  function handleDescription(description: string[]): ReactNode {
+    return description.map((value) => {
+      if (value.match(/<[^>]+>/g))
+        return <strong> {value.replaceAll(/<[^>]+>/g, '')} </strong>
+      else
+        return <>{value}</>
+    })
+  }
+
   return (
     <NotificationCardContainer>
       <NotificationLink to={'/'} data-read={notification.wasRead}>
         <span className="read-indicator" aria-label={`essa notificação não foi lida ainda.`}></span>
         <h3>{ notification.pendingName }</h3>
+        <p className="description">{ handleDescription(notification.description) }</p>
+        <time className="pending-date" aria-label='data da pendência' dateTime={notification.pendingDate.toISOString()}>
+          <abbr title="data da pendência"><HiCalendar /></abbr> { formatFullDateTime(notification.pendingDate) }
+        </time>
+        <time aria-label='data da notificação' dateTime={notification.createdAt.toISOString()}>{ formatFullDateTime(notification.createdAt) }</time>
       </NotificationLink>
     </NotificationCardContainer>
   )

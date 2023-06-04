@@ -3,19 +3,19 @@ import styled from "styled-components";
 
 export const NotificationCardContainer = styled.article`
   width: 100%;
-  padding: 4px 8px;
   position: relative;
 `;
 
 export const NotificationLink = styled(Link)`
+  gap: 4px;
   width: 100%;
-  padding: 6px;
+  padding: 12px;
   display: flex;
   max-width: 100%;
-  overflow: hidden;
   border-radius: 8px;
   position: relative;
   text-decoration: none;
+  flex-direction: column;
   color: ${({ theme }) => theme.colors.typography.light };
   background: ${({ theme }) => theme.colors.background.dark };
 
@@ -39,11 +39,29 @@ export const NotificationLink = styled(Link)`
     font-weight: ${({ theme }) => theme.typography.weight.semibold };
   }
 
+  > .description {
+    width: 100%;
+    flex-grow: 1;
+    max-width: 100%;
+    font-size: ${({ theme }) => theme.typography.size.h7 };
+    color: ${({ theme }) => theme.colors.typography.light }CC;
+
+    > strong {
+      color: ${({ theme }) => theme.colors.primary.main };
+    }
+  }
+
+  > .pending-date {
+    
+  }
+
   > .read-indicator {
-    width: 5px;
-    height: 5px;
+    top: 0px;
+    left: 0px;
+    width: 6px;
+    height: 6px;
     position: absolute;
-    border-radius: 5px;
+    border-radius: 6px;
     background: ${({ theme }) => theme.colors.primary.main };
   }
 `;
