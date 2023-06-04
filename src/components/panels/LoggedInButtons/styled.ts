@@ -16,7 +16,9 @@ export const PanelDropdownContent = styled.nav`
   display: flex;
   position: absolute;
   border-radius: 14px;
+  flex-direction: column;
   transition: all .3s ease-in;
+  gap: 12px;
   box-shadow: ${({ theme }) => theme.shadow.main };
   background: ${({ theme }) => theme.colors.background.light };
 
@@ -25,6 +27,7 @@ export const PanelDropdownContent = styled.nav`
     gap: 14px 0px;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     max-width: 100%;
     align-items: center;
     justify-content: space-between;
@@ -37,6 +40,7 @@ export const PanelDropdownContent = styled.nav`
       border-radius: 4px;
       align-items: center;
       background: transparent;
+      background: red;
       border: 0px solid transparent;
       transition: all .3s ease-in-out;
       background: ${({ theme }) => theme.colors.background.light };
@@ -52,7 +56,6 @@ export const PanelDropdownContent = styled.nav`
   }
 
   > * > h3 {
-    flex-grow: 1;
     font-size: ${({ theme }) => theme.typography.size.h6};
     color: ${({ theme }) => theme.colors.typography.light}CC;
     font-weight: ${({ theme }) => theme.typography.weight.semibold };  }
@@ -114,5 +117,17 @@ export const HeaderTabContainers = styled.div`
         width: 100%;
       }
     }
+  }
+`;
+
+export const NotificationsListing = styled.ul`
+  gap: 4px;
+  width: 100%;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+
+  > li {
+    width: 100%;
   }
 `;

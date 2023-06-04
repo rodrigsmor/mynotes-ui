@@ -1,8 +1,10 @@
 import { HiOutlineBell, HiOutlineCog6Tooth } from "react-icons/hi2";
 import { IconButton } from "../../buttons/IconButton";
-import { HeaderTabContainers, PanelDropdownContent, PanelDropdownWrapper } from "./styled";
+import { HeaderTabContainers, NotificationsListing, PanelDropdownContent, PanelDropdownWrapper } from "./styled";
 import { useState } from "react";
 import { BsCheckAll } from "react-icons/bs";
+import { notifications } from "../../../utils/mock";
+import { NotificationCard } from "../../cards/NotificationCard";
 
 interface TabsInfo {
   name: 'all' | 'notRead' | 'read';
@@ -50,9 +52,14 @@ export const LoggedInButtons = () => {
               }
             </HeaderTabContainers>
           </header>
-          <section id="notifications-content_tab">
-            
-          </section>
+          <NotificationsListing id="notifications-content_tab" aria-label="lista de notificações">
+            {
+              notifications.map((notification) => <li key={notification.id}><NotificationCard notification={notification} /></li>)
+            }
+          </NotificationsListing>
+          <footer>
+
+          </footer>
         </PanelDropdownContent>
       </PanelDropdownWrapper>
       <IconButton
