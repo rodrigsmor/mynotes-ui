@@ -6,7 +6,11 @@ export const NotificationCardContainer = styled.article`
   position: relative;
 `;
 
-export const NotificationLink = styled(Link)`
+type NotificationLinkType = {
+  statusColor: string;
+}
+
+export const NotificationLink = styled(Link)<NotificationLinkType>`
   gap: 2px;
   width: 100%;
   padding: 12px;
@@ -18,7 +22,7 @@ export const NotificationLink = styled(Link)`
   flex-direction: column;
   transition: all .3s ease-in-out;
   color: ${({ theme }) => theme.colors.typography.light };
-  background: ${({ theme }) => theme.colors.background.dark };
+  background: ${({ theme }) => theme.colors.background.main };
 
   &:focus-visible {
     transition: none;
@@ -93,11 +97,27 @@ export const NotificationLink = styled(Link)`
     background: ${({ theme }) => theme.colors.primary.main };
   }
 
-  > .notification-date {
+  > footer {
     width: 100%;
+    display: flex;
     margin: 4px 0 0;
-    text-align: end;
-    font-size: ${({ theme }) => theme.typography.size.h7};
-    color: ${({ theme }) => theme.colors.typography.light }cc;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    > p {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: ${({ theme }) => theme.typography.size.h7};
+      font-weight: ${({ theme }) => theme.typography.weight.semibold };
+      color: ${({ theme, statusColor }) => theme.colors[statusColor].main};
+      background: ${({ theme, statusColor }) => theme.colors[statusColor].main}1A;
+    }
+    
+    > .notification-date {
+      text-align: end;
+      font-size: ${({ theme }) => theme.typography.size.h7};
+      color: ${({ theme }) => theme.colors.typography.light }cc;
+    }
   }
 `;

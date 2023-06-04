@@ -1,3 +1,3 @@
 export enum StatusEnums {
-  'PENDING', 'LATE', 'DONE', 'DONELATE'
+  'PENDING' = 'pendente', 'LATE' = 'atrasado', 'DONE' = 'feito', 'DONELATE' = 'feito-atrasado'
 }
