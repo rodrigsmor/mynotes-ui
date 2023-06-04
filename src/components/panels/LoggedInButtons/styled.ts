@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const PanelDropdownWrapper = styled.div`
@@ -16,6 +17,7 @@ export const PanelDropdownContent = styled.nav`
   width: 80vw;
   padding: 14px;
   display: flex;
+  max-width: 265px;
   position: absolute;
   border-radius: 14px;
   flex-direction: column;
@@ -175,5 +177,86 @@ export const NotificationsListing = styled.ul`
     border-radius: 4px;
     background: ${({ theme }) => theme.colors.subtext.light}66;
     border: 2px solid ${({ theme }) => theme.colors.background.light};
+  }
+`;
+
+export const SettingsOptionsWrapper = styled.ul`
+  gap: 4px;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+
+  > li {
+    width: 100%;
+    max-width: 100%;
+    list-style: none;
+  }
+`;
+
+export const SettingsLink = styled(Link)`
+  gap: 12px;
+  width: 100%;
+  padding: 8px 12px;
+  display: flex;
+  max-width: 100%;
+  border-radius: 14px;
+  align-items: center;
+  text-decoration: none;
+  background: transparent;
+  transition: all .3s ease-out;
+  color: ${({ theme }) => theme.colors.subtext.light };
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.background.dark};
+  }
+
+  &:focus-visible {
+    transition: none;
+    outline-offset: -2px;
+    outline: 2px solid ${({ theme }) => theme.colors.primary.main}99;
+  }
+
+  > div {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    flex-direction: column;
+
+    > h4 {
+      color: ${({ theme }) => theme.colors.subtext.dark }CC;
+      font-size: ${({ theme }) => theme.typography.size.h6 };
+      font-weight: ${({ theme }) => theme.typography.weight.semibold };
+    }
+
+    > p {
+      width: 100%;
+      line-clamp: 1;
+      max-width: 100%;
+      overflow: hidden;
+      line-break: loose;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: ${({ theme }) => theme.typography.size.h7 };
+    }
+  }
+
+  &[aria-selected="true"] {
+    position: relative;
+    background: ${({ theme }) => theme.colors.background.dark };
+
+    > .icon {
+      color: ${({ theme }) => theme.colors.primary.main };
+    }
+
+    > div {
+
+      > h4 {
+        color: ${({ theme }) => theme.colors.primary.main };
+      }
+    }
   }
 `;
