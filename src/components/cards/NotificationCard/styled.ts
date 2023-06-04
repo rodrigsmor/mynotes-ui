@@ -7,7 +7,7 @@ export const NotificationCardContainer = styled.article`
 `;
 
 export const NotificationLink = styled(Link)`
-  gap: 4px;
+  gap: 2px;
   width: 100%;
   padding: 12px;
   display: flex;
@@ -16,11 +16,18 @@ export const NotificationLink = styled(Link)`
   position: relative;
   text-decoration: none;
   flex-direction: column;
+  transition: all .3s ease-in-out;
   color: ${({ theme }) => theme.colors.typography.light };
   background: ${({ theme }) => theme.colors.background.dark };
 
-  > * {
-    text-decoration: none;
+  &:focus-visible {
+    transition: none;
+    outline-offset: -2px;
+    outline: 2px solid ${({ theme }) => theme.colors.primary.main}99;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.background.main } !important;
   }
 
   &[data-read="true"] {
@@ -29,6 +36,10 @@ export const NotificationLink = styled(Link)`
     > .read-indicator {
       display: none;
     }
+  }
+
+  > * {
+    text-decoration: none;
   }
 
   > h3 {
@@ -52,7 +63,24 @@ export const NotificationLink = styled(Link)`
   }
 
   > .pending-date {
-    
+    gap: 4px;
+    display: flex;
+    max-width: 100%;
+    width: fit-content;
+    align-items: center;
+    margin: 0 0 6px;
+    justify-content: center;
+    font-size: ${({ theme }) => theme.typography.size.h7};
+    color: ${({ theme }) => theme.colors.typography.light}cc;
+    font-weight: ${({ theme }) => theme.typography.weight.light};
+
+    > abbr {
+      display: flex;
+      height: fit-content;
+      align-items: center;
+      max-height: fit-content;
+      color: ${({ theme }) => theme.colors.primary.main };
+    }
   }
 
   > .read-indicator {
@@ -63,5 +91,13 @@ export const NotificationLink = styled(Link)`
     position: absolute;
     border-radius: 6px;
     background: ${({ theme }) => theme.colors.primary.main };
+  }
+
+  > .notification-date {
+    width: 100%;
+    margin: 4px 0 0;
+    text-align: end;
+    font-size: ${({ theme }) => theme.typography.size.h7};
+    color: ${({ theme }) => theme.colors.typography.light }cc;
   }
 `;

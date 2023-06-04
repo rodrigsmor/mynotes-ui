@@ -130,8 +130,21 @@ export const NotificationsListing = styled.ul`
   max-height: 100%;
   overflow-y: auto;
   flex-direction: column;
+  scrollbar-gutter: stable;
 
   > li {
     width: 100%;
+  }
+  
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: ${({ theme }) => theme.colors.subtext.light}66;
+    border: 2px solid ${({ theme }) => theme.colors.background.light};
   }
 `;

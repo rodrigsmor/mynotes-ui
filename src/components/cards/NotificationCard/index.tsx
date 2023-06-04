@@ -23,11 +23,11 @@ export const NotificationCard = ({ notification }: NotificationCardType) => {
       <NotificationLink to={'/'} data-read={notification.wasRead}>
         <span className="read-indicator" aria-label={`essa notificação não foi lida ainda.`}></span>
         <h3>{ notification.pendingName }</h3>
-        <p className="description">{ handleDescription(notification.description) }</p>
         <time className="pending-date" aria-label='data da pendência' dateTime={notification.pendingDate.toISOString()}>
-          <abbr title="data da pendência"><HiCalendar /></abbr> { formatFullDateTime(notification.pendingDate) }
+          <abbr title="data da pendência"><HiCalendar size={12} /></abbr> { formatFullDateTime(notification.pendingDate) }
         </time>
-        <time aria-label='data da notificação' dateTime={notification.createdAt.toISOString()}>{ formatFullDateTime(notification.createdAt) }</time>
+        <p className="description">{ handleDescription(notification.description) }</p>
+        <time className="notification-date" aria-label='data da notificação' dateTime={notification.createdAt.toISOString()}>{ formatFullDateTime(notification.createdAt) }</time>
       </NotificationLink>
     </NotificationCardContainer>
   )
