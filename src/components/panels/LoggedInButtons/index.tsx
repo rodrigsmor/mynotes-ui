@@ -39,6 +39,7 @@ export const LoggedInButtons = () => {
           }}
         />
         <PanelDropdownContent aria-labelledby="notifications-panel_title" id='notifications-panel_Dropdown' className="notification" aria-hidden={!hasNotificationOpen}>
+          <span aria-hidden={true}></span>
           <header>
             <h3 id="notifications-panel_title">Suas notificações</h3>
             <button className="mark-read-button"> <BsCheckAll className="icon" size={18} /> marcar como lido</button>

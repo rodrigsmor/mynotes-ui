@@ -12,17 +12,34 @@ export const PanelDropdownWrapper = styled.div`
 export const PanelDropdownContent = styled.nav`
   top: 54px;
   gap: 12px;
-  width: 265px;
+  z-index: 10;
+  width: 80vw;
   padding: 14px;
   display: flex;
-  max-height: 86vh;
-  overflow: hidden;
   position: absolute;
   border-radius: 14px;
   flex-direction: column;
   transition: all .3s ease-in;
+  max-height: calc(100dvh - 148px);
   box-shadow: ${({ theme }) => theme.shadow.main };
   background: ${({ theme }) => theme.colors.background.light };
+
+  > span {
+    top: -16px;
+    align-self: center;
+    position: absolute;
+    filter: drop-shadow(0px -3px 2px rgba(17, 17, 17, 0.1));
+
+    &::before {
+      content: '';
+      width: 40px;
+      height: 18px;
+      display: block;
+      background: red;
+      clip-path: polygon(50% 0, 0 100%, 100% 100%);
+      background: ${({ theme }) => theme.colors.background.light };
+    }
+  }
 
   > header {
     flex-grow: 1;
@@ -68,7 +85,19 @@ export const PanelDropdownContent = styled.nav`
   }
 
   &.notification {
-    width: 368px;
+    max-width: 368px;
+  }
+  
+  @media ${({ theme }) => theme.media.tablet } {
+    width: 265px;
+
+    &.notification {
+      width: 368px;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.desktop } {
+    max-height: 86dvh;
   }
 `;
 
