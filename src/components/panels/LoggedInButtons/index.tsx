@@ -42,11 +42,11 @@ export const LoggedInButtons = () => {
           <span aria-hidden={true}></span>
           <header>
             <h3 id="notifications-panel_title">Suas notificações</h3>
-            <button className="mark-read-button"> <BsCheckAll className="icon" size={18} /> marcar como lido</button>
+            <button className="mark-read-button" tabIndex={hasNotificationOpen ? 0 : -1}> <BsCheckAll className="icon" size={18} /> marcar como lido</button>
             <HeaderTabContainers role="tablist">
               {
                 tabs.map(({ name, label }) => (
-                  <button key={name} role="tab" aria-selected={currentTab === name} disabled={currentTab === name} aria-controls="notifications-content_tab" onClick={e => setCurrentTab(name)}>
+                  <button key={name} role="tab" aria-selected={currentTab === name} disabled={currentTab === name} aria-controls="notifications-content_tab" tabIndex={hasNotificationOpen ? 0 : -1} onClick={e => setCurrentTab(name)}>
                     { label }
                   </button>
                 ))
@@ -55,12 +55,9 @@ export const LoggedInButtons = () => {
           </header>
           <NotificationsListing id="notifications-content_tab" aria-label="lista de notificações">
             {
-              notifications.map((notification) => <li key={notification.id}><NotificationCard notification={notification} /></li>)
+              notifications.map((notification) => <li key={notification.id}><NotificationCard notification={notification} isFocusable={hasNotificationOpen} /></li>)
             }
           </NotificationsListing>
-          <footer>
-
-          </footer>
         </PanelDropdownContent>
       </PanelDropdownWrapper>
       <IconButton

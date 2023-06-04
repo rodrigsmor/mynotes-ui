@@ -7,9 +7,10 @@ import { StatusStyle } from "../../../utils/models/statusStyle";
 
 interface NotificationCardType {
   notification: NotificationType,
+  isFocusable?: boolean,
 }
 
-export const NotificationCard = ({ notification }: NotificationCardType) => {
+export const NotificationCard = ({ notification, isFocusable = true }: NotificationCardType) => {
   function handleDescription(description: string[]): ReactNode {
     return description.map((value) => {
       if (value.match(/<[^>]+>/g))
@@ -21,7 +22,7 @@ export const NotificationCard = ({ notification }: NotificationCardType) => {
 
   return (
     <NotificationCardContainer>
-      <NotificationLink statusColor={StatusStyle[notification.status]} to={'/'} data-read={notification.wasRead}>
+      <NotificationLink statusColor={StatusStyle[notification.status]} to={'/'} data-read={notification.wasRead} tabIndex={isFocusable ? 0 : -1}>
         <span className="read-indicator" aria-label={`essa notificação não foi lida ainda.`}></span>
         <h3>{ notification.pendingName }</h3>
         <time className="pending-date" aria-label='data da pendência' dateTime={notification.pendingDate.toISOString()}>
