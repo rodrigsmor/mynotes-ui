@@ -1,7 +1,9 @@
 import { CategoriesEnums } from "../enums/CategoriesEnums";
+import { StatusEnums } from "../enums/StatusEnums";
 import { AccountsTypes } from "../types/accounts";
 import { collectionSummaryType } from "../types/collection";
 import { NoteCardTypes } from "../types/note-card";
+import { NotificationType } from "../types/notification";
 
 export const noteCardsHome: Array<NoteCardTypes> = [
   {
@@ -181,5 +183,53 @@ export const connectedAccounts: Array<AccountsTypes> = [
     email: 'carolina@example.com',
     name: 'Carolina Oliveira',
     profilePicture: 'https://images.unsplash.com/photo-1619634498269-03d54fa97f99'
+  }
+]
+
+export const notifications: NotificationType[] = [
+  {
+    id: 0,
+    createdAt: new Date('2023-05-01T10:30:00Z'),
+    pendingDate: new Date('2023-05-10T14:00:00Z'),
+    pendingName: 'Levar cachorro para passear',
+    wasRead: true,
+    status: StatusEnums.PENDING,
+    description: ['A sua pendência', '<title>Levar cachorro para passear</title>', 'expira daqui há algumas horas. Não esqueça de fazê-lá!'],
+  },
+  {
+    id: 1,
+    createdAt: new Date('2023-05-02T08:15:00Z'),
+    pendingDate: new Date('2023-05-12T09:30:00Z'),
+    wasRead: false,
+    pendingName: 'Lavar a roupa',
+    status: StatusEnums.LATE,
+    description: ['A sua pendência', '<title>Lavar a roupa</title>', 'não foi marcada como feita no período definido e está atrasada.'],
+  },
+  {
+    id: 2,
+    createdAt: new Date('2023-05-03T16:45:00Z'),
+    pendingDate: new Date('2023-05-08T11:00:00Z'),
+    wasRead: true,
+    pendingName: 'Pagar o boleto',
+    status: StatusEnums.LATE,
+    description: ['A sua pendência', '<title>Pagar o boleto</title>', 'não foi marcada como feita no período definido e está atrasada.']
+  },
+  {
+    id: 3,
+    createdAt: new Date('2023-05-04T13:20:00Z'),
+    pendingDate: new Date('2023-05-11T16:45:00Z'),
+    wasRead: true,
+    pendingName: 'Comprar a casa',
+    status: StatusEnums.DONELATE,
+    description: ['A sua pendência', '<title>Comprar a casa</title>', 'foi marcada como feita após o período definido.'],
+  },
+  {
+    id: 4,
+    createdAt: new Date('2023-05-05T09:00:00Z'),
+    pendingDate: new Date('2023-05-15T10:00:00Z'),
+    wasRead: false,
+    pendingName: 'Ler o livro',
+    status: StatusEnums.PENDING,
+    description: ['A sua pendência', '<title>Ler o livro</title>', ' expira daqui há algumas horas. Não esqueça de fazê-la!']
   }
 ]
