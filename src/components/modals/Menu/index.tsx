@@ -50,6 +50,7 @@ export const Menu: React.FC<MenuProps> = ({ name, className, options, date = '',
         ref={menuRef}
         role={'menu'}
         id={`Menu_${name}`}
+        aria-hidden={!showMenu}
         aria-labelledby={`Menu-Button_${name}`}
         className={`menu-card ${showMenu ? 'opened' : 'closed'}`}
         onBlurCapture={e => setShowMenu(false)}

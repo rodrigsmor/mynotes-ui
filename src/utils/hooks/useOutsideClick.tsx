@@ -5,6 +5,14 @@ const useOutsideClick = <T extends HTMLElement>(
   close: () => void
 ): void => {
   const handleClick = (event: MouseEvent | KeyboardEvent): void => {
+    const controlElement = (event.target as HTMLElement).closest(
+      `[aria-controls="${ref.current?.id}"], [aria-owns="${ref.current?.id}"]`
+    ) as HTMLElement | null;
+    
+    if (controlElement) {
+      return;
+    }
+
     if (ref.current && !ref.current.contains(event.target as Node) && event instanceof MouseEvent) {
       close();
     } else if(event instanceof KeyboardEvent && (event.key === 'Escape' || event.key === 'Enter')) {
