@@ -2,7 +2,8 @@ import { IconContext } from "react-icons";
 import { IconButton } from "../../buttons/IconButton";
 import { HiOutlineEllipsisVertical } from "react-icons/hi2";
 import { MenuCardWrapper, MenuContainer, OptionsListingWrapper, OptionButton, OptionButtonLabel, OptionCommand, LastUpdateText, Divider } from './styled';
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler, useRef, useState } from 'react';
+import useOutsideClick from "../../../utils/hooks/useOutsideClick";
 
 type MenuProps = {
   name: string;
@@ -22,7 +23,11 @@ export type OptionsProps = {
 }
 
 export const Menu: React.FC<MenuProps> = ({ name, className, options, date = '', time = '' }) => {
+  const menuRef = useRef<HTMLDivElement>(null);
   const [ showMenu, setShowMenu ] = useState<boolean>(false);
+
+  useOutsideClick(menuRef, () => setShowMenu(false));
+  console.log(menuRef)
   
   return (
     <MenuContainer className="menu">
@@ -42,6 +47,7 @@ export const Menu: React.FC<MenuProps> = ({ name, className, options, date = '',
         }}
       />
       <MenuCardWrapper 
+        ref={menuRef}
         role={'menu'}
         id={`Menu_${name}`}
         aria-labelledby={`Menu-Button_${name}`}
