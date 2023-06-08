@@ -1,5 +1,5 @@
 import { BsCheckAll } from "react-icons/bs";
-import { ReactElement, useState } from "react";
+import { ReactElement, useRef, useState } from "react";
 import { notifications } from "../../../utils/mock";
 import { IconButton } from "../../buttons/IconButton";
 import { NotificationCard } from "../../cards/NotificationCard";
@@ -7,6 +7,7 @@ import { HiOutlineBell, HiOutlineCog6Tooth, HiOutlineQuestionMarkCircle, HiOutli
 import { HeaderTabContainers, NotificationsListing, PanelDropdownContent, PanelDropdownWrapper, SettingsLink, SettingsOptionsWrapper } from "./styled";
 import { IconContext } from "react-icons";
 import { useLocation } from "react-router-dom";
+import useOutsideClick from "../../../utils/hooks/useOutsideClick";
 
 interface TabsInfo {
   name: 'all' | 'notRead' | 'read';
@@ -23,7 +24,8 @@ interface SettingsTabType {
 
 export const LoggedInButtons = () => {
   const { pathname } = useLocation();
-
+  const settingsRef = useRef<HTMLDivElement>(null);
+  const notificationRef = useRef<HTMLDivElement>(null)
   const [ hasSettingsOpen, setHasSettingsOpen ] = useState<boolean>(false);
   const [ hasNotificationOpen, setHasNotificationOpen ] = useState<boolean>(false);
   const [ currentTab, setCurrentTab ] = useState<'all' | 'notRead' | 'read'>('all');
@@ -69,6 +71,9 @@ export const LoggedInButtons = () => {
     }
   ]
 
+  useOutsideClick(settingsRef, () => setHasSettingsOpen(false))
+  useOutsideClick(notificationRef, () => setHasNotificationOpen(false));
+
   return (
     <>
       <PanelDropdownWrapper className='logged-button-options'>
@@ -79,7 +84,7 @@ export const LoggedInButtons = () => {
             "aria-label": `${hasNotificationOpen ? 'Fechar' : 'Abrir'} notificações`, "aria-haspopup": true, "aria-expanded": hasNotificationOpen, "aria-controls": 'notifications-panel_Dropdown'
           }}
         />
-        <PanelDropdownContent aria-labelledby="notifications-panel_title" id='notifications-panel_Dropdown' className="notification" aria-hidden={!hasNotificationOpen}>
+        <PanelDropdownContent ref={notificationRef} aria-labelledby="notifications-panel_title" id='notifications-panel_Dropdown' className="notification" aria-hidden={!hasNotificationOpen}>
           <span aria-hidden={true}></span>
           <header>
             <h3 id="notifications-panel_title">Suas notificações</h3>
@@ -110,7 +115,7 @@ export const LoggedInButtons = () => {
             "aria-label": 'Abrir configurações', "aria-haspopup": true, "aria-expanded": hasSettingsOpen, "aria-controls": 'settings-panel_Dropdown'
           }}
         />
-        <PanelDropdownContent aria-labelledby="settings-panel_title" id='settings-panel_Dropdown' aria-hidden={!hasSettingsOpen}>
+        <PanelDropdownContent ref={settingsRef} aria-labelledby="settings-panel_title" id='settings-panel_Dropdown' aria-hidden={!hasSettingsOpen}>
           <span aria-hidden={true}></span>
           <header>
             <h3 id="settings-panel_title">Configurações</h3>
