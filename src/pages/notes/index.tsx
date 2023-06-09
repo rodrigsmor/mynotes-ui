@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useRef } from 'react';
 import { noteCardsHome } from '../../utils/mock/index';
 import { Button } from "../../components/buttons/Button";
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
@@ -69,10 +69,12 @@ function modalReducer(state: ModalStateType, action: ModalAction) {
 }
 
 export const Notes = () => {
+  const createModalRef = useRef<HTMLButtonElement>(null);
   const [ currentView, dispatch ] = useReducer(viewReducer, { current: 'LIST' });
   const [ modal, modalDispatch ] = useReducer(modalReducer, { type: '', showModal: false });
 
   function handleCloseModal() {
+    createModalRef.current?.focus();
     modalDispatch({ type: ModalActionsEnums.CLOSE_MODAL});
   }
 
@@ -100,10 +102,10 @@ export const Notes = () => {
                 <p>Ordenar por</p>
               </>
             </Button>
-            <Button name='add_button_desktop' theme={ThemeEnums.DEFAULT} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ADD_NOTE_MODAL })} controlId='createAnnotation_Modal' hasPopup>
+            <Button elRef={createModalRef} name='add_button_desktop' theme={ThemeEnums.DEFAULT} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ADD_NOTE_MODAL })} controlId='createAnnotation_Modal' hasPopup>
               <>
                 <HiPlus />
-                <p>Criar anotação</p>
+                Criar anotação
               </>
             </Button>
           </InteractionsButton>

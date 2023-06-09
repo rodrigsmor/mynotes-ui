@@ -1,8 +1,9 @@
-import { ButtonHTMLAttributes, MouseEventHandler } from "react";
+import { ButtonHTMLAttributes, MouseEventHandler, RefObject } from "react";
 import { ButtonContainer, LinkButtonContainer } from "./styled";
 import { ThemeEnums } from '../../../utils/enums/ThemeEnums';
 
 type ButtonProps = {
+  elRef?: RefObject<HTMLButtonElement | HTMLAnchorElement>;
   type?: 'submit' | 'button' | 'reset';
   name?: string;
   theme: ThemeEnums;
@@ -14,11 +15,11 @@ type ButtonProps = {
   props?: ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
-export const Button = ({ to, type = 'button', children, theme, name, onClick, controlId, hasPopup = false, props }: ButtonProps) => {
+export const Button = ({ to, elRef, type = 'button', children, theme, name, onClick, controlId, hasPopup = false, props }: ButtonProps) => {
   const Element: any = to ? LinkButtonContainer : ButtonContainer;
   
   return (
-    <Element to={to} type={type} className={`${theme} ${name} styled-button`} onClick={onClick} aria-owns={controlId} aria-haspopup={hasPopup} {...props}>
+    <Element ref={elRef} to={to} type={type} className={`${theme} ${name} styled-button`} onClick={onClick} aria-owns={controlId} aria-haspopup={hasPopup} {...props}>
       { children }
     </Element>
   );
