@@ -27,7 +27,6 @@ export const Menu: React.FC<MenuProps> = ({ name, className, options, date = '',
   const [ showMenu, setShowMenu ] = useState<boolean>(false);
 
   useOutsideClick(menuRef, () => setShowMenu(false));
-  console.log(menuRef)
   
   return (
     <MenuContainer className="menu">

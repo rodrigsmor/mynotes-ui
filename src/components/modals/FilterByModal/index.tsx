@@ -76,7 +76,6 @@ export const FilterByModal = ({ showModal, onClose, closeModal }: FilterByProps)
     let categoriesUpdated = categoriesFilterData.map((data) => {
       if(data.id === id) {
         data.isSelected = !data.isSelected;
-        console.log(data.isSelected)
       }
 
       return data;
