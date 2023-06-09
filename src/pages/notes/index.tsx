@@ -69,12 +69,19 @@ function modalReducer(state: ModalStateType, action: ModalAction) {
 }
 
 export const Notes = () => {
+  const orderByRef = useRef<HTMLButtonElement>(null);
+  const filterByRef = useRef<HTMLButtonElement>(null);
   const createModalRef = useRef<HTMLButtonElement>(null);
   const [ currentView, dispatch ] = useReducer(viewReducer, { current: 'LIST' });
   const [ modal, modalDispatch ] = useReducer(modalReducer, { type: '', showModal: false });
 
   function handleCloseModal() {
-    createModalRef.current?.focus();
+    switch (modal.type) {
+      case 'ADD_NOTE': createModalRef.current?.focus(); break;
+      case 'FILTER_BY': filterByRef.current?.focus(); break;
+      case 'ORDER_BY': orderByRef.current?.focus(); break;
+    }
+    
     modalDispatch({ type: ModalActionsEnums.CLOSE_MODAL});
   }
 
@@ -90,13 +97,13 @@ export const Notes = () => {
             </div>
           </VisualizationGroup>
           <InteractionsButton>
-            <Button theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_FILTER_BY_MODAL })} controlId={'filterBy_modal'} hasPopup>
+            <Button elRef={filterByRef} theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_FILTER_BY_MODAL })} controlId={'filterBy_modal'} hasPopup>
               <>
                 <HiOutlineFunnel />
                 <p>Filtrar por</p>
               </>
             </Button>
-            <Button theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ORDER_BY_MODAL })} controlId={'orderBy_Modal'} hasPopup>
+            <Button elRef={orderByRef} theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ORDER_BY_MODAL })} controlId={'orderBy_Modal'} hasPopup>
               <>
                 <HiOutlineArrowPath />
                 <p>Ordenar por</p>
