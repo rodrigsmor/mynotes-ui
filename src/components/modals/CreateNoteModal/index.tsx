@@ -43,8 +43,6 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    console.log(noteDescription)
   }
   
   return (
@@ -54,7 +52,7 @@ export const CreateNoteModal: React.FC<CreateNoteModalProps> = ({ show, onClose 
         tabIndex={-1}
         ref={modalRef}
         aria-modal={true}
-        aria-hidden={show}
+        aria-hidden={!show}
         onSubmit={onSubmit}
         id='createAnnotation_Modal'
         aria-labelledby='createAnnotation_TitleHeading'

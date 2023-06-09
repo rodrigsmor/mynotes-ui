@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useRef } from 'react';
 import { noteCardsHome } from '../../utils/mock/index';
 import { Button } from "../../components/buttons/Button";
 import { ThemeEnums } from '../../utils/enums/ThemeEnums';
@@ -69,10 +69,19 @@ function modalReducer(state: ModalStateType, action: ModalAction) {
 }
 
 export const Notes = () => {
+  const orderByRef = useRef<HTMLButtonElement>(null);
+  const filterByRef = useRef<HTMLButtonElement>(null);
+  const createModalRef = useRef<HTMLButtonElement>(null);
   const [ currentView, dispatch ] = useReducer(viewReducer, { current: 'LIST' });
   const [ modal, modalDispatch ] = useReducer(modalReducer, { type: '', showModal: false });
 
   function handleCloseModal() {
+    switch (modal.type) {
+      case 'ADD_NOTE': createModalRef.current?.focus(); break;
+      case 'FILTER_BY': filterByRef.current?.focus(); break;
+      case 'ORDER_BY': orderByRef.current?.focus(); break;
+    }
+    
     modalDispatch({ type: ModalActionsEnums.CLOSE_MODAL});
   }
 
@@ -88,22 +97,22 @@ export const Notes = () => {
             </div>
           </VisualizationGroup>
           <InteractionsButton>
-            <Button theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_FILTER_BY_MODAL })} controlId={'filterBy_modal'} hasPopup>
+            <Button elRef={filterByRef} theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_FILTER_BY_MODAL })} controlId={'filterBy_modal'} hasPopup>
               <>
                 <HiOutlineFunnel />
                 <p>Filtrar por</p>
               </>
             </Button>
-            <Button theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ORDER_BY_MODAL })} controlId={'orderBy_Modal'} hasPopup>
+            <Button elRef={orderByRef} theme={ThemeEnums.SURFACE} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ORDER_BY_MODAL })} controlId={'orderBy_Modal'} hasPopup>
               <>
                 <HiOutlineArrowPath />
                 <p>Ordenar por</p>
               </>
             </Button>
-            <Button name='add_button_desktop' theme={ThemeEnums.DEFAULT} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ADD_NOTE_MODAL })} controlId='createAnnotation_Modal' hasPopup>
+            <Button elRef={createModalRef} name='add_button_desktop' theme={ThemeEnums.DEFAULT} onClick={e => modalDispatch({ type: ModalActionsEnums.OPEN_ADD_NOTE_MODAL })} controlId='createAnnotation_Modal' hasPopup>
               <>
                 <HiPlus />
-                <p>Criar anotação</p>
+                Criar anotação
               </>
             </Button>
           </InteractionsButton>

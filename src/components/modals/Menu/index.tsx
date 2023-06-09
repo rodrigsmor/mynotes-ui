@@ -27,7 +27,6 @@ export const Menu: React.FC<MenuProps> = ({ name, className, options, date = '',
   const [ showMenu, setShowMenu ] = useState<boolean>(false);
 
   useOutsideClick(menuRef, () => setShowMenu(false));
-  console.log(menuRef)
   
   return (
     <MenuContainer className="menu">
@@ -50,6 +49,7 @@ export const Menu: React.FC<MenuProps> = ({ name, className, options, date = '',
         ref={menuRef}
         role={'menu'}
         id={`Menu_${name}`}
+        aria-hidden={!showMenu}
         aria-labelledby={`Menu-Button_${name}`}
         className={`menu-card ${showMenu ? 'opened' : 'closed'}`}
         onBlurCapture={e => setShowMenu(false)}
