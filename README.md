@@ -62,9 +62,9 @@ By running these commands, the application can be used by you. To see MyNotes ru
 
 ### 🌎 Support links and tutorials
 
-- 🔗 instalar o git: [https://git-scm.com/book/en/v2/Getting-Started-Installing-Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git);
-- 🔗 instalar o npm: [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm);
-- 🔗 instalar yarn: [https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable);
+- 🔗 Install git: [https://git-scm.com/book/en/v2/Getting-Started-Installing-Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git);
+- 🔗 Install npm: [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm);
+- 🔗 Install yarn [https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable);
 
 ### 👨🏽‍💻 Author <a name="AUTHOR"></a>
 *****
